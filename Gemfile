@@ -4,6 +4,7 @@ ruby "3.3.3"
 
 gem "psych", "~> 4"  
 
+gem 'devise'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"

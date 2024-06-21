@@ -7,9 +7,24 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <%= render 'layouts/nav'%>
+    </header>
+
+    <%= render 'layouts/messages'%>
+
+    <main>
+      <%= yield %>
+    </main>
+    
+    <footer>
+      <%= render 'layouts/footer' %>
+    </footer>
+
   </body>
 </html>
