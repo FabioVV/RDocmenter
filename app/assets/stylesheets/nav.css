@@ -14,15 +14,15 @@ nav{
 
 li > a {
     font-weight: 600 !important;
-    background-color: black !important;    
-    color: white !important;
+    background-color: white !important;    
+    color: black !important;
     transition: ease-in-out 110ms;
 }
 
 li > a:hover{
     font-weight: 600 !important;
-    background-color: white !important;    
-    color: black !important;
+    background-color: black !important;    
+    color: white !important;
     border-color: black !important;
 }
 
@@ -30,6 +30,10 @@ li > a:hover{
 @media screen and (max-width: 720px) {
     li > a {
         font-weight: 400 !important;
+        background-color: white !important;    
+        color: black !important;
+    }
+    li > a:hover{
         background-color: white !important;    
         color: black !important;
     }
