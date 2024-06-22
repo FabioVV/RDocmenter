@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby "3.3.3"
 
-gem "psych", "~> 4"  
+# gem "psych", "~> 4"  
 
 gem 'devise'
 
