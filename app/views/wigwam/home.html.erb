@@ -1,1 +1,15 @@
-<h1>Hello, World!</h1>
+<% if !current_user %>
+    <section>
+        <h1>Welcome to wigwam!</h1>
+        
+        <p>
+            A cozy, calm place for you to organize and put your ideas to fruition
+        </p>
+
+        <%= button_to "Start now.", new_user_registration_path, method: :get %>
+    </section>
+<% else %>
+    <section>
+
+    </section>
+<% end %>

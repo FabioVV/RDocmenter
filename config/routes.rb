@@ -18,7 +18,9 @@ Rails.application.routes.draw do
     :registration => 'register',
     :sign_up => 'create-account' }
   # devise_for :users
+
   root "wigwam#home"
 
+  
 
 end

@@ -13,8 +13,25 @@
  *= require_tree .
  *= require_self
  */
+body, html {
+    overflow-x: hidden;
+}
+
+.fa-solid.fa-check{
+}
 
 
-.flash-messages-container{
-    
+@media screen and (max-width: 720px) {
+    li > a {
+        font-weight: 400 !important;
+        /* background-color: white !important;     */
+        /* color: black !important; */
+    }
+    li > a:hover{
+        /* background-color: white !important;     */
+        /* color: black !important; */
+    }
+    nav {
+        display: block;
+    }
 }
