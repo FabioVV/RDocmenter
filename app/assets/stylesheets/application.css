@@ -13,13 +13,28 @@
  *= require_tree .
  *= require_self
  */
+
+
+/*Overwriting some of simple.css colors*/
+:root{
+    /* --accent-bg: black !important; */
+}
+
+
 body, html {
     overflow-x: hidden;
 }
 
+i{
+    font-size: 14px;
+}
 .fa-solid.fa-check{
 }
 
+.chalet{
+    border: none;
+    font-size: 1.5em;
+}
 
 @media screen and (max-width: 720px) {
     li > a {
