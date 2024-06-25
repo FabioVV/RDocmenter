@@ -57,7 +57,7 @@ i{
 
 
 .bold {
-    font-weight: bolder;
+    font-weight: 900;
 }
 
 .italic {
@@ -68,3 +68,12 @@ i{
     
 }
 
+.code:before {
+    content: "def text('";
+
+}
+
+.code:after{
+    content: "')";
+
+}

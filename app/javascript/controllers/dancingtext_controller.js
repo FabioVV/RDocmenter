@@ -1,24 +1,27 @@
 import { Controller } from "@hotwired/stimulus"
 
-export default class extends Controller{
+export default class extends Controller {
     static targets = ["text"]
 
     STYLES = ["bold", "italic", "code", "color"]
-    COLORS = ["red", "green", "blue", "yellow", "purple", "black"]
+    COLORS = ["#DAAE66", "#CC00CC", "#1A1A1A", "#33CCFF"]
+    COUNTER = 0
 
     connect(){
-        setInterval(()=> this.updateText(), 750)
+        setInterval(()=> {
+            if(this.COUNTER > this.STYLES.length-1) this.COUNTER = 0
+            this.updateText()
+        }, 750)
     }
 
     updateText(){
-        const randomClass = this.STYLES[Math.floor(Math.random() * this.STYLES.length)]
-        this.textTarget.className  = `${randomClass}`
+        // const randomClass = this.STYLES[Math.floor(Math.random() * this.STYLES.length)]
+        const Class = this.STYLES[this.COUNTER]
 
-        if(randomClass == "color"){
-            this.textTarget.style.color  = `${this.COLORS[Math.floor(Math.random() * this.COLORS.length)]}`
-
-        } 
-        // this.textTarget.textContent = "abcd"
+        this.textTarget.className  = `${Class}`
+        this.textTarget.style.color  = `${this.COLORS[Math.floor(Math.random() * this.COLORS.length)]}`
+        
+        this.COUNTER++
     }
     
 }
