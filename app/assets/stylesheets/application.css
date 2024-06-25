@@ -36,6 +36,7 @@ i{
     font-size: 1.5em;
 }
 
+
 @media screen and (max-width: 720px) {
     li > a {
         font-weight: 400 !important;

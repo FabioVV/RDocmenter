@@ -29,3 +29,15 @@
         margin: 8em auto !important;
     }
 }
+
+@media screen and (max-width: 433px) {
+    .flash-messages-container{
+        margin: 9em auto !important;
+    }
+}
+
+@media screen and (max-width: 208px) {
+    .flash-messages-container{
+        margin: 11em auto !important;
+    }
+}
