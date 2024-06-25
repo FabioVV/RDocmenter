@@ -50,3 +50,21 @@ i{
         display: block;
     }
 }
+
+
+
+/*Styles for the crazy text in the home.html.erb*/
+
+
+.bold {
+    font-weight: bolder;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.code {
+    
+}
+

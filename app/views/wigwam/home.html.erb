@@ -9,9 +9,16 @@
         <%= button_to "Start now.", new_user_registration_path, method: :get %>
     </section>
 <% else %>
-    <section>
+    <section >
         <h1>Hello <%= current_user.first_name%></h1>
-        <h2>Ready to write and mark stuff down?</h2>
+        <h2>Ready to write and <span data-controller="dancingtext" data-dancingtext-target="text" class="none">mark stuff down?</span></h2>
 
     </section>
 <% end %>
+
+
+    <!-- <div data-controller="clipboard">
+        PIN:
+        <input data-clipboard-target="source" type="text" value="1234" readonly />
+        <button data-action="clipboard#copy">Copy to Clipboard</button>
+    </div> -->
