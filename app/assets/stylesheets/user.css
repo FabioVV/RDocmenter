@@ -14,6 +14,16 @@
 
 }
 
+.delete-account-button{
+    background-color: red !important;
+    border: 1px black solid;
+}
+
+.delete-account-button:hover{
+    background-color: rgb(255, 53, 53) !important;
+    border: 1px black solid;
+}
+
 @media (min-width:600px) {
     .user-grid-form{
         grid-template-columns: repeat(2, 1fr);

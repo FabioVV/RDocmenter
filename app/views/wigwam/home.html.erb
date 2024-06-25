@@ -1,6 +1,6 @@
 <% if !current_user %>
     <section>
-        <h1>Welcome to wigwam!</h1>
+        <h1>Welcome to Scriptum!</h1>
         
         <p>
             A cozy, calm place for you to organize and put your ideas to fruition
@@ -10,6 +10,8 @@
     </section>
 <% else %>
     <section>
+        <h1>Hello <%= current_user.first_name%></h1>
+        <h2>Ready to write and mark stuff down?</h2>
 
     </section>
 <% end %>
