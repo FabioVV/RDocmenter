@@ -9,6 +9,10 @@
     grid-column: 1 / -1;
 }
 
+.user-grid-form #current_password_one_row{
+    grid-column: 1 / -1;
+}
+
 .user-grid-form #error_explanation{
     grid-column: 1 / -1 !important;
 

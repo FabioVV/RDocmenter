@@ -48,7 +48,12 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
+  <div class="field" >
+    <%= f.label :profile_photo %>
+    <%= f.file_field :profile_photo %><br>
+  </div>
+
+  <div class="field" id='current_password_one_row'>
     <%= f.label :current_password %>
     <%= f.password_field :current_password, autocomplete: "current-password" %>
     <br />
@@ -59,6 +64,10 @@
     <br />
     <%= f.submit "Update" %>
   </div>
+<% end %>
+
+<% if current_user.profile_photo.attached? %>
+  <%= image_tag current_user.profile_photo  %>
 <% end %>
 
 <h3>Delete my account</h3>

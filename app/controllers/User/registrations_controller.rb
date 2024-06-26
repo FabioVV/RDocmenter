@@ -20,12 +20,12 @@ class User::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  #   @user.avatar.attach(params[:avatar])
-  #   or
-  #   @user.avatar.attach(io: File.open('app/assets/images/palceholder.png'), filename: 'placeholder.png', content_type: 'image/png')
-  # end
+  def update
+    super
+    @user.avatar.attach(params[:profile_photo])
+    #or
+    #@user.avatar.attach(io: File.open('app/assets/images/palceholder.png'), filename: 'placeholder.png', content_type: 'image/png')
+  end
 
   # DELETE /resource
   # def destroy
