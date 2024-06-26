@@ -19,8 +19,8 @@
         <% @books.each do |b| %> 
             <div class='book' data-controller='editbook' data-action="click->editbook#openBookEdit" data-id='<%= b.id %>'>
                 <div class='book-title-section'>
-                    <h2 title='<%= b.title %>'><%= truncate(b.title, length: 25, omission: '...')  %></h2>
-                    <h3 title='<%= b.subtitle %>'><%= truncate(b.subtitle, length: 30, omission: '...')  %></h3>
+                    <h2 title='<%= b.title %>'><%= truncate(b.title, length: 20, omission: '...')  %></h2>
+                    <h3 title='<%= b.subtitle %>'><%= truncate(b.subtitle, length: 20, omission: '...')  %></h3>
                     <hr />
                 </div>
                 <div class='book-img-section'>
