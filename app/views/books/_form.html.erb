@@ -1,0 +1,19 @@
+
+<%= form_with(model: @book, local:true) do |f| %>
+
+    <div class="field">
+        <%= f.label :title %><br />
+        <%= f.text_field :title %>
+    </div>
+
+    <div class="field">
+        <%= f.label :subtitle %><br />
+        <%= f.text_field :subtitle %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit "Create book/Document" %>
+    </div>
+    <br />
+
+<% end %>

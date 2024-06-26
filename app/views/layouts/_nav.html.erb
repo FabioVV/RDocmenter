@@ -11,7 +11,7 @@
     <% else %>
         <ul>
             <li><%= link_to current_user.email, edit_user_registration_path, class: "email-nav" %></li>
-            <li><%= link_to "Your docs/books", books_path %></li>
+            <li><%= link_to "My docs/books", books_path %></li>
 
             <li><%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete } %></li>
         </ul>
