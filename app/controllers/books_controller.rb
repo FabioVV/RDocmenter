@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
     before_action :set_book, only: [:show, :edit, :update, :destroy]
+    before_action :require_same_author, only: [:edit, :update, :destroy]
 
     def index 
         @any_books = current_user.books.any?
@@ -47,5 +48,10 @@ class BooksController < ApplicationController
         params.require(:book).permit(:title, :subtitle)
     end
 
-
+    def require_same_author
+        if current_user != @book.user && !current_user.admin?
+            flash[:error] = "Forbidden action"
+            redirect_to @book
+        end
+    end
 end

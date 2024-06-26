@@ -1,38 +1,98 @@
-.books-index{
+.books-index > .books-container{
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
 }
 
 .book{
+    display: flex;
+    flex-direction: column;
+    /* transition: .6s ease; */
+    position: relative;
+    transition: transform .3s ease;
+    /* padding: 1rem; */
 }
 
-.book-actions{
-
+.book:hover{
+    transform: scale(1.02);
+    cursor: pointer;
 }
 
-.book-action-edit{
+.book::before {  
+    transform: scaleX(0);
+    transform-origin: bottom right;
+}
+  
+.book:hover::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+  
+.book::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    inset: 0 0 0 0;
 
+    /* background: hsl(180, 100%, 91%); 
+    REACTIVATE THIS TO HAVE A COLOR EFFECT IN THE HOVER*/
+
+    z-index: -1;
+    transition: transform .3s ease;
+}
+  
+
+.book-actions > .book-actions-links{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-left: 8px;
 }
 
-.book-action-delete{
-
+.book-action-edit > i{
+    font-size: 24px;
+    color: black;
 }
 
-.book > h2{
+.book-action-delete > i{
+    font-size: 28px;
+    color: red;
+}
+
+.book-title-section > h2{
     font-size: 20px;
     cursor: help;
 }
 
-.book > h3{
+.book-title-section > h3{
     font-size: 16px;
     margin-top: 10px;
     cursor: help;
 
 }
 
-.book > img{
+.book-img-section > img{
     border: 1px solid black;
+}
+
+.book-timestamps{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.book-timestamps > span{
+    font-size: 12px;
+}
+
+.timestamp-created{
+    color: grey;
+}
+
+.timestamp-updated{
+    color: grey;
+
 }
 
 .book-initial-form {
@@ -70,14 +130,14 @@
 
 
 
-@media (min-width:600px) {
-    .books-index{
+@media (min-width:550px) {
+    .books-index > .books-container{
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (min-width:900px) {
-    .books-index{
+    .books-index > .books-container{
         grid-template-columns: repeat(3, 1fr);
     }
 }
