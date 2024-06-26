@@ -1,3 +1,12 @@
+<h1>My work</h1>
 
-<h1>Your work /&gt;</h1>
+<% if !@any_books %>
+    <%= button_to "Create my first book", new_book_path, method: :get, class: "first-book-button" %>
+<% else %>
+    <%= button_to "Create a new book", new_book_path, method: :get, class: "first-book-button" %>
+<% end %>
 
+<% @books.each do |b| %>
+    <h1><%= b.title %></h1>
+    <h2><%= b.subtitle %></h2>
+<% end %>

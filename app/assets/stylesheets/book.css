@@ -1,0 +1,16 @@
+.book-initial-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.book-title-label{
+    font-size: 1.4em;
+}
+
+
+.book-subtitle-label{
+    font-size: 1.4em;
+}
