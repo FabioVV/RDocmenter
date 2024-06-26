@@ -1,12 +1,29 @@
-<h1>My work</h1>
+<br />
+<div class='book-index-actions'>
+    <% if !@any_books %>
+        <%= button_to "Create my first book", new_book_path, method: :get, class: "first-book-button" %>
+    <% else %>
+        <div class='book-index-buttons'>
+            <%= button_to "Create a new book", new_book_path, method: :get, class: "first-book-button" %>
+            <%= button_to "Delete in bulk", new_book_path, method: :get, class: "bulk-delete-books" %>
+        </div>
+    <% end %>
+</div>
 
-<% if !@any_books %>
-    <%= button_to "Create my first book", new_book_path, method: :get, class: "first-book-button" %>
-<% else %>
-    <%= button_to "Create a new book", new_book_path, method: :get, class: "first-book-button" %>
-<% end %>
+<h1>My stuff</h1>
 
-<% @books.each do |b| %>
-    <h1><%= b.title %></h1>
-    <h2><%= b.subtitle %></h2>
-<% end %>
+<section class='books-index'>
+
+    <% @books.each do |b| %>
+        <div class='book'>
+            <h2 title='<%= b.title %>'><%= truncate(b.title, length: 25, omission: '...')  %></h2>
+            <h3 title='<%= b.subtitle %>'><%= truncate(b.subtitle, length: 30, omission: '...')  %></h3>
+            <img src='https://placehold.co/180x230'>
+            <div class='book-actions'>
+                <%= link_to "<i class='fa-solid fa-file-pen'></i>".html_safe, destroy_user_session_path, data: { turbo_method: :delete }, class: "book-action-edit" %>
+                <%= link_to "<i class='fa-solid fa-xmark'></i>".html_safe, destroy_user_session_path, data: { turbo_method: :delete }, class: "book-action-delete" %>
+            </div>
+        </div>
+    <% end %>
+
+</section>

@@ -1,8 +1,61 @@
+.books-index{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+}
+
+.book{
+}
+
+.book-actions{
+
+}
+
+.book-action-edit{
+
+}
+
+.book-action-delete{
+
+}
+
+.book > h2{
+    font-size: 20px;
+    cursor: help;
+}
+
+.book > h3{
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: help;
+
+}
+
+.book > img{
+    border: 1px solid black;
+}
+
 .book-initial-form {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+}
+
+.book-index-buttons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.bulk-delete-books{
+    background-color: red !important;
+    border: none;
+}
+
+.bulk-delete-books:hover{
+    background-color: rgb(255, 53, 53) !important;
 }
 
 
@@ -13,4 +66,18 @@
 
 .book-subtitle-label{
     font-size: 1.4em;
+}
+
+
+
+@media (min-width:600px) {
+    .books-index{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width:900px) {
+    .books-index{
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
