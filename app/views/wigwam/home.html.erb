@@ -11,7 +11,7 @@
 <% else %>
     <section >
         <h1>Hello <%= current_user.first_name%></h1>
-        <h2>Start now <br /> <span data-controller="dancingtext" data-dancingtext-target="text" class="none">marking stuff down</span></h2>
+        <h2>Start now, <br /> <span data-controller="dancingtext" data-dancingtext-target="text" class="none">marking stuff down</span></h2>
 
         <% if !@any_books %>
             <%= button_to "Create my first book", new_book_path, method: :get, class: "first-book-button" %>

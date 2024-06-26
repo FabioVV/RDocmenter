@@ -9,13 +9,13 @@ class ApplicationController < ActionController::Base
 
     # Allows for extra fields in the user forms
     def configure_permitted_parameters
-        devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :first_name, :last_name])
-        devise_parameter_sanitizer.permit(:account_update, keys: [:username, :first_name, :last_name])
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :first_name, :last_name, :profile_photo])
+        devise_parameter_sanitizer.permit(:account_update, keys: [:username, :first_name, :last_name, :profile_photo])
     end
 
     def require_user
         if !logged_in?
-            flash[:error] = ""
+            flash[:error] = "You need to be logged in to complete this action"
             redirect_to new_user_session_path
         end
     end

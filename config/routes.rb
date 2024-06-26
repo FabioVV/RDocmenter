@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 
   
   # devise_for :users
-  devise_for :users,
+  devise_for(:users, controllers: {
+    registration: 'users/registrations'},
   :path => "users", #/users/sign_in
   :path_names => {
     :sign_in => 'login',
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
     :registration => 'register',
     :sign_up => 'create-account' 
   }
+)
 
   # Defines the root path route ("/")
   root "wigwam#home"
