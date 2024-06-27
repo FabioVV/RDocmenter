@@ -1,4 +1,4 @@
-<h1>My stuff</h1>
+<h1>My stuff (add pagination later)</h1>
 
 <section class='books-index'>
 
@@ -7,7 +7,7 @@
             <%= button_to "Create my first book", new_book_path, method: :get, class: "first-book-button" %>
         <% else %>
             <div class='book-index-buttons'>
-                <%= button_to "Create a new book", new_book_path, method: :get, class: "first-book-button" %>
+                <%= button_to "Create", new_book_path, method: :get, class: "first-book-button" %>
                 <%= button_to "Delete in bulk", new_book_path, method: :get, class: "bulk-delete-books" %>
             </div>
         <% end %>

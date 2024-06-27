@@ -20,7 +20,7 @@ class BooksController < ApplicationController
 
         if @book.save
             flash[:notice] = "Book/Document created successfully!"
-            redirect_to books_path
+            redirect_to edit_book_path(@book)
 
         else
             render 'new', status: :unprocessable_entity

@@ -1,13 +1,12 @@
 <nav class='book-navbar'>
     <%= button_to '<i class="fa-solid fa-circle-arrow-left"></i>'.html_safe, books_path, method: "get", class: "book-return-button" %>
-
     <button class='book-edit-button'><i class="fa-solid fa-gear"></i></button>
 </nav>
 
 
-
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementsByTagName('header')[0].setAttribute('style', 'padding: 0px !important')
-    });
+    document.getElementsByTagName('header')[0].setAttribute('style', 'padding: 0px !important')
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     document.getElementsByTagName('header')[0].setAttribute('style', 'padding: 0px !important')
+    // });
 </script>
