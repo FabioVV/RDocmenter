@@ -2,6 +2,8 @@ class Book < ApplicationRecord
     belongs_to :user
     has_many :pages, dependent: :destroy
 
+    has_one_attached :cover_image
+
     validates :title, presence: true, 
     length: {minimum:3, maximum: 100}
 

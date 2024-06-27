@@ -1,3 +1,12 @@
+main{
+    grid-column: 1 / -1 !important;
+    margin: 0 auto;
+}
+
+.books-index{
+    width: 60vw;
+}
+
 .books-index > .books-container{
     display: grid;
     grid-template-columns: repeat(1, 1fr);
