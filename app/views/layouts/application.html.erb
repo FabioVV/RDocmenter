@@ -15,7 +15,15 @@
 
   <body>
     <header>
-      <%= render 'layouts/nav'%>
+      <% if content_for?(:navbar) %>
+
+        <%= yield(:navbar) %>
+
+      <% else %>
+
+        <%= render 'layouts/nav'%>
+
+      <% end %>
     </header>
 
     <%= render 'layouts/messages'%>

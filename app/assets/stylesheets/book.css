@@ -4,7 +4,6 @@ main{
 }
 
 .books-index{
-    width: 60vw;
 }
 
 .books-index > .books-container{
@@ -137,6 +136,44 @@ main{
     font-size: 1.4em;
 }
 
+.title-subtitle-book-textarea{
+    resize: none;
+}
+
+.book-navbar{
+    display: flex;
+    flex-direction: row;
+    margin: 10px !important;
+    padding: 0 !important;
+}
+
+.book-return-button{
+    background-color: var(--accent-bg);
+    border: 1px solid black;
+}
+
+.book-edit-button{
+    background-color: var(--accent-bg);
+    border: 1px solid black;
+}
+
+.book-return-button:hover{
+    background-color: gainsboro !important;
+    border: 1px solid black !important;
+}
+
+.book-edit-button:hover{
+    background-color: gainsboro !important;
+    border: 1px solid black !important;
+}
+
+.book-return-button > i{
+    color: black;
+}
+
+.book-edit-button > i{
+    color: black;
+}
 
 
 @media (min-width:550px) {

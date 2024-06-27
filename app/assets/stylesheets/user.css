@@ -50,6 +50,16 @@
     text-align: center;
 }
 
+.user-profile-photo-input{
+    display: none;
+}
+
+.user-profile-photo-label{
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
 @media (min-width:600px) {
     .user-grid-form{
         grid-template-columns: repeat(2, 1fr);

@@ -70,11 +70,9 @@ i{
 }
 
 .code:before {
-    content: "def text('";
 
 }
 
 .code:after{
-    content: "')";
 
 }

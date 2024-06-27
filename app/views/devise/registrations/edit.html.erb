@@ -32,10 +32,7 @@
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
 
-      <div class="field">
-        <%= f.label :username %><br />
-        <%= f.text_field :username, autofocus: true , autocomplete: "username"%>
-      </div>
+
 
       <div class="field">
         <%= f.label :first_name %><br />
@@ -45,6 +42,11 @@
       <div class="field">
         <%= f.label :last_name %><br />
         <%= f.text_field :last_name, autofocus: true , autocomplete: "last_name"%>
+      </div>
+
+      <div class="field">
+        <%= f.label :username %><br />
+        <%= f.text_field :username, autofocus: true , autocomplete: "username"%>
       </div>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -67,8 +69,10 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
 
-      <div class="field" >
-        <%= f.label :profile_photo %>
+      <div class="field">
+        <label class="user-profile-photo-label" for="user_profile_photo">
+          <i class="fa-solid fa-cloud-arrow-up"></i> Change profile image
+        </label>
         <%= f.file_field :profile_photo %><br>
       </div>
 

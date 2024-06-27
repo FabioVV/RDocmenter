@@ -22,7 +22,7 @@ class User::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     super
-    @user.avatar.attach(params[:profile_photo])
+    @user.profile_photo.attach(params[:profile_photo])
     #or
     #@user.avatar.attach(io: File.open('app/assets/images/palceholder.png'), filename: 'placeholder.png', content_type: 'image/png')
   end
