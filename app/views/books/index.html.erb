@@ -24,7 +24,11 @@
                 </div>
                 <div class='book-img-section'>
 
-                    <img src='https://placehold.co/180x230'>
+                    <% if b.cover_image.attached? %>
+                        <%= image_tag b.cover_image  %>
+                    <% else %>
+                        <img src='https://placehold.co/180x230'>
+                    <% end %>
 
                     <div class="book-timestamps">
                         <span><span class='timestamp-created'>Created at:</span> <%= time_ago_in_words(b.created_at)%> ago</span>

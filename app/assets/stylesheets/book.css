@@ -175,11 +175,113 @@ main{
     color: black;
 }
 
-.book-edit-section{}
+.book-edit-section{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 1rem;
+}
 
-.book-edit-cover-side{}
+.book-edit-side{
+    display: flex;
+    flex-direction: column;
+}
 
-.book-edit-side{}
+.book-edit-header{}
+
+.book-edit-header > h1{
+    font-size: 2.3em;
+    margin: 0 0 12px 0 !important;
+}
+
+.book-edit-header > h3{
+    font-size: 1.3em;
+    margin: 0 0 12px 0 !important;
+    font-weight: 200;
+}
+
+.author{
+    font-size: 0.6em;
+    color: gray;
+    margin: 0 0 0 0 !important;
+}
+
+
+.book-edit-cover-side{
+
+}
+
+.book-edit-actions{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.book-image-cover-create{
+    margin-left: 80px;
+}
+
+.book-edit-actions-crud{
+    display: flex;
+    flex-direction: row;
+    gap: 9px;
+}
+
+.book-edit-actions-layout{
+    display: flex;
+    flex-direction: row;
+    gap: 9px;
+}
+
+
+.book-edit-actions-crud > a > i{
+    color: black;
+    font-size: 26px;
+    transition: transform .3s ease;
+}
+
+.book-edit-actions-crud > a > i:hover{
+    transform: scale(1.1);
+}
+
+.book-edit-actions-layout > a > i {
+    color: black;
+    font-size: 26px;
+    transition: transform .3s ease;
+
+}
+
+.book-edit-actions-layout > a > i:hover{
+    transform: scale(1.1);
+}
+
+.book-pages{
+    
+}
+
+.book-page{
+
+}
+
+@media (max-width:768px) {
+    .book-edit-section{
+        grid-template-columns: 1fr;
+    }
+
+    .book-edit-cover-side{
+        margin: 0 auto;
+    }
+}
+
+@media (max-width:550px) {
+    .book-image-cover-create{
+        margin-left: 0;
+    }
+
+    .book{
+        margin: 0 30%;
+    }
+}
 
 @media (min-width:550px) {
     .books-index > .books-container{

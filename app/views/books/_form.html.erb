@@ -13,6 +13,12 @@
         <%= f.text_area :subtitle, size: "30x3", class: "title-subtitle-book-textarea" %>
     </div>
 
+    <div class="field book-image-cover-create">
+        <%= f.label "Add a cover image", class: "book-subtitle-label" %><i>(Not required)</i><br />
+    
+        <%= f.file_field :cover_image %><br>
+    </div>
+
     <br />
     <div class="actions">
         <%= f.submit "Create book/document" %>

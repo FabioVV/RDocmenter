@@ -17,9 +17,10 @@ class BooksController < ApplicationController
     def create 
         @book = Book.new(book_params)
         @book.user = current_user
+        @book.cover_image.attach(params[:cover_image])
 
         if @book.save
-            flash[:notice] = "Book/Document created successfully!"
+            # flash[:notice] = "Book/Document created successfully!"
             redirect_to edit_book_path(@book)
 
         else
@@ -45,7 +46,7 @@ class BooksController < ApplicationController
     end
 
     def book_params
-        params.require(:book).permit(:title, :subtitle)
+        params.require(:book).permit(:title, :subtitle, :cover_image)
     end
 
     def require_same_author

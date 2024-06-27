@@ -3,13 +3,49 @@
 <% end %>
 
 
-
 <section class='book-edit-section'>
 
     <div class='book-edit-cover-side'>
+        <% if @book.cover_image.attached? %>
+            <%= image_tag @book.cover_image  %>
+        <% else %>
+            <img src='https://placehold.co/210x290'>
+        <% end %>
     </div>
 
     <div class='book-edit-side'>
+        <div class='book-edit-header'>
+            <h1><%= @book.title %></h1>
+            <h3><%= @book.subtitle %><h3>
+            <span class='author'><%= @book.user.first_name + " " + @book.user.last_name %><span>
+        </div>
+
+        <div class='book-edit-actions'>
+            <div class='book-edit-actions-crud'>
+                <%= link_to "<i class='fa-solid fa-file-lines'></i>".html_safe, '', data: { turbo_method: :get }, class: "book-action-create-text-page", title: "Create new content page" %>
+                <%= link_to "<i class='fa-solid fa-file-image'></i>".html_safe, '', data: { turbo_method: :get }, class: "book-action-create-image-page", title: "Create new image page" %>
+                <%= link_to "<i class='fa-solid fa-heading'></i>".html_safe, '', data: { turbo_method: :get }, class: "book-action-create-title-page", title: "Create new title page" %>
+            </div>
+
+            <div class='book-edit-actions-layout'>
+                <%= link_to "<i class='fa-solid fa-list'></i>".html_safe, '', data: { turbo_method: :get }, class: "book-action-layout-text-list" %>
+                <%= link_to "<i class='fa-solid fa-table-cells'></i>".html_safe, '', data: { turbo_method: :get }, class: "book-action-layout-grid" %>
+            </div>
+
+            <div class=''>
+            </div>
+        </div>
+
+        <div class='book-pages'>
+            <% if @book.pages.any? %>
+                <% @book.pages.each do |b| %> 
+                    <div class='book-page'>
+                    </div>
+                <% end %>            
+            <% else %>
+                <h5 align="center" style='margin-top:8rem;'>No pages yet. Create one using the buttons above</h5>
+            <% end %>            
+        </div>
     </div>
 
 </section>
