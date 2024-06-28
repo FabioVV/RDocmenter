@@ -9,7 +9,7 @@
         <% if @book.cover_image.attached? %>
             <%= image_tag @book.cover_image, alt: "Image of the current book", size: "210x290"  %>
         <% else %>
-            <img src='https://placehold.co/210x290'>
+            <%= image_tag('placeholder_book_edit.svg') %>
         <% end %>
     </div>
 

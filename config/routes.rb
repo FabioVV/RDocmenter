@@ -28,7 +28,9 @@ Rails.application.routes.draw do
   resources :books do 
 
     member do
-      get "edit_info"
+      get "edit_info", to: 'books#edit_info'
+      patch "update_edit_info", to: 'books#update_edit_info'
+
     end
 
     resources :pages

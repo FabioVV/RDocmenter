@@ -8,22 +8,26 @@
     
 }
 
+.removed{
+    transform: translateX(100vw);
+}
 
 .flash-messages-container{
     padding: 1rem 1rem;
-    width: 100vw;
-    margin: 6em auto;
-    border: none;
-
-    overflow: hidden;
-    position: absolute;
-    display: flex;
-    justify-content: center;
     text-align: center;
+    font-size: larger;
+    background-color: transparent;
+    color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: transform 1s 0s;
+    border: none !important;
 }
 
 
-
+/* 
 @media screen and (max-width: 720px) {
     .flash-messages-container{
         margin: 8em auto !important;
@@ -40,4 +44,4 @@
     .flash-messages-container{
         margin: 11em auto !important;
     }
-}
+} */

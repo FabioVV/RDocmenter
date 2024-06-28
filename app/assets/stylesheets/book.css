@@ -178,7 +178,7 @@ main{
 .book-edit-section{
     display: grid;
     grid-template-columns: 1fr 4fr;
-    gap: 1rem;
+    gap: 2.5rem;
 }
 
 .book-edit-side{
@@ -205,9 +205,43 @@ main{
     margin: 0 0 0 0 !important;
 }
 
-
 .book-edit-cover-side{
+    width: 210px;
+    height: 290px;
+    overflow: hidden; /* Crop excess */
 
+}
+
+.book-index-cover_image{
+    width: 180px;
+    height: 241px;
+    overflow: hidden; /* Crop excess */
+
+}
+
+.book-index-cover_image > img{
+    object-fit: cover !important;
+    height: 100%;
+}
+
+.book-edit-cover-side > img{
+    object-fit: cover !important;
+    height: 100%;
+
+}
+
+.edit-book_info-image{
+    margin-inline: auto;
+    width: 210px;
+    height: 290px;
+    overflow: hidden; /* Crop excess */
+    
+}
+
+.edit-book_info-image > img{
+    object-fit: cover !important;
+    height: 100%;
+    
 }
 
 .book-edit-actions{
@@ -224,13 +258,13 @@ main{
 .book-edit-actions-crud{
     display: flex;
     flex-direction: row;
-    gap: 9px;
+    gap: 1rem;
 }
 
 .book-edit-actions-layout{
     display: flex;
     flex-direction: row;
-    gap: 9px;
+    gap: 1rem;
 }
 
 
@@ -284,10 +318,9 @@ main{
 
 .edit-book_info-container{
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 3fr;
     gap: 1rem;
 }
-
 
 @media (max-width:768px) {
     .book-config-dropdown > li > a{
