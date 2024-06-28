@@ -282,6 +282,13 @@ main{
     background-color: rgb(155, 155, 155)!important;
 }
 
+.edit-book_info-container{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 1rem;
+}
+
+
 @media (max-width:768px) {
     .book-config-dropdown > li > a{
         background-color: white;
@@ -296,7 +303,12 @@ main{
         align-items: center;
         text-align: center;
     }
+
     .book-edit-section{
+        grid-template-columns: 1fr;
+    }
+
+    .edit-book_info-container{
         grid-template-columns: 1fr;
     }
 

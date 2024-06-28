@@ -1,25 +1,40 @@
-<%= form_with(model: @book, local:true, class: "book-initial-form") do |f| %>
-    <%= render "devise/shared/error_messages", resource: @book %>
+<section class='edit-book_info-container'>
 
-    <div class="field">
-        <%= f.label :title, class: "book-title-label" %><br />
-        <%= f.text_area :title, size: "30x3", class: "title-subtitle-book-textarea" %>
+    <div class='edit-book_info-image'>
+        <% if @book.cover_image.attached? %>
+            <%= image_tag @book.cover_image, alt: "Image of the current book", size: "210x290"  %>
+        <% else %>
+            <img src='https://placehold.co/210x290?text=Book image here\nIf it exists'>
+        <% end %>
     </div>
 
-    <div class="field">
-        <%= f.label :subtitle, class: "book-subtitle-label" %><br />
-        <%= f.text_area :subtitle, size: "30x3", class: "title-subtitle-book-textarea" %>
+    <div class='edit-book_info-form'>
+        <%= form_with(model: @book, local:true, class: "book-initial-form") do |f| %>
+            <%= render "devise/shared/error_messages", resource: @book %>
+
+            <div class="field">
+                <%= f.label :title, class: "book-title-label" %><br />
+                <%= f.text_area :title, size: "30x3", class: "title-subtitle-book-textarea" %>
+            </div>
+
+            <div class="field">
+                <%= f.label :subtitle, class: "book-subtitle-label" %><br />
+                <%= f.text_area :subtitle, size: "30x3", class: "title-subtitle-book-textarea" %>
+            </div>
+
+            <div class="field book-image-cover-create">
+                <%= f.label "Add a cover image", class: "book-subtitle-label" %><i>(Not required)</i><br />
+            
+                <%= f.file_field :cover_image %><br>
+            </div>
+
+            <br />
+            <div class="actions">
+                <%= f.submit action_name %>
+            </div>
+            <br />
+        <% end %>
     </div>
 
-    <div class="field book-image-cover-create">
-        <%= f.label "Add a cover image", class: "book-subtitle-label" %><i>(Not required)</i><br />
-    
-        <%= f.file_field :cover_image %><br>
-    </div>
+</section>
 
-    <br />
-    <div class="actions">
-        <%= f.submit action_name %>
-    </div>
-    <br />
-<% end %>
