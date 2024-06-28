@@ -263,7 +263,39 @@ main{
 
 }
 
+.reset_book_actions_css{
+    transition: transform .3s ease;
+    cursor: pointer;
+}
+
+.reset_book_actions_css:hover{
+    transform: scale(1.1);
+
+}
+
+.book-index-filters-button{
+    background-color: gray;
+    border: none !important;
+}
+
+.book-index-filters-button:hover{
+    background-color: rgb(155, 155, 155)!important;
+}
+
 @media (max-width:768px) {
+    .book-config-dropdown > li > a{
+        background-color: white;
+    }
+
+    .book-edit-actions{
+        gap: 1.5em;
+    }
+
+    .book-edit-side{
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
     .book-edit-section{
         grid-template-columns: 1fr;
     }

@@ -7,7 +7,7 @@
 
     <div class='book-edit-cover-side'>
         <% if @book.cover_image.attached? %>
-            <%= image_tag @book.cover_image  %>
+            <%= image_tag @book.cover_image, alt: "Image of the current book", size: "210x290"  %>
         <% else %>
             <img src='https://placehold.co/210x290'>
         <% end %>
@@ -39,8 +39,11 @@
         <div class='book-pages'>
             <% if @book.pages.any? %>
                 <% @book.pages.each do |b| %> 
+
                     <div class='book-page'>
+
                     </div>
+
                 <% end %>            
             <% else %>
                 <h5 align="center" style='margin-top:8rem;'>No pages yet. Create one using the buttons above</h5>

@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-    before_action :set_book, only: [:show, :edit, :update, :destroy]
+    before_action :set_book, only: [:show, :edit, :update, :destroy, :edit_info]
     before_action :require_same_author, only: [:edit, :update, :destroy]
 
     def index 
@@ -36,6 +36,10 @@ class BooksController < ApplicationController
     end
 
     def destroy
+    end
+
+    def edit_info
+
     end
 
 

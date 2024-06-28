@@ -7,8 +7,27 @@
             <%= button_to "Create my first book", new_book_path, method: :get, class: "first-book-button" %>
         <% else %>
             <div class='book-index-buttons'>
-                <%= button_to "Create", new_book_path, method: :get, class: "first-book-button" %>
-                <%= button_to "Delete in bulk", new_book_path, method: :get, class: "bulk-delete-books" %>
+                <!-- I HAVE TWO STYLES OF BUTTONS HERE (MAKE AVAILABLE WITH AN OPTION FOR THE USER)  -->
+
+                <%= link_to "<i style='font-size:30px; color:var(--accent);' class='fa-solid fa-file-circle-plus'></i>".html_safe, new_book_path, method: :get, class: "reset_book_actions_css" %>
+                <%= link_to "<i style='font-size:30px; color:red;' class='fa-solid fa-trash-can'></i>".html_safe, new_book_path, method: :get, class: "reset_book_actions_css" %>
+                <a class='reset_book_actions_css' onclick="alert('aa')" ><i style='color:grey !important; font-size:30px;' class="fa-solid fa-filter"></i></a>
+                
+
+                <%
+=begin%>
+ <%= button_to "<span><i class='fa-solid fa-file-circle-plus'></i> Create</span>".html_safe, new_book_path, method: :get, class: "first-book-button" %>
+                <%= button_to "<span><i class='fa-solid fa-trash-can'></i> Delete in bulk</span>".html_safe, new_book_path, method: :get, class: "bulk-delete-books" %>
+                <button onclick="alert('aa')" type='button', class="book-index-filters-button">
+                    <i class="fa-solid fa-filter"></i> Show filters
+                </button>  
+<%
+=end%>
+
+            </div>
+
+            <div class='book-index-buttons'>
+                <p>Add filters here (search, deactivated books etc)</p>
             </div>
         <% end %>
     </div>
@@ -25,7 +44,7 @@
                 <div class='book-img-section'>
 
                     <% if b.cover_image.attached? %>
-                        <%= image_tag b.cover_image  %>
+                        <%= image_tag b.cover_image, size: "180x230",  loading: "lazy"  %>
                     <% else %>
                         <img src='https://placehold.co/180x230'>
                     <% end %>

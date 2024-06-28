@@ -24,7 +24,13 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "wigwam#home"
 
+
   resources :books do 
+
+    member do
+      get "edit_info"
+    end
+
     resources :pages
   end
 
