@@ -1,7 +1,8 @@
 class BooksController < ApplicationController
     before_action :set_book, only: [:show, :edit, :update, :destroy, :edit_info, :update_edit_info]
     before_action :require_same_author_or_admin, only: [:edit, :update, :destroy, :edit_info, :update_edit_info]
-    before_action :require_user, only: [:edit, :update, :destroy, :edit_info, :update_edit_info]
+    before_action :require_user
+
 
     def index 
         @any_books = current_user.books.any?
@@ -18,6 +19,7 @@ class BooksController < ApplicationController
     def create 
         @book = Book.new(book_params)
         @book.user = current_user
+        @book.is_active = true
 
         if @book.save
             # flash[:notice] = "Book/Document created successfully!"
@@ -69,9 +71,11 @@ class BooksController < ApplicationController
     end
 
     def require_same_author_or_admin
-        if current_user != @book.user && !current_user.admin?
-            flash[:error] = "Forbidden action"
-            redirect_to @book
+        if current_user
+            if current_user != @book.user && !current_user.admin?
+                flash[:error] = "Forbidden action"
+                redirect_to @book
+            end
         end
     end
 end
