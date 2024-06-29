@@ -1,0 +1,11 @@
+dialog {
+    padding: 3rem !important;
+}
+
+dialog > h2 {
+    margin: 0 0 2rem 0 !important;
+}
+
+dialog > h5 {
+    margin: 0 0 1rem 0 !important;
+}

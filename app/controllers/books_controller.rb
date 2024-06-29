@@ -5,7 +5,7 @@ class BooksController < ApplicationController
 
     def index 
         @any_books = current_user.books.any?
-        @books = current_user.books
+        @books = current_user.books.where(is_active: true)
     end
 
     def show
