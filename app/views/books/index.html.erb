@@ -11,7 +11,7 @@
 
                 <%= link_to "<i style='font-size:30px; color:var(--accent);' class='fa-solid fa-file-circle-plus'></i>".html_safe, new_book_path, method: :get, class: "reset_book_actions_css" %>
                 <%= link_to "<i style='font-size:30px; color:red;' class='fa-solid fa-trash-can'></i>".html_safe, new_book_path, method: :get, class: "reset_book_actions_css" %>
-                <a class='reset_book_actions_css' ><i style='color:grey !important; font-size:30px;' class="fa-solid fa-filter"></i></a>
+                <a onclick="toggle_book_filter()" id='book_filter_toggle' class='reset_book_actions_css' ><i style='color:grey !important; font-size:30px;' class="fa-solid fa-filter"></i></a>
                 
 
                 <%
@@ -26,7 +26,20 @@
 
             </div>
 
-            <div class='book-index-buttons'>
+            <div class='book-filter-options'>
+
+                <div>
+                    <label>Search by Title/Subtitle</label>
+                    <input type='search' />
+                </div>
+                <div>
+                    <label>Active/Inactive</label>
+                    <select>
+                        <option>Active Books/Documents</option>
+                        <option>Inactive Books/Documents</option>
+                    </select>
+                </div>
+
             </div>
         <% end %>
     </div>
@@ -70,3 +83,17 @@
     </div>
 
 </section>
+
+
+<script>
+    function toggle_book_filter(){
+        let book_filter_toggle = document.getElementById('book_filter_toggle')
+        let books_filter_container = document.getElementsByClassName('book-filter-options')[0]
+
+        if(books_filter_container.classList.contains('book-filter-options-active')){
+                books_filter_container.classList.remove('book-filter-options-active')
+        } else {
+            books_filter_container.classList.add('book-filter-options-active')
+        }
+    }
+</script>

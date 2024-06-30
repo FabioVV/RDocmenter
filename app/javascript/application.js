@@ -3,16 +3,20 @@ import "@hotwired/turbo-rails"
 import "controllers"
 
 
-// document.addEventListener('DOMContentLoaded', ()=>{
-//     const FLASH_CONTAINER = document.getElementsByClassName('flash-messages-container')[0]
+// document.addEventListener('DOMContentLoaded', () => {
+//     const FLASH_CONTAINER = document.getElementsByClassName('flash-messages-container')
 
-//     setTimeout(()=>{
-//         FLASH_CONTAINER.classList.add('removed')
-//         FLASH_CONTAINER.addEventListener('transitionend', ()=>{
-//             FLASH_CONTAINER.remove()
-//         })
-//     },1500)
+//     if(FLASH_CONTAINER.length > 0){
+//         setTimeout(()=>{
+//             FLASH_CONTAINER.classList.add('removed')
+//             FLASH_CONTAINER.addEventListener('transitionend', ()=>{
+//                 FLASH_CONTAINER.remove()
+//             })
+//         },1500)
+//     }
 // })
+
+
 
 
 //Custom turbo-confirm

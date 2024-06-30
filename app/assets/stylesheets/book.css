@@ -20,6 +20,7 @@ main{
     transition: transform .3s ease;
     /* padding: 1rem; */
     padding-left: 10px;
+    padding-right: 10px;
 }
 
 .book:hover{
@@ -325,6 +326,19 @@ main{
     grid-template-columns: 1fr 3fr;
     gap: 1rem;
 }
+
+.book-filter-options{
+    display: none;
+    margin-top: 2em;
+    flex-direction: row;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.book-filter-options-active{
+    display: flex !important;
+}
+
 
 @media (max-width:768px) {
     .book-config-dropdown > li > a{
