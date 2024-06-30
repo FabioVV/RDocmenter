@@ -9,9 +9,9 @@
             <div class='book-index-buttons'>
                 <!-- I HAVE TWO STYLES OF BUTTONS HERE (MAKE AVAILABLE WITH AN OPTION FOR THE USER)  -->
 
-                <%= link_to "<i style='font-size:30px; color:var(--accent);' class='fa-solid fa-file-circle-plus'></i>".html_safe, new_book_path, method: :get, class: "reset_book_actions_css" %>
-                <%= link_to "<i style='font-size:30px; color:red;' class='fa-solid fa-trash-can'></i>".html_safe, new_book_path, method: :get, class: "reset_book_actions_css" %>
-                <a onclick="toggle_book_filter()" id='book_filter_toggle' class='reset_book_actions_css' ><i style='color:grey !important; font-size:30px;' class="fa-solid fa-filter"></i></a>
+                <%= link_to "<i style='font-size:30px; color:var(--accent);' class='fa-solid fa-file-circle-plus'></i>".html_safe, new_book_path, method: :get, class: "reset_book_actions_css", title: "Create new book/document" %>
+                <%= link_to "<i style='font-size:30px; color:red;' class='fa-solid fa-trash-can'></i>".html_safe, new_book_path, method: :get, class: "reset_book_actions_css", title: "Enter/Leave delete mode to delete in bulk"%>
+                <a title='Open/Close filter options' onclick="toggle_book_filter()" id='book_filter_toggle' class='reset_book_actions_css' ><i style='color:grey !important; font-size:30px;' class="fa-solid fa-filter"></i></a>
                 
 
                 <%
