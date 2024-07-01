@@ -87,3 +87,16 @@ end
 #            PATCH  /books/:id(.:format)                                                                              books#update
 #            PUT    /books/:id(.:format)                                                                              books#update
 #            DELETE /books/:id(.:format)   
+
+
+
+# PAGES ROUTES
+
+#     book_pages GET     /books/:book_id/pages(.:format)                                                                                                 pages#index
+#                 POST   /books/:book_id/pages(.:format)                                                                   pages#create
+#   new_book_page GET    /books/:book_id/pages/new(.:format)                                                               pages#new
+# edit_book_page GET     /books/:book_id/pages/:id/edit(.:format)                                                          pages#edit
+#       book_page GET    /books/:book_id/pages/:id(.:format)                                                               pages#show
+#                 PATCH  /books/:book_id/pages/:id(.:format)                                                               pages#update
+#                 PUT    /books/:book_id/pages/:id(.:format)                                                               pages#update
+#                 DELETE /books/:book_id/pages/:id(.:format)                                                               pages#destroy

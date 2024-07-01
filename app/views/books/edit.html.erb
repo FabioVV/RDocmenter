@@ -1,5 +1,5 @@
 <% content_for :navbar do %>
-    <%= render 'layouts/nav_book', should_return_to: books_path %>
+    <%= render 'layouts/nav_book', should_return_to: books_path, page: false %>
 <% end %>
 
 
@@ -22,9 +22,9 @@
 
         <div class='book-edit-actions'>
             <div class='book-edit-actions-crud'>
-                <%= link_to "<i class='fa-solid fa-file-lines'></i>".html_safe, '', data: { turbo_method: :get }, class: "book-action-create-text-page", title: "Create new content page" %>
-                <%= link_to "<i class='fa-solid fa-file-image'></i>".html_safe, '', data: { turbo_method: :get }, class: "book-action-create-image-page", title: "Create new image page" %>
-                <%= link_to "<i class='fa-solid fa-heading'></i>".html_safe, '', data: { turbo_method: :get }, class: "book-action-create-title-page", title: "Create new title page" %>
+                <%= link_to "<i class='fa-solid fa-file-lines'></i>".html_safe, new_book_page_path(@book, page_type:"text"), data: { turbo_method: :get }, class: "book-action-create-text-page", title: "Create new content page" %>
+                <%= link_to "<i class='fa-solid fa-file-image'></i>".html_safe, new_book_page_path(@book, page_type:"image"), data: { turbo_method: :get }, class: "book-action-create-image-page", title: "Create new image page" %>
+                <%= link_to "<i class='fa-solid fa-heading'></i>".html_safe, new_book_page_path(@book, page_type:"title"), data: { turbo_method: :get }, class: "book-action-create-title-page", title: "Create new title page" %>
             </div>
 
             <div class='book-edit-actions-layout'>
