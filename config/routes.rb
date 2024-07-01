@@ -30,10 +30,15 @@ Rails.application.routes.draw do
     member do
       get "edit_info", to: 'books#edit_info'
       patch "update_edit_info", to: 'books#update_edit_info'
-
     end
 
-    resources :pages
+    resources :pages do
+
+      member do
+        # finish this
+      end
+
+    end
   end
 
 
