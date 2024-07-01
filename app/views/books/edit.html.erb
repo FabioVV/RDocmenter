@@ -41,9 +41,9 @@
                         <div class='book-page' data-controller='editpage' data-action="click->editpage#openPageEdit" data-id='<%= p.id %>' data-book-id='<%= p.book_id %>'>
                             <div class='book-img-section'>
 
-                                <% if false %>
+                                <% if p.page_image.attached? %>
                                     <div class='book-index-cover_image'>
-                                        <%= image_tag b.cover_image, size: "180x230",  loading: "lazy"  %>
+                                        <%= image_tag p.page_image, size: "160x210",  loading: "lazy"  %>
                                     </div>
                                 <% else %>
                                     <%= image_tag 'placeholder_book_index.svg', size: "160x210",  loading: "lazy"  %>

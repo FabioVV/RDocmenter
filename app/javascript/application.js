@@ -17,8 +17,6 @@ import "controllers"
 // })
 
 
-
-
 //Custom turbo-confirm
 Turbo.setConfirmMethod((message, element) => {
     const DIALOG = document.getElementById('turbo-confirm')

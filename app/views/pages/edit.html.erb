@@ -1,3 +1,78 @@
 <% content_for :navbar do %>
-    <%= render 'layouts/nav_book', should_return_to: :back, page: true %>
+    <%= render 'layouts/nav_book', should_return_to: :back, page: true, book_id: @page.book_id  %>
 <% end %>
+
+
+<%= form_with(model: @page, local: true, url:book_page_path(@page.book_id, @page), method: :patch, class: "book-initial-form") do |f| %>
+    <section class='page-editor-container'>
+
+        <%= render 'pages/toolbox', edit: true %>
+
+        <% if @page.page_type == "image" %>
+
+            <div class='page-editor'>
+                <%= image_tag "https://placehold.co/600x400?text=Click here to upload image", id: "image-replace", class: "image-page-upload", onclick: "clickOnFileField();" %>
+                <%= f.file_field :page_image, class: "image-page-upload-input", onchange: "previewImage(this);" %>
+            </div>
+
+        <% elsif @page.page_type == "title" %>
+    
+            <div class='page-editor'>
+                
+            </div>
+
+        <% elsif @page.page_type == "text" %>
+
+            <div class='page-editor'>
+                
+            </div>
+
+        <% else %>
+            <span>Type of page not recognized.</span>
+        <% end %>
+    </section>
+
+<% end %>
+
+
+<script>
+    function clickOnFileField(){
+        document.getElementById('page_page_image').click()
+    }
+
+    function previewImage(input){
+        if(input.files && input.files[0]){
+            const r = new FileReader()
+            const file = input.files[0]
+
+            if(!file.type.startsWith('image/')){
+                return
+            }
+
+            r.onload = function(e) {
+                const preview = document.getElementById('image-replace')
+                preview.src = e.target.result
+            }
+
+            r.readAsDataURL(file)
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const TOGGLE = document.getElementById('editor-mode-toggle')
+        let current_path = window.location.pathname
+
+        
+
+        TOGGLE.addEventListener("click", () => {
+            let new_mode = current_path.includes("/edit") 
+            ? 
+            current_path.replace('/edit', "")
+            : 
+            current_path + "/edit" 
+  
+            window.location.href = new_mode;
+
+        })
+    })
+</script>

@@ -1,0 +1,26 @@
+.page-editor-container{
+    border-bottom: none;
+    border-top: none;
+    display: grid;
+    margin-top: 0 !important;
+    grid-template-rows: auto 1fr;
+}
+
+.show-page{
+    margin-top: 2rem !important;
+
+}
+
+.image-page-upload{
+    cursor: pointer;
+    border: 3px solid black;
+
+}
+
+.image-page-upload:hover {
+    border-color: rgb(163, 163, 255);
+}
+
+.image-page-upload-input{
+    display: none;
+}

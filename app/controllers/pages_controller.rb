@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
     before_action :require_user
+    before_action :set_page, only: [:edit, :show, :update]
 
     def create
         # page type -> params[:page_type]
@@ -18,7 +19,19 @@ class PagesController < ApplicationController
     end
 
     def edit
+    end
 
+    def update
+        if @page.update(page_params)
+            # @book.cover_image.attach(params[:cover_image])
+
+            flash[:notice] = "Page saved"
+        else
+            render 'edit',  status: :unprocessable_entity
+        end
+    end
+
+    def show
     end
 
     private 
@@ -28,6 +41,6 @@ class PagesController < ApplicationController
     end
 
     def page_params
-        params.require(:page).permit(:page_type)
+        params.require(:page).permit(:page_type, :page_image, :content, :main_title, :image_caption)
     end
 end

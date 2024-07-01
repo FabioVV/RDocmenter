@@ -4,6 +4,7 @@ main{
 }
 
 .books-index{
+    border-bottom: none;
 }
 
 .books-index > .books-container{
@@ -227,6 +228,7 @@ main{
 .book-index-cover_image > img{
     object-fit: cover !important;
     height: 100%;
+    
 }
 
 .book-edit-cover-side > img{

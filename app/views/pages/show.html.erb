@@ -1,0 +1,53 @@
+<% content_for :navbar do %>
+    <%= render 'layouts/nav_book', should_return_to: :back, page: true, book_id: @page.book_id  %>
+<% end %>
+
+
+<section class='page-editor-container show-page'>
+    <%= render 'pages/toolbox', edit: false %>
+
+    <% if @page.page_type == "image" %>
+
+        <div class='page-editor'>
+            <% if @page.page_image.attached? %>
+                <%= image_tag @page.page_image, alt: "Image of the current page" %>
+            <% else %>
+                <%= image_tag "https://placehold.co/600x400?text=Image" %>
+            <% end %>
+        </div>
+
+
+    <% elsif @page.page_type == "title" %>
+    
+        <div class='page-editor'>
+            
+        </div>
+
+    <% elsif @page.page_type == "text" %>
+
+        <div class='page-editor'>
+            
+        </div>
+
+    <% else %>
+        <span>Type of page not recognized.</span>
+    <% end %>
+</section>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const TOGGLE = document.getElementById('editor-mode-toggle')
+        let current_path = window.location.pathname
+
+        TOGGLE.addEventListener("click", () => {
+            let new_mode = current_path.includes("/edit") 
+            ? 
+            current_path.replace('/edit', "")
+            : 
+            current_path + "/edit" 
+  
+            window.location.href = new_mode;
+        })
+    })
+</script>
