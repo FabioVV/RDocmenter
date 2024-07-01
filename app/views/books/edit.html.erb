@@ -52,7 +52,7 @@
                             </div>
 
                             <div class='page-title-section'>
-                                <h3 title='<%= p.main_title %>'><%= truncate(p.main_title, length: 26, omission: ' ...')  %></h3>
+                                <h3 title='<%= p.main_title %>'><%= truncate(p.main_title, length: 15, omission: ' ...') + " " + p.page_type  %></h3>
                             </div>
                         </div>
                     <% end %>            

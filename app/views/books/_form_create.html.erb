@@ -4,7 +4,7 @@
         <% if @book.cover_image.attached? %>
             <%= image_tag @book.cover_image, alt: "Image of the current book", size: "210x290"  %>
         <% else %>
-            <%= image_tag 'placeholder_book_edit_info.svg', id: "image-book-replace" %>
+            <%= image_tag 'placeholder_book_edit_info.svg', id: "image-book-replace", onclick: "clickOnFileField();"%>
         <% end %>
     </div>
 
@@ -23,13 +23,6 @@
             </div>
 
             <div class="field book-image-cover-create">
-
-                <% if action_name == 'Update Book/Document' %>
-                    <%= f.label "Add or change the cover image", class: "book-subtitle-label" %><i>(Not required)</i><br />
-                <% else %>
-                    <%= f.label "Add a cover image", class: "book-subtitle-label" %><i>(Not required)</i><br />
-                <% end %>
-
                 <%= f.file_field :cover_image, onchange: "previewImage(this);" %><br>
             </div>
 
@@ -44,6 +37,11 @@
 </section> 
 
 <script>
+
+    function clickOnFileField(){
+        document.getElementById('book_cover_image').click()
+    }
+
     function previewImage(input){
         if(input.files && input.files[0]){
             const r = new FileReader()
