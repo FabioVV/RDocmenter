@@ -38,9 +38,7 @@
         <% if @book.pages.any? %>
             <div class='book-pages'>
                     <% @book.pages.each do |p| %> 
-
-                        <div class='book-page'>
-
+                        <div class='book-page' data-controller='editpage' data-action="click->editpage#openPageEdit" data-id='<%= p.id %>' data-book-id='<%= p.book_id %>'>
                             <div class='book-img-section'>
 
                                 <% if false %>
@@ -56,7 +54,6 @@
                             <div class='page-title-section'>
                                 <h3 title='<%= p.main_title %>'><%= truncate(p.main_title, length: 26, omission: ' ...')  %></h3>
                             </div>
-
                         </div>
                     <% end %>            
         <% else %>

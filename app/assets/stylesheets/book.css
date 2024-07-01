@@ -304,7 +304,58 @@ main{
 
 .book-page{
     margin: 0 auto;
+    position: relative;
+    transition: transform .3s ease;
+    padding-left: 4px;
+    padding-right: 4px;
 }
+
+
+
+
+
+
+
+.book-page:hover{
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+.book-page::before {  
+    transform: scaleX(0);
+    transform-origin: bottom right;
+}
+  
+.book-page:hover::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+  
+.book-page::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    inset: 0 0 0 0;
+
+    background: var(--accent-bg); 
+
+    z-index: -1;
+    transition: transform .3s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .page-title-section > h3{
     font-size: 0.9em;
