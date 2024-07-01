@@ -8,16 +8,16 @@ Rails.application.routes.draw do
   
   # devise_for :users
   devise_for(:users, controllers: {
-    registration: 'users/registrations'},
+    registration: "users/registrations"},
   :path => "users", #/users/sign_in
   :path_names => {
-    :sign_in => 'login',
-    :sign_out => 'logout',
-    :password => 'secret',
-    :confirmation => 'verification',
-    :unlock => 'unblock',
-    :registration => 'register',
-    :sign_up => 'create-account' 
+    :sign_in => "login",
+    :sign_out => "logout",
+    :password => "secret",
+    :confirmation => "verification",
+    :unlock => "unblock",
+    :registration => "register",
+    :sign_up => "create-account" 
   }
 )
 
@@ -28,8 +28,8 @@ Rails.application.routes.draw do
   resources :books do 
 
     member do
-      get "edit_info", to: 'books#edit_info'
-      patch "update_edit_info", to: 'books#update_edit_info'
+      get "edit_info", to: "books#edit_info"
+      patch "update_edit_info", to: "books#update_edit_info"
     end
 
     resources :pages do

@@ -20,16 +20,16 @@
             <span class='author'><%= @book.user.first_name + " " + @book.user.last_name %><span>
         </div>
 
-        <div class='book-edit-actions'>
+        <div class='book-edit-actions  '>
             <div class='book-edit-actions-crud'>
-                <%= link_to "<i class='fa-solid fa-file-lines'></i>".html_safe, new_book_page_path(@book, page_type:"text"), data: { turbo_method: :post }, class: "book-action-create-text-page", title: "Create new content page" %>
-                <%= link_to "<i class='fa-solid fa-file-image'></i>".html_safe, new_book_page_path(@book, page_type:"image"), data: { turbo_method: :post }, class: "book-action-create-image-page", title: "Create new image page" %>
-                <%= link_to "<i class='fa-solid fa-heading'></i>".html_safe, new_book_page_path(@book, page_type:"title"), data: { turbo_method: :post }, class: "book-action-create-title-page", title: "Create new title page" %>
+                <%= button_to "<i class='fa-solid fa-file-lines'></i>".html_safe, book_pages_path(@book), data: { turbo_method: :post }, params: {page: {page_type: "text"}}, class: "book-action-create-text-page", title: "Create new content page" %>
+                <%= button_to "<i class='fa-solid fa-file-image'></i>".html_safe, book_pages_path(@book), data: { turbo_method: :post }, params: {page: {page_type: "image"}}, class: "book-action-create-text-page", title: "Create new image page" %>
+                <%= button_to "<i class='fa-solid fa-heading'></i>".html_safe, book_pages_path(@book), data: { turbo_method: :post }, params: {page: {page_type: "title"}}, class: "book-action-create-text-page", title: "Create new title page" %>
             </div>
 
             <div class='book-edit-actions-layout'>
-                <%= link_to "<i class='fa-solid fa-list'></i>".html_safe, '', data: { turbo_method: :get }, class: "book-action-layout-text-list" %>
-                <%= link_to "<i class='fa-solid fa-table-cells'></i>".html_safe, '', data: { turbo_method: :get }, class: "book-action-layout-grid" %>
+                <%= button_to "<i class='fa-solid fa-list'></i>".html_safe, '', data: { turbo_method: :get }, class: "book-action-create-text-page" %>
+                <%= button_to "<i class='fa-solid fa-table-cells'></i>".html_safe, '', data: { turbo_method: :get }, class: "book-action-create-text-page" %>
             </div>
 
             <div class=''>
@@ -38,10 +38,10 @@
 
         <div class='book-pages'>
             <% if @book.pages.any? %>
-                <% @book.pages.each do |b| %> 
+                <% @book.pages.each do |p| %> 
 
                     <div class='book-page'>
-
+                        <%= p.main_title %>
                     </div>
 
                 <% end %>            

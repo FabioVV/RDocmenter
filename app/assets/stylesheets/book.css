@@ -264,7 +264,7 @@ main{
 .book-edit-actions-crud{
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    gap: 0.6rem;
 }
 
 .book-edit-actions-layout{
@@ -350,6 +350,22 @@ main{
     background-color: rgb(255, 53, 53) !important;
 }
 
+.book-action-create-text-page{
+    background: none;
+    border: none;
+    color: var(--accent);
+    transition: transform .3s ease;
+}
+
+.book-action-create-text-page:hover{
+    transform: scale(1.1);
+    background-color: transparent !important;
+}
+
+.book-action-create-text-page > i {
+    font-size: 30px;
+    
+}
 
 @media (max-width:768px) {
     .book-config-dropdown > li > a{
