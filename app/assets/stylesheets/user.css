@@ -27,6 +27,7 @@
 .delete-account-button{
     background-color: red !important;
     border: none;
+    color: white;
 }
 
 .delete-account-button:hover{

@@ -339,6 +339,16 @@ main{
     display: flex !important;
 }
 
+.delete-book-button{
+    background-color: red !important;
+    border: none;
+    color: white;
+}
+
+.delete-book-button:hover{
+    background-color: rgb(255, 53, 53) !important;
+}
+
 
 @media (max-width:768px) {
     .book-config-dropdown > li > a{

@@ -24,7 +24,7 @@
 
             <div class="field book-image-cover-create">
 
-                <% if action_name == 'Update book/document' %>
+                <% if action_name == 'Update Book/Document' %>
                     <%= f.label "Add or change the cover image", class: "book-subtitle-label" %><i>(Not required)</i><br />
                 <% else %>
                     <%= f.label "Add a cover image", class: "book-subtitle-label" %><i>(Not required)</i><br />
@@ -42,7 +42,7 @@
         <% end %>
 
     </div>
-    <div><%= button_to "Delete book/document", book_path(@book), data: { confirm: "Are you sure?", turbo_confirm: "This is not a destructive action | You will be able to reactivate the book later, just use the filter in your library"}, method: :delete , class: "delete-account-button" %></div>
+    <div><%= button_to "Delete book/document", book_path(@book), data: { confirm: "Are you sure?", turbo_confirm: "This is not a destructive action | You will be able to reactivate the book later, just use the filter in your library"}, method: :delete , class: "delete-book-button" %></div>
 
 </section>
 
