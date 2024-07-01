@@ -194,18 +194,18 @@ main{
 .book-edit-header{}
 
 .book-edit-header > h1{
-    font-size: 2.3em;
-    margin: 0 0 12px 0 !important;
+    font-size: 2em;
+    margin: 0 0 9px 0 !important;
 }
 
 .book-edit-header > h3{
-    font-size: 1.3em;
-    margin: 0 0 12px 0 !important;
+    font-size: 1.1em;
+    margin: 0 0 15px 0 !important;
     font-weight: 200;
 }
 
 .author{
-    font-size: 0.6em;
+    font-size: 0.8em;
     color: gray;
     margin: 0 0 0 0 !important;
 }
@@ -254,6 +254,7 @@ main{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-top: 1.5rem;
 }
 
 .book-image-cover-create{
