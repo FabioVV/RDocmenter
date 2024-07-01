@@ -219,8 +219,6 @@ main{
 }
 
 .book-index-cover_image{
-    width: 180px;
-    height: 241px;
     overflow: hidden; /* Crop excess */
 
 }
