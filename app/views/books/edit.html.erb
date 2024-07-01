@@ -35,19 +35,33 @@
             <div class=''>
             </div>
         </div>
+        <% if @book.pages.any? %>
+            <div class='book-pages'>
+                    <% @book.pages.each do |p| %> 
 
-        <div class='book-pages'>
-            <% if @book.pages.any? %>
-                <% @book.pages.each do |p| %> 
+                        <div class='book-page'>
 
-                    <div class='book-page'>
-                        <%= p.main_title %>
-                    </div>
+                            <div class='book-img-section'>
 
-                <% end %>            
-            <% else %>
-                <h5 align="center" style='margin-top:8rem;'>No pages yet. Create one using the buttons above</h5>
-            <% end %>            
+                                <% if false %>
+                                    <div class='book-index-cover_image'>
+                                        <%= image_tag b.cover_image, size: "180x230",  loading: "lazy"  %>
+                                    </div>
+                                <% else %>
+                                    <%= image_tag 'placeholder_book_index.svg', size: "160x210",  loading: "lazy"  %>
+                                <% end %>
+
+                            </div>
+
+                            <div class='page-title-section'>
+                                <h3 title='<%= p.main_title %>'><%= truncate(p.main_title, length: 26, omission: ' ...')  %></h3>
+                            </div>
+
+                        </div>
+                    <% end %>            
+        <% else %>
+            <h5 align="center" style='margin-top:8rem;'>No pages yet. Create one using the buttons above</h5>
+        <% end %>            
         </div>
     </div>
 

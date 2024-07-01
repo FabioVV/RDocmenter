@@ -72,11 +72,6 @@
 
                 <div class='book-actions'>
                     <hr />
-                    <div class='book-actions-links'>
-                        <!-- just add the = to the link_to below to reactivate the buttons in this page> -->
-                        <% link_to "<i class='fa-solid fa-file-pen'></i>".html_safe, edit_book_path(b), data: { turbo_method: :delete }, class: "book-action-edit" %>
-                        <% link_to "<i class='fa-solid fa-xmark'></i>".html_safe, book_path(b), data: { turbo_method: :delete }, class: "book-action-delete" %>
-                    </div>
                 </div>
             </div>
         <% end %>
