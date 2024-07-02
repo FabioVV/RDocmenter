@@ -42,9 +42,7 @@
                             <div class='book-img-section'>
 
                                 <% if p.page_image.attached? %>
-                                    <div class='book-index-cover_image'>
-                                        <%= image_tag p.page_image, size: "160x210",  loading: "lazy"  %>
-                                    </div>
+                                    <%= image_tag p.page_image,   loading: "lazy"  %>
                                 <% else %>
                                     <%= image_tag 'placeholder_book_index.svg', size: "160x210",  loading: "lazy"  %>
                                 <% end %>

@@ -82,8 +82,14 @@ main{
 
 }
 
-.book-img-section > img{
+.book-img-section{
+
+}
+
+.book-img-section img{
     border: 1px solid black;
+    max-width: 100% !important;
+    height: auto !important;
 }
 
 .book-timestamps{
@@ -296,7 +302,7 @@ main{
 
 .book-pages{
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 0.5rem;
     margin-top: 1.5rem;
 }
@@ -457,9 +463,9 @@ main{
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .book-pages{
+    /* .book-pages{
         grid-template-columns: repeat(3, 150px);
-    }
+    } */
 }
 
 @media (min-width:900px) {
@@ -469,7 +475,7 @@ main{
 }
 
 @media (min-width: 970px){
-    .book-pages{
+    /* .book-pages{
         grid-template-columns: repeat(5, 130px);
-    }
+    } */
 }
