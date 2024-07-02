@@ -9,6 +9,10 @@ class PagesController < ApplicationController
 
         @page.main_title = "New page"
 
+        if params[:page_type] == "title"
+            @page.section_header = "section"
+        end
+
         if @page.save
             flash[:notice] = 'Page created successfully'
             redirect_to edit_book_path(@book)
@@ -23,8 +27,6 @@ class PagesController < ApplicationController
 
     def update
         if @page.update(page_params)
-            # @book.cover_image.attach(params[:cover_image])
-
             flash[:notice] = "Page saved"
         else
             render 'edit',  status: :unprocessable_entity

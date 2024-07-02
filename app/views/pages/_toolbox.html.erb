@@ -1,6 +1,4 @@
-
-
-<div class='toolbox gap-1'>
+<div class='toolbox'>
     <div class='change-editor-mode-button'>
         <span>
             <i class="fa-solid fa-eye"></i>
@@ -28,13 +26,14 @@
 
 </div>
 
+<% if edit %>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const SUBMIT_ICON = document.getElementById('sub__')
 
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const SUBMIT_ICON = document.getElementById('sub__')
-
-        SUBMIT_ICON.addEventListener("click", () => {
-            document.getElementById('sub__b').click()
+            SUBMIT_ICON.addEventListener("click", () => {
+                document.getElementById('sub__b').click()
+            })
         })
-    })
-</script>
+    </script>
+<% end %>
