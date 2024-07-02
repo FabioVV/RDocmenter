@@ -2,7 +2,7 @@ class Book < ApplicationRecord
     belongs_to :user
     has_many :pages, dependent: :destroy
 
-    has_one_attached :cover_image
+    has_one_attached :cover_image, dependent: :purge_later
 
     validate :file_format
 

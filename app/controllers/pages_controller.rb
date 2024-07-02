@@ -1,10 +1,10 @@
 class PagesController < ApplicationController
     before_action :require_user
     before_action :set_page, only: [:edit, :show, :update]
+    before_action :set_book, only: [:edit, :show, :create]
 
     def create
         # page type -> params[:page_type]
-        @book = Book.find(params[:book_id])
         @page = @book.pages.build(page_params)
 
         @page.main_title = "New page"
@@ -40,6 +40,10 @@ class PagesController < ApplicationController
 
     def set_page
         @page = Page.find(params[:id])
+    end
+
+    def set_book
+        @book = Book.find(params[:book_id])
     end
 
     def page_params

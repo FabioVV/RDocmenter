@@ -226,12 +226,11 @@ main{
 
 .book-index-cover_image{
     overflow: hidden; /* Crop excess */
-
 }
 
 .book-index-cover_image > img{
     object-fit: cover !important;
-    height: 100%;
+    height: auto;
     
 }
 
@@ -418,6 +417,32 @@ main{
 
 #book_cover_image{
     display: none;
+}
+
+.book-home-button{
+    margin: 0 0 0 0 !important;
+    transition: transform .3s ease;
+    border: none !important;
+    padding: 0 0 0 0 !important;
+}
+
+.book-home-name{
+    margin: 0 0 0 0 !important;
+    transition: transform .3s ease;
+    border: none !important;
+    padding: 0 0 0 0 !important;
+    text-decoration: underline;
+}
+
+.nav_route_tool{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+#arrow_right{
+    font-size: 10px;
 }
 
 @media (max-width:768px) {
