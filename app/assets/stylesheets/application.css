@@ -41,12 +41,6 @@ body > header > *:only-child {
 }
 
 
-
-
-
-
-
-
 .switch {
     position: relative;
     display: inline-block;
@@ -152,4 +146,12 @@ body > header > *:only-child {
 
 .code:after{
 
+}
+
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+  * {
+      scrollbar-color: #C1C1C1 transparent;
+      scrollbar-width: thin;
+  }
 }

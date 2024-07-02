@@ -47,6 +47,6 @@ class PagesController < ApplicationController
     end
 
     def page_params
-        params.require(:page).permit(:page_type, :page_image, :content, :main_title, :image_caption)
+        params.require(:page).permit(:page_type, :page_image, :content, :main_title, :image_caption, :section_header)
     end
 end

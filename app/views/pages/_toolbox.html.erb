@@ -37,3 +37,24 @@
         })
     </script>
 <% end %>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const TOGGLE = document.getElementById('editor-mode-toggle')
+        let current_path = window.location.pathname
+
+        
+
+        TOGGLE.addEventListener("click", () => {
+            let new_mode = current_path.includes("/edit") 
+            ? 
+            current_path.replace('/edit', "")
+            : 
+            current_path + "/edit" 
+  
+            window.location.href = new_mode;
+
+        })
+    })
+</script>

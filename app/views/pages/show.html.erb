@@ -19,8 +19,10 @@
 
     <% elsif @page.page_type == "title" %>
     
-        <div class='page-editor'>
-            
+        <div class='page-editor page-title'>
+            <h1>
+                <%= @page.section_header.blank? ? "Section" : @page.section_header%>
+            </h1>
         </div>
 
     <% elsif @page.page_type == "text" %>

@@ -26,3 +26,27 @@ li > a:hover{
     /* color: white !important; */
     /* border-color: black !important; */
 }
+
+
+.button-page-title-nav{
+    margin: 0 0 0 0 !important;
+}
+
+.fullscreen-toggle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform .3s ease;
+}
+
+.fullscreen-toggle:hover{
+    transform: scale(1.05);
+}
+
+
+.fullscreen-toggle > i{
+    font-size: 20px;
+}

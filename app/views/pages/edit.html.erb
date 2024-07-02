@@ -17,8 +17,8 @@
 
         <% elsif @page.page_type == "title" %>
     
-            <div class='page-editor'>
-                
+            <div class='page-editor page-title'>
+                <%= f.text_area :section_header, size: "50x10", class: "section_header_input", value: "Section" %>
             </div>
 
         <% elsif @page.page_type == "text" %>
@@ -57,21 +57,4 @@
         }
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-        const TOGGLE = document.getElementById('editor-mode-toggle')
-        let current_path = window.location.pathname
-
-        
-
-        TOGGLE.addEventListener("click", () => {
-            let new_mode = current_path.includes("/edit") 
-            ? 
-            current_path.replace('/edit', "")
-            : 
-            current_path + "/edit" 
-  
-            window.location.href = new_mode;
-
-        })
-    })
 </script>

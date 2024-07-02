@@ -24,3 +24,15 @@
 .image-page-upload-input{
     display: none;
 }
+
+.page-editor.page-title{
+
+}
+
+.section_header_input{
+    resize: none;
+    border: 4px rgb(163, 163, 255) solid;
+    border-radius: 30px;
+    text-align: center;
+    font-size: 2em;
+}
