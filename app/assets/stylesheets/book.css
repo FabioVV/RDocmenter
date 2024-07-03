@@ -254,7 +254,7 @@ main{
 .edit-book_info-image > img{
     object-fit: cover !important;
     height: 100%;
-    
+    cursor: pointer;
 }
 
 .book-edit-actions{
