@@ -16,12 +16,9 @@
             <i id='arrow_right' class="fa-solid fa-arrow-right"></i>
 
             <% if hide_input %>
-                <label class='input-sizer'>
-                    <strong>
-                        <%= @page.main_title -%>
-                    </strong>
-                </label>
-
+                <strong>
+                    <%= @page.main_title -%>
+                </strong>
             <% else %>
                 <label class='input-sizer'>
                     <input onInput="this.parentNode.dataset.value = this.value" type='text' placeholder='Page title here' class='button-page-title-nav' name="page[main_title]" id='page_main_title_nav'>
