@@ -3,7 +3,10 @@
 <% end %>
 
 
-<%= form_with(model: @page, local: true, url:book_page_path(@page.book_id, @page), method: :patch, class: "book-initial-form") do |f| %>
+<%= form_with(model: @page, local: true, url:book_page_path(@page.book_id, @page), method: :patch) do |f| %>
+    <%= render "devise/shared/error_messages", resource: @page %>
+    <%= f.hidden_field :main_title %>
+
     <section class='page-editor-container'>
 
         <%= render 'pages/toolbox', edit: true %>
@@ -11,7 +14,7 @@
         <% if @page.page_type == "image" %>
 
             <div class='page-editor'>
-                <%= image_tag "https://placehold.co/600x400?text=Click here to upload image", id: "image-replace", class: "image-page-upload", onclick: "clickOnFileField();" %>
+                <%= image_tag @page.page_image, id: "image-replace", class: "image-page-upload", onclick: "clickOnFileField();" %>
                 <%= f.file_field :page_image, class: "image-page-upload-input", onchange: "previewImage(this);" %>
             </div>
 
@@ -34,7 +37,22 @@
 <% end %>
 
 
-<script>
+<script> 
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const navInput = document.getElementById('page_main_title_nav');
+        const hiddenInput = document.getElementById('page_main_title');
+
+        if(navInput && hiddenInput.value !== ''){
+            navInput.value = hiddenInput.value; // Set initial value
+        }
+
+        navInput.addEventListener('input', function() {
+            hiddenInput.value = navInput.value;
+        });
+
+    });
+
     function clickOnFileField(){
         document.getElementById('page_page_image').click()
     }

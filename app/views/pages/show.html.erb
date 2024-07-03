@@ -51,5 +51,12 @@
   
             window.location.href = new_mode;
         })
+
+        const navInput = document.getElementById('page_main_title_nav');
+        if(navInput){
+            navInput.value = '<%= @page.main_title %>'
+        }
+
     })
 </script>
+

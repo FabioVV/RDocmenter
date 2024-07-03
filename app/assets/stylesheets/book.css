@@ -192,7 +192,7 @@ main{
 
 .book-edit-section{
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 4fr;
     gap: 2.5rem;
 }
 

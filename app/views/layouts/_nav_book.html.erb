@@ -14,7 +14,7 @@
             <i id='arrow_right' class="fa-solid fa-arrow-right"></i>
             <%= link_to @book.title, edit_book_path(book_id) , method: "get", class: "book-home-name" %>
             <i id='arrow_right' class="fa-solid fa-arrow-right"></i>
-            <input type='text' class='button-page-title-nav'>
+            <input type='text' placeholder='Page title here' class='button-page-title-nav' name="page[main_title]" id='page_main_title_nav'>
         </div>
     <% end %>
 

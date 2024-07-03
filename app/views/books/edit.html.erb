@@ -9,7 +9,7 @@
         <% if @book.cover_image.attached? %>
             <%= image_tag @book.cover_image, alt: "Image of the current book", size: "210x290"  %>
         <% else %>
-            <%= image_tag('placeholder_book_edit.svg') %>
+            <%= image_tag 'placeholder_book_edit.svg' %>
         <% end %>
     </div>
 
@@ -42,7 +42,7 @@
                             <div class='book-img-section'>
 
                                 <% if p.page_image.attached? %>
-                                    <%= image_tag p.page_image,  loading: "lazy"  %>
+                                    <%= image_tag p.page_image, size: "180x230",  loading: "lazy"  %>
                                 <% else %>
                                     <%= image_tag 'placeholder_book_index.svg',  loading: "lazy"  %>
                                 <% end %>
@@ -50,7 +50,11 @@
                             </div>
 
                             <div class='page-title-section'>
-                                <h3 title='<%= p.main_title %>'><%= truncate(p.main_title, length: 15, omission: ' ...') + " " + p.page_type  %></h3>
+                                <% if p.page_type == 'title' %>
+                                    <h3 title='<%= p.section_header %>'><%= truncate(p.section_header, length: 25, omission: ' ...')  %></h3>
+                                <% else %>
+                                    <h3 title='<%= p.main_title %>'><%= truncate(p.main_title, length: 25, omission: ' ...')  %></h3>
+                                <% end %>  
                             </div>
                         </div>
                     <% end %>            

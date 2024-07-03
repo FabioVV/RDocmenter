@@ -7,10 +7,16 @@ class PagesController < ApplicationController
         # page type -> params[:page_type]
         @page = @book.pages.build(page_params)
 
-        @page.main_title = "New page"
-
         if params[:page_type] == "title"
             @page.section_header = "section"
+            @page.main_title = "New section page"
+
+        elsif params[:page_type] == "image"
+            @page.main_title = "New page image"
+
+        elsif params[:page_type] == "text"
+            @page.main_title = "New content page"
+
         end
 
         if @page.save
@@ -27,7 +33,7 @@ class PagesController < ApplicationController
 
     def update
         if @page.update(page_params)
-            flash[:notice] = "Page saved"
+            # flash[:notice] = "Page saved"
         else
             render 'edit',  status: :unprocessable_entity
         end

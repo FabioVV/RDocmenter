@@ -2,7 +2,10 @@ class Page < ApplicationRecord
   belongs_to :book
 
   has_many_attached :images
+
   has_one_attached :page_image, dependent: :purge_later
+
+  validate :file_format
 
   # cattr_accessor :preview_renderer do
   #   renderer = Redcarpet::Render::HTML.new(ActionText::Markdown::DEFAULT_RENDERER_OPTIONS)
@@ -18,4 +21,15 @@ class Page < ApplicationRecord
       content.to_s.first(1024)
     end
 
+    def file_format
+        return unless page_image.attached? && !image?
+
+        errors.add(:page_image, 'File of page must be an image')
+        page_image.purge
+    end
+
+    def image?
+        #["image/jpeg", "image/png", "image/gif", "image/webp"].include?(page_image.content_type)
+        page_image.content_type.in?(["image/jpeg", "image/png", "image/gif", "image/webp"])
+    end
 end
