@@ -1,5 +1,5 @@
 <% content_for :navbar do %>
-    <%= render 'layouts/nav_book', should_return_to: :back, page: true, book_id: @page.book_id, book: @book  %>
+    <%= render 'layouts/nav_book', should_return_to: :back, page: true, book_id: @page.book_id, book: @book, hide_input: false  %>
 <% end %>
 
 
@@ -38,13 +38,16 @@
 
 
 <script> 
-
     document.addEventListener('DOMContentLoaded', (event) => {
-        const navInput = document.getElementById('page_main_title_nav');
-        const hiddenInput = document.getElementById('page_main_title');
+        const navInput = document.getElementById('page_main_title_nav')
+        const hiddenInput = document.getElementById('page_main_title')
+        const labelInput = document.querySelector('.input-sizer')
 
         if(navInput && hiddenInput.value !== ''){
             navInput.value = hiddenInput.value; // Set initial value
+
+            // This is so that the input grow to the size of the text inside when the edit page loads
+            labelInput.dataset.value = hiddenInput.value
         }
 
         navInput.addEventListener('input', function() {
@@ -74,5 +77,4 @@
             r.readAsDataURL(file)
         }
     }
-
 </script>
