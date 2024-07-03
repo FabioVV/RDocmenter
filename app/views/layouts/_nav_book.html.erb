@@ -17,13 +17,14 @@
 
             <% if hide_input %>
                 <label class='input-sizer'>
-                    <input onInput="this.parentNode.dataset.value = this.value" type='text' placeholder='Page title here' class='button-page-title-nav' name="page[main_title]" id='page_main_title_nav'>
-                </label>
-            <% else %>
-                <label class='input-sizer'>
                     <strong>
                         <%= @page.main_title -%>
                     </strong>
+                </label>
+
+            <% else %>
+                <label class='input-sizer'>
+                    <input onInput="this.parentNode.dataset.value = this.value" type='text' placeholder='Page title here' class='button-page-title-nav' name="page[main_title]" id='page_main_title_nav'>
                 </label>
             <% end %>
 
