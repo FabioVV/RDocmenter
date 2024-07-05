@@ -15,10 +15,14 @@
         <% case @page.page_type %>
         <% when "image" %>
 
-            <div class='page-editor'>
-                <%= image_tag @page.page_image, id: "image-replace", class: "image-page-upload", onclick: "clickOnFileField();" %>
+            <figure class='page-image-show'>
+                <%= image_tag @page.page_image.attached? ? @page.page_image : "https://placehold.co/600x400?text=Image", id: "image-replace", class: "image-page-upload", onclick: "clickOnFileField();" %>
                 <%= f.file_field :page_image, class: "image-page-upload-input", onchange: "previewImage(this);" %>
-            </div>
+
+                <figcaption>
+                    <%= simple_format @page.image_caption %>
+                </figcaption>
+            </figure>
 
         <% when "title" %>
     

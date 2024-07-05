@@ -6,24 +6,16 @@ class PagesController < ApplicationController
     def create
         # page type -> params[:page_type]
         @page = @book.pages.build(page_params)
+        @page.main_title = "New " + @page.page_type.to_s + " page"
 
-        if params[:page_type] == "title"
-            @page.section_header = "section"
-            @page.main_title = "New section page"
-
-        elsif params[:page_type] == "image"
-            @page.main_title = "New page image"
-
-        elsif params[:page_type] == "text"
-            @page.main_title = "New content page"
-
+        if @page.page_type.to_s == 'title'
+            @page.section_header = "New title page"
         end
 
         if @page.save
-            flash[:notice] = 'Page created successfully'
             redirect_to edit_book_path(@book)
         else
-            flash[:error] = 'There was a problem creating a new page'
+            flash[:error] = @page.errors['page_type'].to_s
             redirect_to edit_book_path(@book)
         end
     end

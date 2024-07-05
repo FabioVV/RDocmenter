@@ -48,12 +48,12 @@ class BooksController < ApplicationController
 
     def edit_info
     end
-
+ 
     def update_edit_info
         if @book.update(book_params)
             # @book.cover_image.attach(params[:cover_image])
 
-            flash[:notice] = "Book information updated successfully"
+            flash[:notice] = "Updated successfully"
             redirect_to edit_book_path(@book)
         else
             render 'edit_info',  status: :unprocessable_entity

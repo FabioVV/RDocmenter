@@ -38,7 +38,7 @@ class Page < ApplicationRecord
     # validate
 
     def page_type_s
-      return unless page_type.in?(["title", "image", "text"])
+      return unless !page_type.in?(["title", "image", "text"])
 
       errors.add(:page_type, 'Unknow type of page.')
     end

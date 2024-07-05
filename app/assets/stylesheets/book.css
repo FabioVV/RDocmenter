@@ -345,9 +345,6 @@ main{
     }
 }
 
-.book-page:has(img){
-    padding: 0;
-}
 
 .section-header{
     p{
@@ -476,11 +473,10 @@ main{
     color: var(--accent) !important;
 }
 
-
-
 #arrow_right{
     font-size: 10px;
 }
+
 
 @media (max-width:768px) {
     .book-config-dropdown > li > a{
