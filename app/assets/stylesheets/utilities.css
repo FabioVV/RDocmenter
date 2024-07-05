@@ -27,3 +27,7 @@
     white-space: nowrap;
     overflow: hidden;
 }
+
+.min-width { min-inline-size: 0; }
+.full-width { inline-size: 100%; }
+.flex-item-no-shrink { flex-shrink: 0; }

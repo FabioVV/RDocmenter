@@ -1,6 +1,7 @@
 header{
     /* background-color: white !important; */
     padding: 0px .5rem 0px !important;
+    max-inline-size: 100vw !important;
 }
 
 header > nav{
@@ -32,6 +33,7 @@ li > a:hover{
     margin: 0 0 0 0 !important;
     border: none !important;
     outline: none !important;
+    background-color: rgb(31, 31, 31) !important;
 }
 
 .fullscreen-toggle{
@@ -62,24 +64,10 @@ li > a:hover{
     vertical-align: top;
     align-items: center;
     position: relative;
-    border: solid 1px;
     padding: .10em .2em;
-    border-radius: var(--standard-border-radius);
-
-    &.stacked {
-      padding: .5em;
-      align-items: stretch;
-      
-      &::after,
-      input,
-      textarea {
-        grid-area: 2 / 1;
-      }
-    }
     
     &::after,
-    input,
-    textarea {
+    input {
       width: auto;
       min-width: 1em;
       grid-area: 1 / 2;
@@ -92,10 +80,28 @@ li > a:hover{
       border: none;
     }
     
-    &::after {
-      content: attr(data-value) ' ';
-      visibility: hidden;
-      white-space: pre-wrap;
-    }
+
     
+}
+
+.nav_route_tool{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    margin-inline: auto;
+
+    input {
+        field-sizing: content;
+        min-inline-size: 8ch;
+    }
+
+    > * {
+        flex-shrink: 1;
+        max-inline-size: 40ch;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 }

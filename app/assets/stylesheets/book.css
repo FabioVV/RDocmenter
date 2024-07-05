@@ -153,6 +153,7 @@ main{
     flex-direction: row;
     margin: 10px !important;
     padding: 0 !important;
+    gap:1rem;
 }
 
 .book-return-button{
@@ -467,12 +468,7 @@ main{
     text-decoration: underline;
 }
 
-.nav_route_tool{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-}
+
 
 #arrow_right{
     font-size: 10px;
@@ -537,3 +533,13 @@ main{
         grid-template-columns: repeat(4, 150px);
     } */
 }
+
+@media (max-width: 720px){
+    .book-return-button > i{
+        font-size: var(--font-x-large-responsive) !important;
+    }
+    .fullscreen-toggle > i{
+        font-size: var(--font-x-large-responsive) !important;
+    }
+}
+

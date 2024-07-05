@@ -10,10 +10,10 @@
     
     <% if page %>
         <div class='nav_route_tool'>
-            <%= link_to '<i class="fa-solid fa-house"></i>'.html_safe, books_path, method: "get", class: "book-home-button" %>
-            <i id='arrow_right' class="fa-solid fa-arrow-right"></i>
+            <%= link_to '<i class="fa-solid fa-house flex-item-no-shrink"></i>'.html_safe, books_path, method: "get", class: "book-home-button" %>
+            <i id='arrow_right' class="fa-solid fa-arrow-right flex-item-no-shrink"></i>
             <%= link_to @book.title, edit_book_path(book.id) , method: "get", class: "book-home-name" %>
-            <i id='arrow_right' class="fa-solid fa-arrow-right"></i>
+            <i id='arrow_right' class="fa-solid fa-arrow-right flex-item-no-shrink"></i>
 
             <% if hide_input %>
                 <strong>
@@ -21,7 +21,7 @@
                 </strong>
             <% else %>
                 <label class='input-sizer'>
-                    <input onInput="this.parentNode.dataset.value = this.value" type='text' placeholder='Page title here' class='button-page-title-nav' name="page[main_title]" id='page_main_title_nav'>
+                    <input type='text' placeholder='Page title here' class='button-page-title-nav' name="page[main_title]" id='page_main_title_nav'>
                 </label>
             <% end %>
 
@@ -41,13 +41,4 @@
 
 <script>
     document.getElementsByTagName('header')[0].setAttribute('style', 'padding: 0px !important')
-
-    Array.from(document.querySelectorAll('[data-expand]'), (input)=>{
-        let parent = input.parentNode;
-        function updateSize(){
-            parent.dataset.value = input.value
-        }
-        input.addEventListener('input', updateSize);
-        updateSize();
-    });
 </script>
