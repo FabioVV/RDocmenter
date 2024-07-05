@@ -22,7 +22,10 @@
 
 
 body, html {
-    overflow-x: hidden;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -webkit-text-size-adjust: none !important;
 }
 
 i{
@@ -129,23 +132,15 @@ body > header > *:only-child {
 
 
 .bold {
-    font-weight: 900;
+  font-weight: 900;
 }
 
 .italic {
-    font-style: italic;
+  font-style: italic;
 }
 
-.code {
-    
-}
-
-.code:before {
-
-}
-
-.code:after{
-
+.center-text{
+  text-align: center;
 }
 
 

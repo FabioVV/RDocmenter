@@ -5,14 +5,14 @@
         <% should_return_to = books_path %>
     <% end %>
 
-    <%= link_to '<i class="fa-solid fa-circle-arrow-left"></i>'.html_safe, page ? edit_book_path(book_id) : should_return_to, method: "get", class: "book-return-button" %>
+    <%= link_to '<i class="fa-solid fa-circle-arrow-left"></i>'.html_safe, page ? edit_book_path(book.id) : should_return_to, method: "get", class: "book-return-button" %>
     
     
     <% if page %>
         <div class='nav_route_tool'>
             <%= link_to '<i class="fa-solid fa-house"></i>'.html_safe, books_path, method: "get", class: "book-home-button" %>
             <i id='arrow_right' class="fa-solid fa-arrow-right"></i>
-            <%= link_to @book.title, edit_book_path(book_id) , method: "get", class: "book-home-name" %>
+            <%= link_to @book.title, edit_book_path(book.id) , method: "get", class: "book-home-name" %>
             <i id='arrow_right' class="fa-solid fa-arrow-right"></i>
 
             <% if hide_input %>

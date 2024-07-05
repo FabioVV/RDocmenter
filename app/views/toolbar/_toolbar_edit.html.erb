@@ -1,0 +1,27 @@
+<div class='toolbox'>
+
+    <%= render "toolbar/toolbar_toggle_mode" %>
+
+    <div class='toolbox-edit-container'>
+        <div class='delete-page-button'>
+            <i title='Delete page' id='del__' class="fa-solid fa-delete-left"></i>
+        </div>
+
+        <div class='save-page-button'>
+            <input style='display:none;' id='sub__b' type="submit" name="commit" value="Update Page" data-disable-with="Update Page">
+            <i title='Save page' id='sub__' class="fa-solid fa-circle-check"></i>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const SUBMIT_ICON = document.getElementById('sub__')
+
+        SUBMIT_ICON.addEventListener("click", () => {
+            document.getElementById('sub__b').click()
+        })
+    })
+</script>

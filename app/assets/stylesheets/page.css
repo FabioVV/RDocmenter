@@ -36,3 +36,14 @@
     font-size: 2em;
     padding: 1rem;
 }
+
+section:has(.page-image-show){
+    inline-size: 100%;
+    padding: 0;
+    
+    figcaption {
+      inline-size: 67ch;
+      margin-inline: auto;
+      max-inline-size: 100dvw;
+    }
+}

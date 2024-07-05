@@ -1,23 +1,28 @@
 <% content_for :navbar do %>
-    <%= render 'layouts/nav_book', should_return_to: :back, page: true, book_id: @page.book_id, hide_input: true  %>
+    <%= navbar_book_options(book: @book, hide_input: true, page: true) %>
 <% end %>
 
 
 <section class='page-editor-container show-page'>
-    <%= render 'pages/toolbox', edit: false %>
 
-    <% if @page.page_type == "image" %>
+    <%= toolbar_options(edit: false) %>
 
-        <div class='page-editor'>
+    <% case @page.page_type %>
+    <% when "image" %>
+
+        <figure class='page-image-show'>
             <% if @page.page_image.attached? %>
                 <%= image_tag @page.page_image, alt: "Image of the current page" %>
             <% else %>
-                <%= image_tag "https://placehold.co/600x400?text=Image" %>
+                <%= image_tag "https://placehold.co/600x400?text=Image", alt: "No image uploaded" %>
             <% end %>
-        </div>
 
+            <figcaption>
+                <%= simple_format @page.image_caption %>
+            </figcaption>
+        </figure>
 
-    <% elsif @page.page_type == "title" %>
+    <% when "title" %>
     
         <div class='page-editor page-title'>
             <h1>
@@ -25,7 +30,7 @@
             </h1>
         </div>
 
-    <% elsif @page.page_type == "text" %>
+    <% when "text" %>
 
         <div class='page-editor'>
             
@@ -39,24 +44,10 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-        const TOGGLE = document.getElementById('editor-mode-toggle')
-        let current_path = window.location.pathname
-
-        TOGGLE.addEventListener("click", () => {
-            let new_mode = current_path.includes("/edit") 
-            ? 
-            current_path.replace('/edit', "")
-            : 
-            current_path + "/edit" 
-  
-            window.location.href = new_mode;
-        })
-
         const navInput = document.getElementById('page_main_title_nav');
         if(navInput){
             navInput.value = '<%= @page.main_title %>'
         }
-
     })
 </script>
 

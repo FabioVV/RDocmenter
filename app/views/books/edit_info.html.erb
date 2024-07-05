@@ -1,7 +1,5 @@
 <% content_for :navbar do %>
-    <%= render 'layouts/nav_book', should_return_to: :back, page: false %>
+    <%= navbar_book_options(page: false) %>
 <% end %>
 
 <%= render 'books/form', action_name: "Update Book/Document"%>
-
-<%= link_to "Back", :back %>

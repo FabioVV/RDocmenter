@@ -1,30 +1,32 @@
 <% content_for :navbar do %>
-    <%= render 'layouts/nav_book', should_return_to: :back, page: true, book_id: @page.book_id, book: @book, hide_input: false  %>
+    <%= navbar_book_options(book: @book, page: true) %>
 <% end %>
 
 
 <%= form_with(model: @page, local: true, url:book_page_path(@page.book_id, @page), method: :patch) do |f| %>
-    <%= render "devise/shared/error_messages", resource: @page %>
+    <%= render "shared/errors", resource: @page %>
+
     <%= f.hidden_field :main_title %>
 
     <section class='page-editor-container'>
 
-        <%= render 'pages/toolbox', edit: true %>
+        <%= toolbar_options(edit: true) %>
 
-        <% if @page.page_type == "image" %>
+        <% case @page.page_type %>
+        <% when "image" %>
 
             <div class='page-editor'>
                 <%= image_tag @page.page_image, id: "image-replace", class: "image-page-upload", onclick: "clickOnFileField();" %>
                 <%= f.file_field :page_image, class: "image-page-upload-input", onchange: "previewImage(this);" %>
             </div>
 
-        <% elsif @page.page_type == "title" %>
+        <% when "title" %>
     
             <div class='page-editor page-title'>
                 <%= f.text_area :section_header, size: "50x10", class: "section_header_input" %>
             </div>
 
-        <% elsif @page.page_type == "text" %>
+        <% when "text" %>
 
             <div class='page-editor'>
                 

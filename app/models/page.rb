@@ -7,6 +7,8 @@ class Page < ApplicationRecord
 
   validate :file_format
 
+  validate :page_type_s
+
   # cattr_accessor :preview_renderer do
   #   renderer = Redcarpet::Render::HTML.new(ActionText::Markdown::DEFAULT_RENDERER_OPTIONS)
   #   Redcarpet::Markdown.new(renderer, ActionText::Markdown::DEFAULT_MARKDOWN_EXTENSIONS)
@@ -21,15 +23,23 @@ class Page < ApplicationRecord
       content.to_s.first(1024)
     end
 
-    def file_format
-        return unless page_image.attached? && !image?
+    # validate
 
-        errors.add(:page_image, 'File of page must be an image')
-        page_image.purge
+    def page_type_s
+      return unless page_type.in?(["title", "image", "text"])
+
+      errors.add(:page_type, 'Unknow type of page.')
+    end
+
+    def file_format
+      return unless page_image.attached? && !image?
+
+      errors.add(:page_image, 'File of page must be an image')
+      page_image.purge
     end
 
     def image?
-        #["image/jpeg", "image/png", "image/gif", "image/webp"].include?(page_image.content_type)
-        page_image.content_type.in?(["image/jpeg", "image/png", "image/gif", "image/webp"])
+      #["image/jpeg", "image/png", "image/gif", "image/webp"].include?(page_image.content_type)
+      page_image.content_type.in?(["image/jpeg", "image/png", "image/gif", "image/webp"])
     end
 end

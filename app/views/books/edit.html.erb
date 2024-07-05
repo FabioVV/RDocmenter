@@ -1,5 +1,5 @@
 <% content_for :navbar do %>
-    <%= render 'layouts/nav_book', should_return_to: books_path, page: false %>
+    <%= navbar_book_options(should_return_to: books_path, page: false) %>
 <% end %>
 
 
@@ -15,9 +15,9 @@
 
     <div class='book-edit-side'>
         <div class='book-edit-header'>
-            <h1><%= @book.title %></h1>
-            <h3><%= @book.subtitle %></h3>
-            <span class='author'><%= @book.user.first_name + " " + @book.user.last_name %><span>
+            <h1 class='text-xlarge-responsive'><%= @book.title %></h1>
+            <h3 class='text-large-responsive'><%= @book.subtitle %></h3>
+            <span class='author text-medium-responsive'><%= @book.user.first_name + " " + @book.user.last_name %><span>
         </div>
 
         <div class='book-edit-actions  '>
@@ -38,25 +38,29 @@
         <% if @book.pages.any? %>
             <div class='book-pages'>
                     <% @book.pages.each do |p| %> 
-                        <div class='book-page' data-controller='editpage' data-action="click->editpage#openPageEdit" data-id='<%= p.id %>' data-book-id='<%= p.book_id %>'>
-                            <div class='book-img-section'>
-
+                        <div class='book-page-container'>
+                            <div class='book-page' data-controller='editpage' data-action="click->editpage#openPageEdit" data-id='<%= p.id %>' data-book-id='<%= p.book_id %>'>
                                 <% if p.page_image.attached? %>
-                                    <%= image_tag p.page_image, size: "180x230",  loading: "lazy"  %>
-                                <% else %>
-                                    <%= image_tag 'placeholder_book_index.svg',  loading: "lazy"  %>
+                                    <% if p.page_image.attached? %>
+                                        <%= image_tag p.page_image,  loading: "lazy"  %>
+                                    <% else %>
+                                        <%= image_tag 'placeholder_book_index.svg',  loading: "lazy"  %>
+                                    <% end %>
                                 <% end %>
+
+                                <%= tag.span(simple_format(p.section_header), class: "center-text bold section-header text-medium-responsive") if p.section_header? %> 
 
                             </div>
 
                             <div class='page-title-section'>
                                 <% if p.page_type == 'title' %>
-                                    <h3 title='<%= p.section_header %>'><%= truncate(p.section_header, length: 25, omission: ' ...')  %></h3>
+                                    <h3 class='overflow-ellipsis text-medium-responsive' title='<%= p.section_header %>'><%= p.section_header %></h3>
                                 <% else %>
-                                    <h3 title='<%= p.main_title %>'><%= truncate(p.main_title, length: 25, omission: ' ...')  %></h3>
+                                    <h3 class='overflow-ellipsis text-medium-responsive' title='<%= p.main_title %>'><%= p.main_title %></h3>
                                 <% end %>  
                             </div>
                         </div>
+
                     <% end %>            
         <% else %>
             <h5 align="center" style='margin-top:8rem;'>No pages yet. Create one using the buttons above</h5>

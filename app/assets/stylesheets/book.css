@@ -310,12 +310,41 @@ main{
     margin-top: 1.5rem;
 }
 
+.book-page-container{
+    container-type: inline-size;
+
+}
+
 .book-page{
-    margin: 0 auto;
     position: relative;
     transition: transform .3s ease;
-    padding-left: 4px;
-    padding-right: 4px;
+
+    aspect-ratio: 6 / 9;
+    border-radius: 0.3em;
+    border: 1px solid rgb(95, 95, 95);
+    color: inherit;
+    display: block;
+    font-size: clamp(0.5rem, 5cqi, 0.8rem);
+    line-height: 1.4;
+    overflow: hidden;
+    padding: 10cqi;
+    text-decoration: none;
+
+    img{
+        block-size: 100%;
+        inline-size: 100%;
+        object-fit: cover;
+    }
+}
+
+.book-page:has(img){
+    padding: 0;
+}
+
+.section-header{
+    p{
+        margin: 0 !important;
+    }
 }
 
 .book-page:hover{
