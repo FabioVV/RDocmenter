@@ -432,19 +432,20 @@ main{
     background-color: rgb(255, 53, 53) !important;
 }
 
-.book-action-create-text-page{
+.book-action-create-page{
     background: none;
     border: none;
-    color: var(--accent);
+    color: black;
     transition: transform .3s ease;
+    
 }
 
-.book-action-create-text-page:hover{
+.book-action-create-page:hover{
     transform: scale(1.1);
     background-color: transparent !important;
 }
 
-.book-action-create-text-page > i {
+.book-action-create-page > i {
     font-size: 30px;
     
 }

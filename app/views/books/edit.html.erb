@@ -22,14 +22,14 @@
 
         <div class='book-edit-actions  '>
             <div class='book-edit-actions-crud'>
-                <%= button_to "<i class='fa-solid fa-file-lines'></i>".html_safe, book_pages_path(@book), data: { turbo_method: :post }, params: {page: {page_type: "text"}}, class: "book-action-create-text-page", title: "Create new content page" %>
-                <%= button_to "<i class='fa-solid fa-file-image'></i>".html_safe, book_pages_path(@book), data: { turbo_method: :post }, params: {page: {page_type: "image"}}, class: "book-action-create-text-page", title: "Create new image page" %>
-                <%= button_to "<i class='fa-solid fa-heading'></i>".html_safe, book_pages_path(@book), data: { turbo_method: :post }, params: {page: {page_type: "title"}}, class: "book-action-create-text-page", title: "Create new title page" %>
+                <%= button_to "<i class='fa-solid fa-file-lines'></i>".html_safe, book_pages_path(@book), data: { turbo_method: :post }, params: {page: {page_type: "text"}}, class: "book-action-create-page", title: "Create new content page" %>
+                <%= button_to "<i class='fa-solid fa-file-image'></i>".html_safe, book_pages_path(@book), data: { turbo_method: :post }, params: {page: {page_type: "image"}}, class: "book-action-create-page", title: "Create new image page" %>
+                <%= button_to "<i class='fa-solid fa-heading'></i>".html_safe, book_pages_path(@book), data: { turbo_method: :post }, params: {page: {page_type: "title"}}, class: "book-action-create-page", title: "Create new title page" %>
             </div>
 
             <div class='book-edit-actions-layout'>
-                <%= button_to "<i class='fa-solid fa-list'></i>".html_safe, '', data: { turbo_method: :get }, class: "book-action-create-text-page" %>
-                <%= button_to "<i class='fa-solid fa-table-cells'></i>".html_safe, '', data: { turbo_method: :get }, class: "book-action-create-text-page" %>
+                <%= button_to "<i class='fa-solid fa-list'></i>".html_safe, '', data: { turbo_method: :get }, class: "book-action-create-page" %>
+                <%= button_to "<i class='fa-solid fa-table-cells'></i>".html_safe, '', data: { turbo_method: :get }, class: "book-action-create-page" %>
             </div>
 
             <div class=''>

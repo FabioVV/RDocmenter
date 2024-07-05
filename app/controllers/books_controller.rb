@@ -39,7 +39,6 @@ class BooksController < ApplicationController
     def destroy
         #TODO: Add a is_active to book and deactivate, not delete 
         if @book.update(is_active:false)  
-            flash[:notice] = 'Book/Document deleted successfully'
             redirect_to books_path
         else    
             render 'edit_info', status: :unprocessable_entity
@@ -52,8 +51,6 @@ class BooksController < ApplicationController
     def update_edit_info
         if @book.update(book_params)
             # @book.cover_image.attach(params[:cover_image])
-
-            flash[:notice] = "Updated successfully"
             redirect_to edit_book_path(@book)
         else
             render 'edit_info',  status: :unprocessable_entity
