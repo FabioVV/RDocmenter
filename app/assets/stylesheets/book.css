@@ -162,14 +162,17 @@ main{
     display: flex;
     align-items: center;
     text-decoration: none;
-
+    border: none;
 }
 
 
 .book-edit-button{
     margin: 0 0 0 0 !important;
     transition: transform .3s ease;
-
+    border: none;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }
 
 .book-return-button:hover{
@@ -184,17 +187,21 @@ main{
 }
 
 .book-return-button > i{
-    color: white;
+    color: black;
+    font-size: var(--font-large-responsive) !important;
 }
 
 .book-edit-button > i{
-    color: white;
+    color: black;
+    font-size: var(--font-large-responsive) !important;
 }
 
 .book-edit-section{
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 2fr 5fr;
     gap: 2.5rem;
+    inline-size: 100%;
+    container-type: unset;
 }
 
 .book-edit-side{
@@ -466,6 +473,7 @@ main{
     border: none !important;
     padding: 0 0 0 0 !important;
     text-decoration: underline;
+    color: var(--accent) !important;
 }
 
 
@@ -539,6 +547,10 @@ main{
         font-size: var(--font-x-large-responsive) !important;
     }
     .fullscreen-toggle > i{
+        font-size: var(--font-x-large-responsive) !important;
+    }
+
+    .book-edit-button > i {
         font-size: var(--font-x-large-responsive) !important;
     }
 }

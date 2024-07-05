@@ -5,7 +5,7 @@
         <% should_return_to = books_path %>
     <% end %>
 
-    <%= link_to '<i class="fa-solid fa-circle-arrow-left"></i>'.html_safe, page ? edit_book_path(book.id) : should_return_to, method: "get", class: "book-return-button" %>
+    <%= link_to '<i class="fa-solid fa-circle-arrow-left"></i>'.html_safe, page ? edit_book_path(book) : should_return_to, method: "get", class: "book-return-button" %>
     
     
     <% if page %>

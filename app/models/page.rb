@@ -23,11 +23,11 @@ class Page < ApplicationRecord
   scope :after, ->(page) { where("created_at > ?", page.created_at) }
 
   def previous
-    page.before(self).last
+    book.pages.before(self).last
   end
 
   def next
-    page.after(self).first
+    book.pages.after(self).first
   end
 
   private

@@ -11,6 +11,12 @@
 .text-large-responsive { font-size: var(--font-large-responsive) !important; }
 .text-xlarge-responsive { font-size: var(--font-x-large-responsive) !important; }
 
+.txt-small { font-size: 0.8rem !important; }
+.txt-medium { font-size: 1rem !important; }
+.txt-large { font-size: 1.4rem !important; }
+.txt-x-large { font-size: 1.8rem !important; }
+.txt-xx-large { font-size: 2.4rem !important; }
+
 /* Accessibility */
 .for-screen-reader {
     block-size: 1px;

@@ -1,5 +1,5 @@
 <% content_for :navbar do %>
-    <%= navbar_book_options(book: @book, page: true, page_id: @page.id) %>
+    <%= navbar_book_options(book: @book, page: true, page_id: @page.id, book_id: @page.book_id) %>
 <% end %>
 
 
@@ -38,6 +38,9 @@
     </section>
 <% end %>
 
+<% content_for :footer do %>
+    <%= render 'pages/navigation', page: @page, for_edit: true %>
+<% end %>
 
 <script> 
     document.addEventListener('DOMContentLoaded', (event) => {

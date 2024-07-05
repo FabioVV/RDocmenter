@@ -34,6 +34,7 @@ li > a:hover{
     border: none !important;
     outline: none !important;
     background-color: rgb(31, 31, 31) !important;
+    color: white !important;
 }
 
 .fullscreen-toggle{
@@ -54,9 +55,6 @@ li > a:hover{
 .fullscreen-toggle > i{
     font-size: 20px;
 }
-
-
-
 
 
 .input-sizer{

@@ -41,6 +41,9 @@
     <% end %>
 </section>
 
+<% content_for :footer do %>
+    <%= render 'pages/navigation', page: @page, for_edit: false %>
+<% end %>
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {

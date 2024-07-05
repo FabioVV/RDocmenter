@@ -47,3 +47,13 @@ section:has(.page-image-show){
       max-inline-size: 100dvw;
     }
 }
+
+.book-pages-navigation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .btn {
+        max-inline-size: 50ch;
+    }
+}

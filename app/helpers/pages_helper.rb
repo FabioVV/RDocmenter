@@ -22,13 +22,15 @@ module PagesHelper
       end
     
       def link_to_next_page(page, for_edit: false)
+        book_id = page.book_id
+
         if next_page = page.next
-          path = for_edit ? edit_leafable_path(next_leaf) : leafable_slug_path(next_leaf)
-          link_to path, data: hotkey_data_attributes("right", enabled: hotkey), class: "btn txt-medium min-width" do
-            tag.span("Next: #{next_leaf.title }", class: "overflow-ellipsis") + image_tag("arrow-right.svg", aria: { hidden: true }, size: 24)
+          path = for_edit ? edit_book_page_path(book_id, next_page) : book_page_path(book_id, next_page)
+          link_to path, class: "txt-medium min-width btn" do
+            tag.span("Next: #{next_page.main_title }", class: "overflow-ellipsis") + " <i class='fa-solid fa-arrow-right-long'></i>".html_safe
           end
         else
-        #   link_to book_slug_path(leaf.book), data: hotkey_data_attributes("right", enabled: hotkey), class: "btn txt-medium" do
+        #   link_to book_slug_path(leaf.book), class: "btn txt-medium" do
         #     tag.span("Table of contents: #{leaf.book.title }", class: "overflow-ellipsis") + image_tag("arrow-reverse.svg", aria: { hidden: true }, size: 24)
         #   end
         end
