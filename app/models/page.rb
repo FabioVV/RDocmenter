@@ -18,6 +18,18 @@ class Page < ApplicationRecord
   #   preview_renderer.render(body_preview)
   # end
 
+  # scope :sorted, -> { order(created_at: :desc) }
+  scope :before, ->(page) { where("created_at < ?", page.created_at) }
+  scope :after, ->(page) { where("created_at > ?", page.created_at) }
+
+  def previous
+    page.before(self).last
+  end
+
+  def next
+    page.after(self).first
+  end
+
   private
     def body_preview
       content.to_s.first(1024)
