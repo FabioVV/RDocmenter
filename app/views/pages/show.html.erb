@@ -24,9 +24,9 @@
 
     <% when "title" %>
     
-        <div class='page-editor page-title'>
+        <div class='page-editor page-title text-medium-responsive'>
             <h1>
-                <%= @page.section_header.blank? ? "Section" : @page.section_header%>
+                <%= simple_format @page.section_header.blank? ? "Section" : @page.section_header %>
             </h1>
         </div>
 

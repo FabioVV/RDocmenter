@@ -381,7 +381,7 @@ main{
 }
 
 .page-title-section > h3{
-    font-size: 0.9em;
+    font-size: var(--font-medium-responsive);
     text-align: center;
 }
 
