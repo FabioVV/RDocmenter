@@ -198,7 +198,7 @@ main{
 
 .book-edit-section{
     display: grid;
-    grid-template-columns: 2fr 5fr;
+    grid-template-columns: minmax(25%, 20dvw) 5fr;
     gap: 2.5rem;
     inline-size: 100%;
     container-type: unset;

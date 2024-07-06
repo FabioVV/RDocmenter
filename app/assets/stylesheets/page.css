@@ -3,7 +3,13 @@
     border-top: none;
     display: grid;
     margin-top: 0 !important;
-    grid-template-rows: auto 1fr;
+    place-content: center;
+    text-align: center;
+}
+/* grid-auto-columns: 80vw; */
+
+.page-editor-container:has(.page-editor.page-title){
+    grid-auto-columns: 80vw; 
 }
 
 .show-page{
