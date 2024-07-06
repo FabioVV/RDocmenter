@@ -9,30 +9,35 @@
 
 .toolbox > div {
     background-color: var(--accent-bg);
+
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+
 }
 
 .change-editor-mode-button{
     display: flex;
     align-items: center;
     flex-direction: row;
-
     gap: 0.6rem;
+    padding: 0.54rem;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+
     border-top-left-radius: 100px;
     border-bottom-left-radius: 100px;
-    padding: 0.54rem;
-
 }
 
 .toolbox-edit-container{
     display: flex;
     align-items: center;
     flex-direction: row;
+    gap: 1rem;
 }
 
 .save-page-button{
-    border-top-right-radius: 100px;
-    border-bottom-right-radius: 100px;
     padding: 0.74rem;
+    
 }
 
 .delete-page-button{
@@ -64,4 +69,17 @@
     border: none !important;
     padding: 0;
     margin: 0 0 0 0;
+}
+
+.editor-button{
+    padding: 0.74rem;
+    cursor: pointer;
+}
+
+.editor-button > i{
+    font-size: var(--font-medium-responsive) !important;
+    transform: ease 300ms;
+}
+
+.editor-button:hover{
 }

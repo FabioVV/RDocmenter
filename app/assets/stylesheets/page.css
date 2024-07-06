@@ -8,10 +8,14 @@
 
 }
 
+.edit-page{
+    grid-auto-columns: 1fr 1fr;
+
+}
+
 .show-page{
     margin-top: 2rem !important;
     grid-auto-columns: 80vw; 
-
 }
 
 .image-page-upload{

@@ -8,7 +8,7 @@
 
     <%= f.hidden_field :main_title %>
 
-    <section class='page-editor-container'>
+    <section class='page-editor-container edit-page'>
 
         <%= toolbar_options(edit: true) %>
 
@@ -33,7 +33,7 @@
         <% when "text" %>
 
             <div class='page-editor'>
-                
+                <textarea class='main-arkdown-editor'></textarea>
             </div>
 
         <% else %>

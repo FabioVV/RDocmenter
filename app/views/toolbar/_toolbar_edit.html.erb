@@ -3,10 +3,29 @@
     <%= render "toolbar/toolbar_toggle_mode" %>
 
     <div class='toolbox-edit-container'>
-        <div class='delete-page-button'>
-            
-            <%= button_to "<i title='Delete page' id='del__' class='fa-solid fa-delete-left'></i>".html_safe, book_path(@book), method: :delete %>
 
+        <div class='bold editor-button'>
+            <i class="fa-solid fa-bold"></i>
+        </div>
+
+        <div class='italic editor-button'>
+            <i class="fa-solid fa-italic"></i>        
+        </div>
+
+        <div class='listul editor-button'>
+            <i class="fa-solid fa-list-ul"></i>        
+        </div>
+
+        <div class='listol editor-button'>
+            <i class="fa-solid fa-list-ol"></i>        
+        </div>
+
+        <div class='link editor-button'>
+            <i class="fa-solid fa-link"></i>        
+        </div>
+
+        <div class='delete-page-button'>
+            <%= button_to "<i title='Delete page' id='del__' class='fa-solid fa-delete-left'></i>".html_safe, book_path(@book), method: :delete %>
         </div>
 
         <div class='save-page-button'>
