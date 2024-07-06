@@ -7,16 +7,19 @@
     margin-bottom: 1.5em;
 }
 
+.toolbox > div {
+    background-color: var(--accent-bg);
+}
+
 .change-editor-mode-button{
     display: flex;
-    align-items: end;
+    align-items: center;
     flex-direction: row;
 
     gap: 0.6rem;
-    border: 1px solid gray;
     border-top-left-radius: 100px;
     border-bottom-left-radius: 100px;
-    padding: 0.3rem;
+    padding: 0.54rem;
 
 }
 
@@ -27,42 +30,38 @@
 }
 
 .save-page-button{
-    display: flex;
-    align-items: end;
-    flex-direction: row;
-
-    border: 1px solid gray;
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
     padding: 0.74rem;
 }
 
 .delete-page-button{
-    display: flex;
-    align-items: end;
-    flex-direction: row;
-
-    border: 1px solid gray;
-
     padding: 0.74rem;
 }
 
-.gap-1{
-    gap: 0.5rem;
-}
-
 .change-editor-mode-button > span > i{
-    font-size: 20px;
+    font-size: var(--font-medium-responsive) !important;
 }
 
 .save-page-button > i{
-    font-size: 20px;
     cursor: pointer;
+    font-size: var(--font-medium-responsive) !important;
     color: rgb(97, 255, 97);
 }
 
-.delete-page-button > i{
-    font-size: 20px;
-    cursor: pointer;
-    color: red;
+.delete-page-button > button{
+    background: none !important;
+    border: none !important;
+    padding: 0;
+    margin: 0 0 0 0;
+}
+
+.delete-page-button > button > i{
+    font-size: var(--font-medium-responsive) !important;
+    cursor: pointer !important;
+    color: red !important;
+    background: none !important;
+    border: none !important;
+    padding: 0;
+    margin: 0 0 0 0;
 }

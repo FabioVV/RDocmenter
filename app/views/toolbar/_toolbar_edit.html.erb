@@ -4,7 +4,9 @@
 
     <div class='toolbox-edit-container'>
         <div class='delete-page-button'>
-            <i title='Delete page' id='del__' class="fa-solid fa-delete-left"></i>
+            
+            <%= button_to "<i title='Delete page' id='del__' class='fa-solid fa-delete-left'></i>".html_safe, book_path(@book), method: :delete %>
+
         </div>
 
         <div class='save-page-button'>

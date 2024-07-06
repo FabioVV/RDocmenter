@@ -5,15 +5,12 @@
     margin-top: 0 !important;
     place-content: center;
     text-align: center;
-}
-/* grid-auto-columns: 80vw; */
 
-.page-editor-container:has(.page-editor.page-title){
-    grid-auto-columns: 80vw; 
 }
 
 .show-page{
     margin-top: 2rem !important;
+    grid-auto-columns: 80vw; 
 
 }
 
@@ -36,11 +33,12 @@
 
 .section_header_input{
     resize: none;
-    border: 4px rgb(163, 163, 255) solid;
+    border: 4px var(--border) solid;
     border-radius: 30px;
     text-align: center;
-    font-size: 2em;
+    font-size: var(--font-medium-responsive);
     padding: 1rem;
+
 }
 
 section:has(.page-image-show){
