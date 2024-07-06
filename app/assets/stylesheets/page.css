@@ -52,7 +52,7 @@ section:has(.page-image-show){
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    gap: 1rem;
     .btn {
         max-inline-size: 50ch;
     }

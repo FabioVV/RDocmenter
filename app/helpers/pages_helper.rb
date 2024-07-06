@@ -9,10 +9,12 @@ module PagesHelper
     end
 
     def link_to_previous_page(page, for_edit: false)
-        if previous_leaf = leaf.previous
-          path = for_edit ? edit_leafable_path(previous_leaf) : leafable_slug_path(previous_leaf)
-          link_to path, data: hotkey_data_attributes("left", enabled: hotkey), class: "btn" do
-            image_tag("arrow-left.svg", aria: { hidden: true }, size: 24) + tag.span("Previous: #{ previous_leaf.title }", class: "for-screen-reader")
+        book_id = page.book_id
+
+        if previous_page = page.previous
+          path = for_edit ? edit_book_page_path(book_id, previous_page) : book_page_path(book_id, previous_page)
+          link_to path, class: "txt-medium min-width btn" do
+            "<i class='fa-solid fa-arrow-left-long'></i>".html_safe + tag.span("Previous: #{previous_page.main_title }", class: "overflow-ellipsis")
           end
         else
         #   link_to book_slug_path(leaf.book), data: hotkey_data_attributes("left", enabled: hotkey), class: "btn" do
