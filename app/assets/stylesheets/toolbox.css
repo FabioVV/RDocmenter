@@ -5,6 +5,8 @@
     flex-direction: row;
     flex-wrap: wrap;
     margin-bottom: 1.5em;
+    gap: 1rem;
+
 }
 
 .toolbox > div {
@@ -15,7 +17,7 @@
 
 }
 
-.change-editor-mode-button{
+.change-editor-mode{
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -44,24 +46,24 @@
     padding: 0.74rem;
 }
 
-.change-editor-mode-button > span > i{
+.change-editor-mode > span > i{
     font-size: var(--font-medium-responsive) !important;
 }
 
-.save-page-button > i{
+.save-page-button > label > i{
     cursor: pointer;
     font-size: var(--font-medium-responsive) !important;
-    color: rgb(97, 255, 97);
+    color: rgb(67, 241, 67);
 }
 
-.delete-page-button > button{
+.delete-page-button > a{
     background: none !important;
     border: none !important;
     padding: 0;
     margin: 0 0 0 0;
 }
 
-.delete-page-button > button > i{
+.delete-page-button > a > i{
     font-size: var(--font-medium-responsive) !important;
     cursor: pointer !important;
     color: red !important;

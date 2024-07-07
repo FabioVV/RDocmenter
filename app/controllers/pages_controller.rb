@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
-    before_action :require_user
-    before_action :set_page, only: [:edit, :show, :update]
-    before_action :set_book, only: [:edit, :show, :create]
+    before_action :require_user, except: [:show]
+    before_action :set_pages, only: [:edit, :show, :update, :destroy]
+    before_action :set_book, only: [:edit, :show, :create, :destroy]
 
     def create
         # page type -> params[:page_type]
@@ -34,14 +34,22 @@ class PagesController < ApplicationController
     def show
     end
 
+    def destroy
+        if @page.update(is_active:false)  
+            redirect_to edit_book_path(@book)
+        else    
+            render 'edit', status: :unprocessable_entity
+        end   
+    end
+
     private 
 
-    def set_page
-        @page = Page.find(params[:id])
+    def set_pages
+        @page = Page.active.find(params[:id])
     end
 
     def set_book
-        @book = Book.find(params[:book_id])
+        @book = Book.active.find(params[:book_id])
     end
 
     def page_params

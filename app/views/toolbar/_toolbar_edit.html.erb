@@ -25,24 +25,15 @@
         </div>
 
         <div class='delete-page-button'>
-            <%= button_to "<i title='Delete page' id='del__' class='fa-solid fa-delete-left'></i>".html_safe, book_path(@book), method: :delete %>
+            <%= link_to "<i title='Delete page' id='del__' class='fa-solid fa-delete-left'></i>".html_safe, book_page_path(@page.book_id, @page.id), data: { turbo_method: :delete } %>
         </div>
 
         <div class='save-page-button'>
             <input style='display:none;' id='sub__b' type="submit" name="commit" value="Update Page" data-disable-with="Update Page">
-            <i title='Save page' id='sub__' class="fa-solid fa-circle-check"></i>
+            <label for='sub__b'>
+                <i title='Save page' id='sub__' class="fa-solid fa-circle-check"></i>
+            </label>
         </div>
     </div>
 
 </div>
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const SUBMIT_ICON = document.getElementById('sub__')
-
-        SUBMIT_ICON.addEventListener("click", () => {
-            document.getElementById('sub__b').click()
-        })
-    })
-</script>

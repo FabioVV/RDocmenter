@@ -21,6 +21,8 @@ class Page < ApplicationRecord
   # scope :sorted, -> { order(created_at: :desc) }
   scope :before, ->(page) { where("created_at < ?", page.created_at) }
   scope :after, ->(page) { where("created_at > ?", page.created_at) }
+  scope :active, -> { where(is_active: true) }
+
 
   def previous
     book.pages.before(self).last

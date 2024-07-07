@@ -1,12 +1,13 @@
 class BooksController < ApplicationController
     before_action :set_book, only: [:show, :edit, :update, :destroy, :edit_info, :update_edit_info]
     before_action :require_same_author_or_admin, only: [:edit, :update, :destroy, :edit_info, :update_edit_info]
+    before_action :set_pages, only: [:edit]
     before_action :require_user
 
 
     def index 
-        @any_books = current_user.books.any?
-        @books = current_user.books.where(is_active: true)
+        @any_books = current_user.books.active.any?
+        @books = current_user.books.active
     end
 
     def show
@@ -37,7 +38,6 @@ class BooksController < ApplicationController
     end
 
     def destroy
-        #TODO: Add a is_active to book and deactivate, not delete 
         if @book.update(is_active:false)  
             redirect_to books_path
         else    
@@ -60,7 +60,11 @@ class BooksController < ApplicationController
     private
 
     def set_book
-        @book = Book.find(params[:id])
+        @book = Book.active.find(params[:id])
+    end
+
+    def set_pages
+        @pages = Book.active.find(params[:id]).pages.active
     end
 
     def book_params

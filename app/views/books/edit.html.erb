@@ -33,9 +33,9 @@
             <div class=''>
             </div>
         </div>
-        <% if @book.pages.any? %>
+        <% if @book.has_active_pages? %>
             <div class='book-pages'>
-                    <% @book.pages.each do |p| %> 
+                    <% @pages.each do |p| %> 
                         <div class='book-page-container'>
                             <div class='book-page <%= 'remove-padding' if p.page_image.attached? %>' data-controller='editpage' data-action="click->editpage#openPageEdit" data-id='<%= p.id %>' data-book-id='<%= p.book_id %>'>
                                 <% if p.page_image.attached? %>

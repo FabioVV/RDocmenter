@@ -11,6 +11,11 @@ class Book < ApplicationRecord
 
     validates :subtitle, length: {minimum:0, maximum: 100}
 
+    scope :active, -> { where(is_active: true) }
+
+    def has_active_pages?
+        pages.active.any?
+    end
 
     private 
 
