@@ -21,7 +21,11 @@
                 </strong>
             <% else %>
                 <label class='input-sizer'>
-                    <input type='text' placeholder='Page title here' class='button-page-title-nav' name="page[main_title]" id='page_main_title_nav'>
+                <%= form_with(model: @page, local: true, url:book_page_path(@page.book_id, @page), method: :patch) do |f| %>
+
+                    <%= f.text_field :main_title, placeholder: "Page title here", id: "page_main_title_nav" %>
+                <% end %>
+
                 </label>
             <% end %>
 

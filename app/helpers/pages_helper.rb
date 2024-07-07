@@ -1,8 +1,12 @@
 module PagesHelper
 
-    def toolbar_options(edit: false)
+    def toolbar_options(edit: false, page_type: nil)
         if edit
-            render 'toolbar/toolbar_edit'
+            if page_type == 'text'
+              render 'toolbar/toolbar_edit_markdown'
+            else
+              render 'toolbar/toolbar_edit'
+            end
         else
             render 'toolbar/toolbar_show'
         end

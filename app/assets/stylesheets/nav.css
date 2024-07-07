@@ -29,14 +29,6 @@ li > a:hover{
 }
 
 
-.button-page-title-nav{
-    margin: 0 0 0 0 !important;
-    border: none !important;
-    outline: none !important;
-    background-color: rgb(31, 31, 31) !important;
-    color: white !important;
-}
-
 .fullscreen-toggle{
     display: flex;
     justify-content: center;
@@ -56,6 +48,9 @@ li > a:hover{
     font-size: 20px;
 }
 
+#page_main_title_nav{
+    field-sizing: content;
+}
 
 .input-sizer{
     display: inline-grid;

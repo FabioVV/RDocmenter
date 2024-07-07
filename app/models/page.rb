@@ -19,9 +19,9 @@ class Page < ApplicationRecord
   # end
 
   # scope :sorted, -> { order(created_at: :desc) }
-  scope :before, ->(page) { where("created_at < ?", page.created_at) }
-  scope :after, ->(page) { where("created_at > ?", page.created_at) }
   scope :active, -> { where(is_active: true) }
+  scope :before, ->(page) { where("created_at < ?", page.created_at).active }
+  scope :after, ->(page) { where("created_at > ?", page.created_at).active }
 
 
   def previous

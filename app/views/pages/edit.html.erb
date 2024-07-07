@@ -9,8 +9,9 @@
     <%= f.hidden_field :main_title %>
 
     <section class='page-editor-container edit-page'>
+        <%= @page.is_active %>
 
-        <%= toolbar_options(edit: true) %>
+        <%= toolbar_options(edit: true, page_type: @page.page_type) %>
 
         <% case @page.page_type %>
         <% when "image" %>
