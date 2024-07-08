@@ -1,5 +1,4 @@
 module PagesHelper
-
     def toolbar_options(edit: false, page_type: nil)
         if edit
             if page_type == 'text'
@@ -10,6 +9,17 @@ module PagesHelper
         else
             render 'toolbar/toolbar_show'
         end
+    end
+
+    def page_text_edit_form(page, **, &)
+      form_with model: page, url: book_page_path(page.book_id, page), method: :patch, format: :html,
+      data: {
+        controller: "autosave",
+        action: "autosave#submit:prevent input@document->autosave#change house-md:change->autosave#change",
+        autosave_clean_class: "clean",
+        autosave_dirty_class: "dirty",
+        autosave_saving_class: "saving"
+      }, **, &
     end
 
     def link_to_previous_page(page, for_edit: false)

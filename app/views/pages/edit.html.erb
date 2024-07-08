@@ -9,7 +9,6 @@
     <%= f.hidden_field :main_title %>
 
     <section class='page-editor-container edit-page'>
-        <%= @page.is_active %>
 
         <%= toolbar_options(edit: true, page_type: @page.page_type) %>
 
@@ -32,10 +31,9 @@
             </div>
 
         <% when "text" %>
+            contenteditable use this for the new editor
 
-            <div class='page-editor'>
-                <textarea class='main-arkdown-editor'></textarea>
-            </div>
+            <%= render "pages/form", book: @book, page: @page %>
 
         <% else %>
             <span>Type of page not recognized.</span>

@@ -1,4 +1,3 @@
-
 module MarkdownHelper
     
     DEFAULT_RENDERER_OPTIONS = {
