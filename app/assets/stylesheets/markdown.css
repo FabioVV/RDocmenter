@@ -1,7 +1,19 @@
 #main-editor{
-
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
-#main-editor:focus{
-
+.doc-menter-content{
+    caret-color: 54% 0.15 255;
+    flex-grow: 1;
+    min-block-size: 50dvh;
+    text-align: start;
+    white-space: break-spaces;
+    
+    &:focus,
+    &:active {
+      border: none;
+      outline: none;
+    }
 }
