@@ -4,7 +4,7 @@ module ActionText
           field_name = "#{record.class.model_name.param_key}[#{name}]"
           value = record.content.to_s if value.nil?
 
-          tag.cteditor value, name: field_name, **options
+          tag.documenter value, name: field_name, **options
       end
   end
   
