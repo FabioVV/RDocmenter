@@ -7,16 +7,16 @@ class Page < ApplicationRecord
 
   validate :file_format
 
-  validate :page_type_s
+  validate :valid_page_type
 
-  # cattr_accessor :preview_renderer do
-  #   renderer = Redcarpet::Render::HTML.new(ActionText::Markdown::DEFAULT_RENDERER_OPTIONS)
-  #   Redcarpet::Markdown.new(renderer, ActionText::Markdown::DEFAULT_MARKDOWN_EXTENSIONS)
-  # end
+  cattr_accessor :preview_renderer do
+    renderer = Redcarpet::Render::HTML.new(ActionText::Markdown::DEFAULT_RENDERER_OPTIONS)
+    Redcarpet::Markdown.new(renderer, ActionText::Markdown::DEFAULT_MARKDOWN_EXTENSIONS)
+  end
 
-  # def html_preview
-  #   preview_renderer.render(body_preview)
-  # end
+  def html_preview
+    preview_renderer.render(body_preview)
+  end
 
   # scope :sorted, -> { order(created_at: :desc) }
   scope :active, -> { where(is_active: true) }
@@ -43,7 +43,7 @@ class Page < ApplicationRecord
 
     # validate
 
-    def page_type_s
+    def valid_page_type
       return unless !page_type.in?(["title", "image", "text"])
 
       errors.add(:page_type, 'Unknow type of page.')

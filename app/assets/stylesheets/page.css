@@ -10,12 +10,15 @@
 
 .edit-page{
     grid-auto-columns: 1fr 1fr;
-
 }
 
 .show-page{
     margin-top: 2rem !important;
-    grid-auto-columns: 80vw; 
+}
+
+.show-page:has(figure){
+    grid-auto-columns: 90vw; 
+
 }
 
 .image-page-upload{
@@ -33,6 +36,11 @@
 }
 
 .page-editor.page-title{
+    inline-size: 67ch;
+    max-inline-size: 100vw;
+    overflow-wrap: break-word;
+    text-wrap: pretty;
+    color: black;
 }
 
 .section_header_input{
@@ -43,6 +51,15 @@
     font-size: var(--font-medium-responsive);
     padding: 1rem;
 
+}
+
+.page-editor-container.edit-page:has(.page-image-show){
+    margin-top: 2rem !important;
+
+}
+
+.page-editor-container.show-page:has(figure){
+    inline-size: 100%;
 }
 
 section:has(.page-image-show){

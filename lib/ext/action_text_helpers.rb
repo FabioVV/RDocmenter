@@ -7,6 +7,27 @@ module ActionText
           tag.cteditor value, name: field_name, **options
       end
   end
+  
+  class Markdown < Record
+    DEFAULT_RENDERER_OPTIONS = {
+      filter_html: false
+    }
+
+    DEFAULT_MARKDOWN_EXTENSIONS = {
+      autolink: true,
+      highlight: true,
+      no_intra_emphasis: true,
+      fenced_code_blocks: true,
+      lax_spacing: true,
+      strikethrough: true,
+      tables: true
+    }
+
+    def to_html
+      (renderer.try(:call) || renderer).render(content).html_safe
+    end
+
+  end
 end
 
 module ActionView

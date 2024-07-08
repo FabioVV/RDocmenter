@@ -37,6 +37,10 @@
     gap: 1rem;
 }
 
+.toolbox-edit-container:has(:not(.editor-button)){
+    gap: 0 !important;
+}
+
 .save-page-button{
     padding: 0.74rem;
     

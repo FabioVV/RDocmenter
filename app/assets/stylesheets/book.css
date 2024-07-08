@@ -25,7 +25,6 @@ main{
 }
 
 .book:hover{
-    transform: scale(1.02);
     cursor: pointer;
 }
 
@@ -152,13 +151,11 @@ main{
 }
 
 .book-return-button:hover{
-    transform: scale(1.05);
 
 }
 
 
 .book-edit-button:hover{
-    transform: scale(1.05);
 
 }
 
@@ -272,7 +269,6 @@ main{
 }
 
 .book-edit-actions-crud > a > i:hover{
-    transform: scale(1.1);
 }
 
 .book-edit-actions-layout > a > i {
@@ -283,7 +279,6 @@ main{
 }
 
 .book-edit-actions-layout > a > i:hover{
-    transform: scale(1.1);
 }
 
 .book-pages{
@@ -323,13 +318,14 @@ main{
 
 
 .section-header{
-    p{
-        margin: 0 !important;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: black;
 }
 
 .book-page:hover{
-    transform: scale(1.02);
     cursor: pointer;
 }
 
@@ -367,7 +363,6 @@ main{
 }
 
 .reset_book_actions_css:hover{
-    transform: scale(1.1);
 
 }
 
@@ -417,7 +412,6 @@ main{
 }
 
 .book-action-create-page:hover{
-    transform: scale(1.1);
     background-color: transparent !important;
 }
 

@@ -3,6 +3,7 @@
 <% end %>
 
 
+
 <%= form_with(model: @page, local: true, url:book_page_path(@page.book_id, @page), method: :patch) do |f| %>
     <%= render "shared/errors", resource: @page %>
 
@@ -27,7 +28,7 @@
         <% when "title" %>
     
             <div class='page-editor page-title'>
-                <%= f.text_area :section_header, size: "50x10", class: "section_header_input" %>
+                <%= f.text_area :section_header, size: "60x10", class: "section_header_input" %>
             </div>
 
         <% when "text" %>

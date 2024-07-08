@@ -25,7 +25,7 @@
 
     <%= render 'layouts/messages'%>
 
-    <main style='<%= !flash.empty? ? 'margin-top:2em;' : '' %>'>
+    <main class="<%= yield(:main_classes) %>" style='<%= !flash.empty? ? 'margin-top:2em;' : '' %>'>
       <%= yield %>
     </main>
     

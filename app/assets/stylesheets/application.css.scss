@@ -48,6 +48,9 @@ body > header > *:only-child {
   margin-block-start: 1rem !important;
 }
 
+figure > img {
+  max-inline-size: 100% !important;
+}
 
 .switch {
   position: relative;
@@ -99,8 +102,12 @@ body > header > *:only-child {
   padding:  0.5em 1.1em;
   text-decoration: none;
   gap: 3px;
+  transition: all 100ms;
 }
 
+.btn:hover{
+  box-shadow:  rgb(116, 115, 115) 0px 0px 0px 2px;
+}
 
 input:checked + .slider {
   background-color: #2196F3;
