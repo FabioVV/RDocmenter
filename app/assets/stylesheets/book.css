@@ -29,30 +29,6 @@ main{
     cursor: pointer;
 }
 
-.book::before {  
-    transform: scaleX(0);
-    transform-origin: bottom right;
-}
-  
-.book:hover::before {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
-  
-.book::before {
-    content: " ";
-    display: block;
-    position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
-    inset: 0 0 0 0;
-
-    background: var(--accent-bg); 
-
-    z-index: -1;
-    transition: transform .3s ease;
-}
-  
-
 .book-actions > .book-actions-links{
     display: flex;
     flex-direction: row;

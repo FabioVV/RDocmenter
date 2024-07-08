@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
 
     # Allows for extra fields in the user forms
     def configure_permitted_parameters
-        devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :first_name, :last_name, :profile_photo])
-        devise_parameter_sanitizer.permit(:account_update, keys: [:username, :first_name, :last_name, :profile_photo])
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :profile_photo])
+        devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :profile_photo])
     end
 
     def require_user

@@ -32,6 +32,10 @@ class Page < ApplicationRecord
     book.pages.after(self).first
   end
 
+  def is_page_image?
+    page_type == 'image'
+  end
+
   private
     def body_preview
       content.to_s.first(1024)
