@@ -1,15 +1,15 @@
-.toolbox{
+#toolbox{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
     flex-wrap: wrap;
-    margin-bottom: 1.5em;
-    gap: 1rem;
-
+    position: sticky;
+    inset: 0 0 auto;
+    min-width: 0;
+    overflow: hidden;
 }
 
-.toolbox > div {
+#toolbox > div {
     background-color: var(--accent-bg);
 
     border-top-right-radius: 100px;

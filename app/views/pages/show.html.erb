@@ -2,10 +2,14 @@
     <%= navbar_book_options(book: @book, hide_input: true, page: true, page_id: @page.id) %>
 <% end %>
 
+<% content_for :body_page_class, "body-grid-change" %>
+
+
+<% content_for :toolbar do %>
+    <%= toolbar_options(edit: false) %>
+<% end %>
 
 <section class='page-editor-container show-page'>
-
-    <%= toolbar_options(edit: false) %>
 
     <% case @page.page_type %>
     <% when "image" %>

@@ -5,7 +5,10 @@
     margin-top: 0 !important;
     place-content: center;
     text-align: center;
-
+    container-type: inline-size;
+    max-inline-size: 100dvw;
+    margin-inline: auto;
+    inline-size: 67ch;
 }
 
 .edit-page{
@@ -36,7 +39,8 @@
 }
 
 .page-editor.page-title{
-    inline-size: 67ch;
+    inline-size: 70ch;
+    /* inline-size: 90ch; */
     max-inline-size: 100vw;
     overflow-wrap: break-word;
     text-wrap: pretty;
@@ -48,7 +52,7 @@
     border: 4px var(--border) solid;
     border-radius: 30px;
     text-align: center;
-    font-size: var(--font-medium-responsive);
+    font-size: var(--font-x-large-responsive);
     padding: 1rem;
 
 }

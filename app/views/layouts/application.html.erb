@@ -14,7 +14,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="<%= yield(:body_page_class) %>">
     <header>
       <% if content_for?(:navbar) %>
         <%= yield(:navbar) %>
@@ -24,6 +24,10 @@
     </header>
 
     <%= render 'layouts/messages'%>
+
+    <div id='toolbox'>
+      <%= yield(:toolbar) %>
+    </div>
 
     <main class="<%= yield(:main_classes) %>" style='<%= !flash.empty? ? 'margin-top:2em;' : '' %>'>
       <%= yield %>

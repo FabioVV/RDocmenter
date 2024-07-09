@@ -3,20 +3,26 @@
 <% end %>
 
 
+<% content_for :body_page_class, "body-grid-change" %>
+
+<% content_for :toolbar do %>
+    <%= toolbar_options(edit: true, page_type: @page.page_type) %>
+<% end %>
+
 
 <%= form_with(model: @page, local: true, url:book_page_path(@page.book_id, @page), method: :patch) do |f| %>
     <%= render "shared/errors", resource: @page %>
-
     <%= f.hidden_field :main_title %>
 
-    <section class='page-editor-container edit-page'>
+    <%= f.submit id:'submit_page', style: 'display:none;' %>
+ 
 
-        <%= toolbar_options(edit: true, page_type: @page.page_type) %>
+    <section class='page-editor-container edit-page'>
 
         <% case @page.page_type %>
         <% when "image" %>
 
-            <figure class='page-image-show'>
+            <figure class='page-image-edit'>
                 <%= image_tag @page.page_image.attached? ? @page.page_image : "https://placehold.co/600x400?text=Image", id: "image-replace", class: "image-page-upload", onclick: "clickOnFileField();" %>
                 <%= f.file_field :page_image, class: "image-page-upload-input", onchange: "previewImage(this);" %>
 
@@ -28,7 +34,7 @@
         <% when "title" %>
     
             <div class='page-editor page-title'>
-                <%= f.text_area :section_header, size: "60x10", class: "section_header_input" %>
+                <%= f.text_area :section_header, size: "70x5", class: "section_header_input" %>
             </div>
 
         <% when "text" %>

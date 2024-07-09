@@ -1,19 +1,21 @@
-#main-editor{
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+
+:where(doc-menter){
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 0;
+
 }
 
 .doc-menter-content{
-    caret-color: 54% 0.15 255;
-    flex-grow: 1;
-    min-block-size: 50dvh;
-    text-align: start;
-    white-space: break-spaces;
-    
-    &:focus,
-    &:active {
-      border: none;
-      outline: none;
-    }
+  flex-grow: 1;
+  min-block-size: 50dvh;
+  text-align: start;
+  white-space: break-spaces;
+  
+  &:focus,
+  &:active {
+    border: none;
+    outline: none;
+  }
 }

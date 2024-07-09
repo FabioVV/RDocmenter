@@ -133,6 +133,16 @@ input:checked + .slider:before {
 }
 
 
+.body-grid-change{
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100dvh;
+
+  gap: 0.5rem;
+  main{
+    place-content: center;
+  }
+}
+
 @media screen and (max-width: 720px) {
   li > a {
     font-weight: 400 !important;
@@ -144,25 +154,6 @@ input:checked + .slider:before {
 }
 
 
-
-/*Styles for the crazy text in the home.html.erb*/
-
-
-.bold {
-  font-weight: 900;
-}
-
-.italic {
-  font-style: italic;
-}
-
-.center-text{
-  text-align: center;
-}
-
-
-
-/*@MEDIA*/
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
   * {

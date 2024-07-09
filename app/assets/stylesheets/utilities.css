@@ -38,3 +38,20 @@
 .full-width { inline-size: 100%; }
 .flex-item-no-shrink { flex-shrink: 0; }
 .remove-padding { padding: 0 !important; }
+
+
+
+
+.bold {
+    font-weight: 900;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.center-text{
+    text-align: center;
+}
+
+  
