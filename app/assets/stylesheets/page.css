@@ -9,6 +9,8 @@
     max-inline-size: 100dvw;
     margin-inline: auto;
     inline-size: 67ch;
+
+    padding: 0 !important;
 }
 
 .edit-page{
