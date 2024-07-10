@@ -1,3 +1,4 @@
 <%= page_text_edit_form(page, id: "cteditor-editor") do |f| %>
   <%= f.markdown_area :content,  class: "main-editor" %>
+  <%= f.submit 'Save page', style: 'display:none;', id:'markup-page-save' %>
 <% end %>

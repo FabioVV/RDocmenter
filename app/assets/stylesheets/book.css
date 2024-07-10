@@ -58,10 +58,6 @@ main{
 
 }
 
-.book-img-section{
-
-}
-
 .book-img-section > img{
     border: 1px solid black;
     object-fit: cover;

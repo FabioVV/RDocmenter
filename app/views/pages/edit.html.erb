@@ -38,8 +38,10 @@
             </div>
 
         <% when "text" %>
-
-            <%= render "pages/form", book: @book, page: @page %>
+        
+            <!--Custom tag-->
+            <%= f.markdown_area :content,  class: "main-editor" %>
+            <!--Custom tag-->
 
         <% else %>
             <span>Type of page not recognized.</span>
