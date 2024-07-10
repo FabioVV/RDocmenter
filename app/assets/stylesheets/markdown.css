@@ -1,14 +1,9 @@
 
 :where(doc-menter){
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  /* min-width: 0; */
-  min-width: 70ch;
+  min-width: 0;
 }
 
 .doc-menter-content{
-  flex-grow: 1;
   min-block-size: 50dvh;
   text-align: start;
   white-space: break-spaces;

@@ -1,51 +1,49 @@
 import parseMarkdown from "./parser"
 
-
 class Documenter extends HTMLElement {
 
     constructor() {
-        super();
-        this.contentDiv = null;
-
-        this.handleInput = this.handleInput.bind(this);
+        super()
+        this.contentDiv = null
+        this.handleInput = this.handleInput.bind(this)
+        this.handleKeyDown = this.handleKeyDown.bind(this);
     }
 
     connectedCallback() {
-        this.contentDiv = document.createElement('div');
-        this.contentDiv.classList.add("doc-menter-content");
-        this.contentDiv.setAttribute('contenteditable', true);
-        this.contentDiv.setAttribute('autofocus', true);
-        this.appendChild(this.contentDiv);
+        this.contentDiv = document.createElement('div')
+        this.contentDiv.classList.add("doc-menter-content")
+        this.contentDiv.setAttribute('contenteditable', true)
+        this.contentDiv.setAttribute('autofocus', true)
+        this.appendChild(this.contentDiv)
 
-        this.contentDiv.addEventListener('keydown', (event) => {
-            if (event.key == 'Enter') {
-                event.preventDefault()
-
-                document.execCommand('insertLineBreak');
-                
-                this.contentDiv.focus();
-
-            }
-        });
-
-        this.contentDiv.addEventListener('input', this.handleInput);
+        this.contentDiv.addEventListener('keydown', this.handleKeyDown);
+        this.contentDiv.addEventListener('input', this.handleInput)
     }
+
+    disconnectedCallback(){
+        this.#cleanEventListeners()
+    }
+    
 
     handleInput(event) {
         event.preventDefault()
         let contentElement = this.contentDiv
-        let restore = this.saveCaretPosition(contentElement)
+        const content = contentElement.textContent;
 
-        const content = contentElement.innerHTML;
+        const restore = this.saveCaretPosition(contentElement)
+
         const parsedContent = parseMarkdown(content)
-
         contentElement.innerHTML = parsedContent
 
         restore()
-        contentElement.focus()
     }
 
-
+    handleKeyDown(event) {
+        if (event.key == 'Enter') {
+            event.preventDefault();
+            document.execCommand('insertLineBreak');
+        }
+    }
 
     saveCaretPosition(context){
         let selection = window.getSelection();
@@ -64,16 +62,12 @@ class Documenter extends HTMLElement {
     }
 
 
-}
+    #cleanEventListeners(){
+        this.contentDiv.removeEventListener('keydown', this.handleKeyDown);
+        this.contentDiv.removeEventListener('input', this.handleInput);
+    }
 
-function moveCursorToEnd(contentEle) {
-    const range = document.createRange();
-    const selection = window.getSelection();
-    range.setStart(contentEle, contentEle.childNodes.length);
-    range.collapse(true);
-    selection.removeAllRanges();
-    selection.addRange(range);
-};
+}
 
 function getTextNodeAtPosition(root, index){
     const NODE_TYPE = NodeFilter.SHOW_TEXT;
@@ -91,6 +85,15 @@ function getTextNodeAtPosition(root, index){
         position: index
     };
 }
+
+// function moveCursorToEnd(contentEle) {
+//     const range = document.createRange();
+//     const selection = window.getSelection();
+//     range.setStart(contentEle, contentEle.childNodes.length);
+//     range.collapse(true);
+//     selection.removeAllRanges();
+//     selection.addRange(range);
+// }
 
 
 customElements.define('doc-menter', Documenter);

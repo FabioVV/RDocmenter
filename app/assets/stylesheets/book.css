@@ -1,5 +1,6 @@
 main{
     grid-column: 1 / -1 !important;
+    font-size: var(--font-medium-responsive) !important;
     margin: 0 auto;
 }
 

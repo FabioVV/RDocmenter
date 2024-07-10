@@ -135,7 +135,6 @@ input:checked + .slider:before {
 .body-grid-change{
   grid-template-rows: auto auto 1fr auto;
   min-height: 100dvh;
-
   gap: 0.5rem;
   main{
     place-content: center;
