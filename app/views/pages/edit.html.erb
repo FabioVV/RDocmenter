@@ -22,9 +22,9 @@
         <% case @page.page_type %>
         <% when "image" %>
 
-            <figure class='page-image-edit'>
-                <%= image_tag @page.page_image.attached? ? @page.page_image : "https://placehold.co/600x400?text=Image", id: "image-replace", class: "image-page-upload", onclick: "clickOnFileField();" %>
-                <%= f.file_field :page_image, class: "image-page-upload-input", onchange: "previewImage(this);" %>
+            <figure data-controller="previewimage" class='page-image-edit'>
+                <%= image_tag @page.page_image.attached? ? @page.page_image : "https://placehold.co/600x400?text=Image", data: { action: "click->previewimage#clickOnFileField",  previewimage_target: "preview" }, class: "image-page-upload" %>
+                <%= f.file_field :page_image, class: "image-page-upload-input", data: { previewimage_target: "input", action: "change->previewimage#previewImage" } %>
 
                 <figcaption>
                     <%= simple_format @page.image_caption %>
@@ -72,25 +72,4 @@
 
     });
 
-    function clickOnFileField(){
-        document.getElementById('page_page_image').click()
-    }
-
-    function previewImage(input){
-        if(input.files && input.files[0]){
-            const r = new FileReader()
-            const file = input.files[0]
-
-            if(!file.type.startsWith('image/')){
-                return
-            }
-
-            r.onload = function(e) {
-                const preview = document.getElementById('image-replace')
-                preview.src = e.target.result
-            }
-
-            r.readAsDataURL(file)
-        }
-    }
 </script>

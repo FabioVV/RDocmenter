@@ -1,11 +1,7 @@
-<section class='edit-book_info-container'>
+<section data-controller="previewimage" class='edit-book_info-container'>
 
     <div class='edit-book_info-image'>
-        <% if @book.cover_image.attached? %>
-            <%= image_tag @book.cover_image, alt: "Image of the current book", size: "210x290"  %>
-        <% else %>
-            <%= image_tag 'placeholder_book_edit_info.svg', id: "image-book-replace", onclick: "clickOnFileField();" %>
-        <% end %>
+        <%= image_tag 'placeholder_book_edit_info.svg', data: { action: "click->previewimage#clickOnFileField",  previewimage_target: "preview" } %>
     </div>
 
     <div class='edit-book_info-form'>
@@ -23,7 +19,7 @@
             </div>
 
             <div class="field book-image-cover-create">
-                <%= f.file_field :cover_image, onchange: "previewImage(this);" %><br>
+                <%= f.file_field :cover_image, data: { previewimage_target: "input", action: "change->previewimage#previewImage" } %><br>
             </div>
 
             <br />
@@ -35,28 +31,3 @@
     </div>
 
 </section> 
-
-<script>
-
-    function clickOnFileField(){
-        document.getElementById('book_cover_image').click()
-    }
-
-    function previewImage(input){
-        if(input.files && input.files[0]){
-            const r = new FileReader()
-            const file = input.files[0]
-
-            if(!file.type.startsWith('image/')){
-                return
-            }
-
-            r.onload = function(e) {
-                const preview = document.getElementById('image-book-replace')
-                preview.src = e.target.result
-            }
-
-            r.readAsDataURL(file)
-        }
-    }
-</script>
