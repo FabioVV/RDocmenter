@@ -1,8 +1,7 @@
 
 <%= render "toolbar/toolbar_toggle_mode" %>
 
-<div class='toolbox-edit-container'>
-
+<div class='toolbox-edit-markdown'>
     <div class='bold editor-button'>
         <i class="fa-solid fa-bold"></i>
     </div>
@@ -22,7 +21,9 @@
     <div class='link editor-button'>
         <i class="fa-solid fa-link"></i>        
     </div>
+</div>
 
+<div class='toolbox-edit-container'>
     <div class='delete-page-button'>
         <%= link_to "<i title='Delete page' id='del__' class='fa-solid fa-delete-left'></i>".html_safe, book_page_path(@page.book_id, @page.id), data: { turbo_method: :delete, confirm: "Are you sure?", turbo_confirm: "This is a destructive action! | You will not be able to recover this page." } %>
     </div>

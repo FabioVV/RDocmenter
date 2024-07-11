@@ -6,10 +6,10 @@ class PagesController < ApplicationController
     def create
         # page type -> params[:page_type]
         @page = @book.pages.build(page_params)
-        @page.main_title = "New " + @page.page_type.to_s + " page"
+        @page.main_title = 'New ' + @page.page_type.to_s + ' page'
 
         if @page.page_type.to_s == 'title'
-            @page.section_header = "New title page"
+            @page.section_header = 'New title page'
         end
 
         if @page.save

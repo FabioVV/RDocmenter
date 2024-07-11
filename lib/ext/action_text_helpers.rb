@@ -4,7 +4,8 @@ module ActionText
           field_name = "#{record.class.model_name.param_key}[#{name}]"
           value = record.content.to_s if value.nil?
 
-          tag('doc-menter', value, name: field_name, id: 'main-editor', **options)
+          tag('doc-menter', nil, id: 'main-editor', **options) + hidden_field_tag(field_name, value, id: "#{name}_hidden")
+          
       end
   end
   
@@ -22,11 +23,6 @@ module ActionText
       strikethrough: true,
       tables: true
     }
-
-    def to_html
-      (renderer.try(:call) || renderer).render(content).html_safe
-    end
-
   end
 end
 

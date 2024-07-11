@@ -13,13 +13,15 @@
             <%= render "devise/shared/error_messages", resource: @book %>
 
             <div class="field">
-                <%= f.label :title, class: "book-title-label" %><br />
-                <%= f.text_area :title, size: "30x3", class: "title-subtitle-book-textarea" %>
+                <%= f.text_field :title, placeholder: "Title",  class: "" %>
             </div>
 
             <div class="field">
-                <%= f.label :subtitle, class: "book-subtitle-label" %><br />
-                <%= f.text_area :subtitle, size: "30x3", class: "title-subtitle-book-textarea" %>
+                <%= f.text_area :subtitle, placeholder: "Subtitle", size: "22x2", class: "title-subtitle-book-textarea" %>
+            </div>
+
+            <div class="field">
+                <%= f.text_field :author, placeholder: "Author",  class: "" %>
             </div>
 
             <div class="field book-image-cover-create">
@@ -29,12 +31,13 @@
             <br />
             <div class="actions">
                 <%= f.submit action_name %>
+                <%= button_to "Delete book/document", book_path(@book), data: { confirm: "Are you sure?", turbo_confirm: "This is not a destructive action | You will be able to reactivate the book later, just use the filter in your library"}, method: :delete , class: "delete-book-button" %>
             </div>
             <br />
 
         <% end %>
 
     </div>
-    <div><%= button_to "Delete book/document", book_path(@book), data: { confirm: "Are you sure?", turbo_confirm: "This is not a destructive action | You will be able to reactivate the book later, just use the filter in your library"}, method: :delete , class: "delete-book-button" %></div>
+    <div></div>
 
 </section>

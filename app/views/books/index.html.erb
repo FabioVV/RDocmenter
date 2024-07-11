@@ -1,7 +1,5 @@
-<h1>(add pagination later)</h1>
-
+<h1>library (Maybe an bg image here)</h1>
 <section class='books-index'>
-
     <div class='book-index-actions'>
         <% if !@any_books %>
             <%= button_to "Create my first book", new_book_path, method: :get, class: "first-book-button" %>
@@ -9,7 +7,11 @@
             <div class='book-index-buttons'>
 
                 <%= link_to "<i style='font-size:30px; color:var(--accent);' class='fa-solid fa-file-circle-plus'></i>".html_safe, new_book_path, method: :get, class: "reset_book_actions_css", title: "Create new book/document" %>
-                <%= link_to "<i style='font-size:30px; color:red;' class='fa-solid fa-trash-can'></i>".html_safe, new_book_path, method: :get, class: "reset_book_actions_css", title: "Enter/Leave delete mode to delete in bulk"%>
+                <%
+=begin%>
+ <%= link_to "<i style='font-size:30px; color:red;' class='fa-solid fa-trash-can'></i>".html_safe, new_book_path, method: :get, class: "reset_book_actions_css", title: "Enter/Leave delete mode to delete in bulk"%> 
+<%
+=end%>
                 <a title='Open/Close filter options' onclick="toggle_book_filter()" id='book_filter_toggle' class='reset_book_actions_css' ><i style='color:grey !important; font-size:30px;' class="fa-solid fa-filter"></i></a>
 
             </div>

@@ -22,10 +22,15 @@
 }
 
 
+
 body, html {
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
   -webkit-text-size-adjust: none !important;
+}
+
+body > header {
+  background-color: transparent !important;
 }
 
 a{  
@@ -125,6 +130,10 @@ input:checked + .slider:before {
 /* Rounded sliders */
 .slider.round {
   border-radius: 34px;
+}
+
+.slider.round:hover {
+  box-shadow: var(--accent) 0px 0px 1px 3px;
 }
 
 .slider.round:before {

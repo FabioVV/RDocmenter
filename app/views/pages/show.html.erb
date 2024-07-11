@@ -36,9 +36,7 @@
 
     <% when "text" %>
 
-        <div class='page-editor'>
-            
-        </div>
+        <%= sanitize_content markdown_to_html(@page.content) %>
 
     <% else %>
         <span>Type of page not recognized.</span>

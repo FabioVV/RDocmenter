@@ -7,14 +7,19 @@ class Documenter extends HTMLElement {
         this.contentDiv = null
         this.handleInput = this.handleInput.bind(this)
         this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.inputHidden =  this.querySelector('#content_hidden')
     }
 
     connectedCallback() {
+        this.setAttribute('role', "textbox")
+        this.setAttribute('title', "main text editor")
+
         this.contentDiv = document.createElement('div')
         this.contentDiv.classList.add("doc-menter-content")
         this.contentDiv.setAttribute('contenteditable', true)
         this.contentDiv.setAttribute('autofocus', true)
         this.appendChild(this.contentDiv)
+        this.contentDiv.innerHTML = this.inputHidden.value
 
         this.contentDiv.addEventListener('keydown', this.handleKeyDown);
         this.contentDiv.addEventListener('input', this.handleInput)
@@ -27,6 +32,7 @@ class Documenter extends HTMLElement {
 
     handleInput(event) {
         event.preventDefault()
+
         let contentElement = this.contentDiv
         const content = contentElement.textContent;
 
@@ -34,6 +40,8 @@ class Documenter extends HTMLElement {
 
         const parsedContent = parseMarkdown(content)
         contentElement.innerHTML = parsedContent
+
+        this.inputHidden.value = contentElement.innerHTML
 
         restore()
     }
@@ -43,7 +51,7 @@ class Documenter extends HTMLElement {
             event.preventDefault();
             document.execCommand('insertLineBreak');
         }
-    }
+    }   
 
     saveCaretPosition(context){
         let selection = window.getSelection();

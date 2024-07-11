@@ -49,6 +49,7 @@
                                     <%= tag.span(simple_format(p.section_header), class: "center-text bold section-header text-medium-responsive") if p.section_header? %> 
 
                                 <% elsif p.page_type == 'text' %>
+                                    <%= sanitize_content p.html_preview %>
 
                                 <% end %>
 

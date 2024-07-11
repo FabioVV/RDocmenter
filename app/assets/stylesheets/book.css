@@ -87,7 +87,6 @@ main{
     display: flex;
     justify-content: center;
     flex-direction: column;
-    align-items: center;
 }
 
 .book-index-buttons{
@@ -357,8 +356,8 @@ main{
     cursor: pointer;
 }
 
-.reset_book_actions_css:hover{
-
+.edit-book_info-image:hover{
+    border: 3px solid rgb(163, 163, 255);
 }
 
 .book-index-filters-button{
@@ -372,8 +371,9 @@ main{
 
 .edit-book_info-container{
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
+    font-size: var(--font-large-responsive) !important;
 }
 
 .book-filter-options{

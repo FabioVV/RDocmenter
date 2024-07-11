@@ -2,11 +2,9 @@ class Page < ApplicationRecord
   belongs_to :book
 
   has_many_attached :images
-
   has_one_attached :page_image, dependent: :purge_later
 
   validate :file_format
-
   validate :valid_page_type
 
   cattr_accessor :preview_renderer do
@@ -17,6 +15,11 @@ class Page < ApplicationRecord
   def html_preview
     preview_renderer.render(body_preview)
   end
+
+  def to_html
+    preview_renderer.render(content.to_s)
+  end
+
 
   # scope :sorted, -> { order(created_at: :desc) }
   scope :active, -> { where(is_active: true) }

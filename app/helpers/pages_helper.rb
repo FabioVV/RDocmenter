@@ -1,4 +1,8 @@
 module PagesHelper
+  def sanitize_content(content)
+    sanitize content #, scrubber: HtmlScrubber.new TODO
+  end
+
     def toolbar_options(edit: false, page_type: nil)
       if current_user
         if edit
@@ -12,6 +16,8 @@ module PagesHelper
         end
       end
     end
+
+
 
     # Deactivated
     def page_text_edit_form(page, **, &)
