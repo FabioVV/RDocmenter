@@ -4,27 +4,28 @@ const Markup = [
     { r: /#### (.*?)(\n|$)/g, replace: "<span class='h4'>#### $1</span>" },
     { r: /### (.*?)(\n|$)/g, replace: "<span class='h3'>### $1</span>" },
     { r: /## (.*?)(\n|$)/g, replace: "<span class='h2'>## $1</span>" },
-    { r: /# (.*?)(\n|$)/g, replace: "<span class='h1'># $1</span>" },
+    { r: /# (.*?)(\n|$)/g, replace: "<h1># $1</h1>" },
     { r: /\*\*(.*?)\*\*/g, replace: "<strong>**$1**</strong>" },
     { r: /_(.*?)_/g, replace: "<em>_$1_</em>" },
     { r: /`(.*?)`/g, replace: "<code>`$1`</code>" },
 ]
 
-function sanitizeHTML(c) {
-    c = c.replaceAll(/&/g, "&amp;");
-    c = c.replaceAll(/</g, "&lt;");
-    c = c.replaceAll(/>/g, "&gt;");
-    c = c.replaceAll(/"/g, "&quot;");
-    c = c.replaceAll(/'/g, "&#039;");
-    return c;
-}
+
+// function sanitizeHTML(c) {
+//     c = c.replaceAll(/&/g, "&amp;");
+//     c = c.replaceAll(/</g, "&lt;");
+//     c = c.replaceAll(/>/g, "&gt;");
+//     c = c.replaceAll(/"/g, "&quot;");
+//     c = c.replaceAll(/'/g, "&#039;");
+//     return c;
+// }
 
 function parseMarkdown(content = ""){
     Markup.forEach(regex => {
         content = content.replaceAll(regex.r, regex.replace)
     })
 
-    return sanitizeHTML(content)
+    return content
 }
 
 
