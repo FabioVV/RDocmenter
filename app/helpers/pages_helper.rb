@@ -1,17 +1,17 @@
 
 
 module PagesHelper
-  class HtmlScrubber < Rails::Html::PermitScrubber
-    def initialize
-      super
-      self.tags = Rails::Html::WhiteListSanitizer.allowed_tags + %w[
-        audio details iframe options table tbody td th thead tr video
-      ]
-    end
-  end
+  # class HtmlScrubber < Rails::Html::PermitScrubber
+  #   def initialize
+  #     super
+  #     self.tags = Rails::Html::WhiteListSanitizer.allowed_tags + %w[
+  #       audio details iframe options table tbody td th thead tr video
+  #     ]
+  #   end
+  # end
   
   def sanitize_content(content)
-    sanitize content, scrubber: HtmlScrubber.new 
+    sanitize content #, scrubber: HtmlScrubber.new 
   end
 
   def toolbar_options(edit: false, page_type: nil)

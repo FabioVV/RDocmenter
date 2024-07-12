@@ -14,7 +14,6 @@ const Markup = [
     // { r: /^```(.*?)```$/gms, replace: "<code>```$1```</code>" },
     { r: /==(.*?)==/gm, replace: "<mark>`$1`</mark>" },
     { r: /~~(.*)?~~/gm, replace: "<s>~~$1~~</s>" },
-    { r: /&lt;!--(.*?)--&gt;/gm, replace: "<span class='comment'>&lt;!--$1--&gt;</span>" },
     { r: /\n---\n/gm, replace: "\n<span class='hr'>---</span>\n" },
 
 ]
