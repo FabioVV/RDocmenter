@@ -28,7 +28,6 @@ li > a:hover{
     /* border-color: black !important; */
 }
 
-
 .fullscreen-toggle{
     display: flex;
     justify-content: center;
@@ -38,10 +37,6 @@ li > a:hover{
     cursor: pointer;
     transition: transform .3s ease;
 }
-
-.fullscreen-toggle:hover{
-}
-
 
 .fullscreen-toggle > i{
     font-size: 20px;

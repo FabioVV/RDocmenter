@@ -68,7 +68,7 @@ class BooksController < ApplicationController
     end
 
     def book_params
-        params.require(:book).permit(:title, :subtitle, :cover_image)
+        params.require(:book).permit(:title, :subtitle, :cover_image, :author)
     end
 
     def require_same_author_or_admin

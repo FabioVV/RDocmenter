@@ -88,3 +88,8 @@ section:has(.page-image-show){
         max-inline-size: 50ch;
     }
 }
+
+.text-content{
+    text-align: start !important;
+    padding-inline: 1rem;
+}

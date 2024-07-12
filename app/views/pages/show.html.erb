@@ -4,10 +4,10 @@
 
 <% content_for :body_page_class, "body-grid-change" %>
 
-
 <% content_for :toolbar do %>
     <%= toolbar_options(edit: false) %>
 <% end %>
+
 
 <section class='page-editor-container show-page'>
 
@@ -35,9 +35,9 @@
         </div>
 
     <% when "text" %>
-        <% content_for :body_page_class, "body-grid-change-content" %>
-
-        <%= sanitize_content markdown_to_html(@page.content) %>
+        <div class='text-content'>
+            <%= sanitize_content markdown_to_html(@page.content) %>
+        </div>
 
     <% else %>
         <span>Type of page not recognized.</span>

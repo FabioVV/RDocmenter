@@ -4,7 +4,7 @@
     align-items: center;
     flex-wrap: wrap;
     position: sticky;
-    inset: 0 0 auto;
+    inset: 2% 0 auto;
     min-width: 0;
     overflow: hidden;
     z-index: 1;

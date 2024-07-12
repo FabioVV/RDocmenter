@@ -7,7 +7,7 @@ export default class extends Controller {
         const PAGE_ID = this.element.dataset.id
         const BOOK_ID = this.element.dataset.bookId
 
-        window.open(`/books/${BOOK_ID}/pages/${PAGE_ID}`, "_self")
+        window.open(`/books/${BOOK_ID}/pages/${PAGE_ID}/edit`, "_self")
     }
     
 }

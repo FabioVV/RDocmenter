@@ -174,6 +174,7 @@ main{
 .book-edit-side{
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .book-edit-header{}
@@ -238,6 +239,11 @@ main{
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 1.5rem;
+
+    position: sticky;
+    background-color: white;
+    top: 0; 
+    z-index: 1;
 }
 
 .book-image-cover-create{
@@ -262,17 +268,17 @@ main{
     transition: transform .3s ease;
 }
 
-.book-edit-actions-crud > a > i:hover{
-}
-
 .book-edit-actions-layout > a > i {
     color: var(--accent);
-    font-size: 26px;
+    font-size: var(--font-medium-responsive);
     transition: transform .3s ease;
 
 }
 
 .book-edit-actions-layout > a > i:hover{
+}
+
+.book-edit-actions-crud > a > i:hover{
 }
 
 .book-pages{
@@ -443,6 +449,12 @@ main{
     font-size: 10px;
 }
 
+.book-edit-aside{
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 2%; 
+    align-self: start; 
+}
 
 @media (max-width:768px) {
     .book-config-dropdown > li > a{
@@ -461,6 +473,10 @@ main{
 
     .book-edit-section{
         grid-template-columns: 1fr;
+    }
+
+    .book-edit-aside{
+        position: relative; 
     }
 
     .edit-book_info-container{

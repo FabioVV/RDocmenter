@@ -27,26 +27,35 @@
 
 .h1 {
   font-size: 2em;
+  display: inline;
 }
 
 .h2 {
   font-size: 1.5em;
+  display: inline;
 }
 
 .h3 {
   font-size: 1.17em;
+  display: inline;
+
 }
 
 .h4 {
   font-size: 1em;
+  display: inline;
+
 }
 
 .h5 {
   font-size: 0.83em;
+  display: inline;
+
 }
 
-:is(.h6) {
+.h6 {
   font-size: 0.67em;
+  display: inline;
 }
 
 :is(p, ul, ol, dl, blockquote, pre, figure, hr) {

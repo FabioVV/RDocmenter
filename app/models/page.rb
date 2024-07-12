@@ -1,25 +1,3 @@
-require 'loofah'
-
-class CustomScrubber < Loofah::Scrubber
-  def initialize
-    super
-  end
-
-  def scrub(node)
-    if node.name == 'span'
-      allowed_classes = ['allowed-class1']
-
-      # Check if the span tag has any allowed class
-      unless (node['class'].to_s.split(' ') & allowed_classes).any?
-        node.remove
-        return Loofah::Scrubber::STOP
-      end
-    end
-
-    return CONTINUE
-  end
-end
-
 class Page < ApplicationRecord
   belongs_to :book
   before_save :_sanitize_content
@@ -65,7 +43,7 @@ class Page < ApplicationRecord
 
     def _sanitize_content
       # self.content = Loofah.fragment(content).text 
-      self.content = Loofah.fragment(content).scrub!(CustomScrubber.new).to_s
+      self.content = Loofah.fragment(content).scrub!(CustomScrubber.new).text
     end
 
     # validate

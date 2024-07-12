@@ -5,17 +5,19 @@
 
 <section class='book-edit-section'>
 
+    <div class='book-edit-aside'>
         <% if @book.cover_image.attached? %>
             <%= image_tag @book.cover_image, alt: "Image of the current book" %>
         <% else %>
             <%= image_tag 'placeholder_book_edit.svg' %>
         <% end %>
+    </div>
 
     <div class='book-edit-side'>
         <div class='book-edit-header'>
             <h1 class='text-xlarge-responsive'><%= @book.title %></h1>
             <h3 class='text-large-responsive'><%= @book.subtitle %></h3>
-            <span class='author text-medium-responsive'><%= @book.user.first_name + " " + @book.user.last_name %><span>
+            <span class='author text-medium-responsive'><%= @book.author %><span>
         </div>
 
         <div class='book-edit-actions  '>
