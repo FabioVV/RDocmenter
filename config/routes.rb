@@ -32,7 +32,11 @@ Rails.application.routes.draw do
       patch "update_edit_info", to: "books#update_edit_info"
     end
 
-    resources :pages
+    resources :pages do
+      member do 
+        post :upload_markdown_image
+      end
+    end
     
   end
 

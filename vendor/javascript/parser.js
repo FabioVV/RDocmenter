@@ -10,12 +10,11 @@ const Markup = [
     { r: /(?<!\*)\*\*\*([^*]+)\*\*\*(?!\*)/gm, replace: "<strong><em>***$1***</em></strong>" },
     { r: /(?<!\*)\*([^*]+)\*(?!\*)/gm, replace: "<em>*$1*</em>" },
     { r: /(?<!_)_([^_]+)_(?!_)/gm, replace: "<em>_$1_</em>" },
-    { r: /`(.*?)`/g, replace: "<code>`$1`</code>" },
-    // { r: /^```(.*?)```$/gms, replace: "<code>```$1```</code>" },
-    { r: /==(.*?)==/gm, replace: "<mark>`$1`</mark>" },
+    { r: /^```(.*?)```$/gms, replace: "<code>```$1```</code>" },
+    { r: /([^`])`([^`]+)`([^`])/gm, replace: "$1<code>`$2`</code>$3" },
+    { r: /==(.*?)==/gm, replace: "<mark>==$1==</mark>" },
     { r: /~~(.*)?~~/gm, replace: "<s>~~$1~~</s>" },
-    { r: /\n---\n/gm, replace: "\n<span class='hr'>---</span>\n" },
-
+    { r: /(?<!!)\[(.*?)\]\((.*?)\)/gm, replace: "[$1]<a href='$2'>($2)</a>" },
 ]
 
 
@@ -29,7 +28,7 @@ function sanitizeHTML(c) {
 }
 
 function parseMarkdown(content = ""){
-    content = sanitizeHTML(content)
+    // content = sanitizeHTML(content)
 
     Markup.forEach(regex => {
         content = content.replaceAll(regex.r, regex.replace)

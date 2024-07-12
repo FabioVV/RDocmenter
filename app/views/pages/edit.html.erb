@@ -14,7 +14,7 @@
 
     <%= f.submit id:'submit_page', style: 'display:none;' %>
 
-    <section class='page-editor-container edit-page'>
+    <section data-controller="markdown" data-id='<%= @page.id %>' class='page-editor-container edit-page'>
 
         <% case @page.page_type %>
         <% when "image" %>
@@ -37,8 +37,9 @@
         <% when "text" %>
         
             <!--Custom tag-->
-            <%= f.markdown_area :content,  class: "main-editor" %>
+            <%= f.markdown_area :content, class: "main-editor" %>
             <!--Custom tag-->
+            <%= f.file_field :images, id: 'markdown-file', style: 'display:none;' %>
 
         <% else %>
             <span>Type of page not recognized.</span>

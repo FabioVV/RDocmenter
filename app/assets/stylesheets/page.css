@@ -5,8 +5,6 @@
     margin-top: 0 !important;
     place-content: center;
     text-align: center;
-    container-type: inline-size;
-    max-inline-size: 100dvw;
     margin-inline: auto;
     inline-size: 67ch;
 
@@ -92,4 +90,8 @@ section:has(.page-image-show){
 .text-content{
     text-align: start !important;
     padding-inline: 1rem;
+    inline-size: 67ch;
+    container-type: inline-size;
+    max-inline-size: 100dvw;
+    margin-inline: auto;
 }

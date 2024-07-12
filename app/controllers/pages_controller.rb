@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
     before_action :require_user, except: [:show]
-    before_action :set_pages, only: [:edit, :show, :update, :destroy]
+    before_action :set_page, only: [:edit, :show, :update, :destroy, :upload_markdown_image]
     before_action :set_book, only: [:edit, :show, :create, :destroy]
 
     def create
@@ -42,9 +42,18 @@ class PagesController < ApplicationController
         end   
     end
 
+    def upload_markdown_image
+        image = params[:image]
+        if image && @page.images.attach(image)
+            render json: {url: url_for(@page.images.last), filename: image.original_filename}
+        else
+            render json: {error: "Error uploading image (C)"}, status: :unprocessable_entity
+        end
+    end
+
     private 
 
-    def set_pages
+    def set_page
         @page = Page.active.find(params[:id])
     end
 
@@ -53,7 +62,7 @@ class PagesController < ApplicationController
     end
 
     def page_params
-        params.require(:page).permit(:page_type, :page_image, :content, :main_title, :image_caption, :section_header)
+        params.require(:page).permit(:page_type, :page_image, :content, :main_title, :image_caption, :section_header, :images)
     end
 
 end
