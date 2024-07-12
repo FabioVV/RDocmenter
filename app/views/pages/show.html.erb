@@ -35,6 +35,7 @@
         </div>
 
     <% when "text" %>
+        <% content_for :body_page_class, "body-grid-change-content" %>
 
         <%= sanitize_content markdown_to_html(@page.content) %>
 

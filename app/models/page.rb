@@ -16,10 +16,6 @@ class Page < ApplicationRecord
     preview_renderer.render(body_preview)
   end
 
-  def to_html
-    preview_renderer.render(content.to_s)
-  end
-
 
   # scope :sorted, -> { order(created_at: :desc) }
   scope :active, -> { where(is_active: true) }

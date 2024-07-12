@@ -140,6 +140,11 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+.body-grid-change-content{
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100dvh;
+  gap: 0.5rem;
+}
 
 .body-grid-change{
   grid-template-rows: auto auto 1fr auto;
