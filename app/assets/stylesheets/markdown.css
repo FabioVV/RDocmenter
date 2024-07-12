@@ -75,3 +75,8 @@ code {
     hyphens: none;
   }
 }
+
+
+.comment{
+  color: rgb(0, 121, 0);
+}

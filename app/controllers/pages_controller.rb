@@ -23,7 +23,7 @@ class PagesController < ApplicationController
     def edit
     end
 
-    def update
+    def update        
         if @page.update(page_params)
             # flash[:notice] = "Page saved"
         else
@@ -55,4 +55,5 @@ class PagesController < ApplicationController
     def page_params
         params.require(:page).permit(:page_type, :page_image, :content, :main_title, :image_caption, :section_header)
     end
+
 end

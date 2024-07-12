@@ -19,7 +19,7 @@ class Documenter extends HTMLElement {
         this.contentDiv.setAttribute('contenteditable', true)
         this.contentDiv.setAttribute('autofocus', true)
         this.appendChild(this.contentDiv)
-        this.contentDiv.innerHTML = this.inputHidden.value
+        this.contentDiv.innerHTML = parseMarkdown(this.inputHidden.value)
 
         this.contentDiv.addEventListener('keydown', this.handleKeyDown);
         this.contentDiv.addEventListener('input', this.handleInput)

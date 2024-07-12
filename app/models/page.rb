@@ -1,5 +1,8 @@
+require 'loofah'
+
 class Page < ApplicationRecord
   belongs_to :book
+  before_save :sanitize_content
 
   has_many_attached :images
   has_one_attached :page_image, dependent: :purge_later
@@ -38,6 +41,10 @@ class Page < ApplicationRecord
   private
     def body_preview
       content.to_s.first(1024)
+    end
+
+    def sanitize_content
+      self.content = Loofah.fragment(content).text
     end
 
     # validate

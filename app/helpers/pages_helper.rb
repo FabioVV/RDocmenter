@@ -1,3 +1,5 @@
+
+
 module PagesHelper
   class HtmlScrubber < Rails::Html::PermitScrubber
     def initialize
