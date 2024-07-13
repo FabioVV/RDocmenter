@@ -5,8 +5,7 @@ class Documenter extends HTMLElement {
     constructor() {
         super()
         this.contentDiv = null
-        this.handleInput = this.handleInput.bind(this)
-        this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.caretPos = null; // To store the caret position saver function
         this.inputHidden =  this.querySelector('#content_hidden')
     }
 
@@ -21,23 +20,36 @@ class Documenter extends HTMLElement {
         this.appendChild(this.contentDiv)
         this.contentDiv.innerHTML = parseMarkdown(this.inputHidden.value)
 
-        this.contentDiv.addEventListener('keydown', this.handleKeyDown);
-        this.contentDiv.addEventListener('input', this.handleInput)
+        this.contentDiv.addEventListener('keydown', this.handleKeyDown.bind(this));
+        this.contentDiv.addEventListener('input', this.handleInput.bind(this))
+        this.contentDiv.addEventListener('blur', this.handleBlur.bind(this));
+        this.contentDiv.addEventListener('focus', this.handleFocus.bind(this));
+
+        document.getElementById('markdown-file').addEventListener('change', this.uploadImage.bind(this));
+        document.querySelector('.image.editor-button').addEventListener('click', this.handleClickOnFileField.bind(this));
+        document.querySelector('.bold.editor-button').addEventListener('click', this.insertBold.bind(this));
+        document.querySelector('.italic.editor-button').addEventListener('click', this.insertItalic.bind(this));
+        document.querySelector('.header.editor-button').addEventListener('click', this.insertHeader.bind(this));
+        document.querySelector('.listul.editor-button').addEventListener('click', this.insertUnorderedList.bind(this));
+        document.querySelector('.listol.editor-button').addEventListener('click', this.insertOrderedList.bind(this));
+        document.querySelector('.link.editor-button').addEventListener('click', this.insertLink.bind(this));
+
     }
 
     disconnectedCallback(){
         this.#cleanEventListeners()
     }
-    
+
+    handleClickOnFileField(){
+        document.getElementById('markdown-file').click();
+    }
 
     handleInput(event) {
         event.preventDefault()
 
         let contentElement = this.contentDiv
         const content = contentElement.textContent;
-
         const restore = this.saveCaretPosition(contentElement)
-
         const parsedContent = parseMarkdown(content)
         contentElement.innerHTML = parsedContent
 
@@ -52,6 +64,81 @@ class Documenter extends HTMLElement {
             document.execCommand('insertLineBreak');
         }
     }   
+
+    handleBlur(event) {
+        this.saveCaret = this.saveCaretPosition(this.contentDiv);
+        window.getSelection().removeAllRanges()
+    }
+
+    handleFocus(event) {
+        if (this.saveCaret) {
+            this.saveCaret();
+        }
+    }
+
+    insertHeader() {
+        this.insertAtCaret('# ');
+    }
+
+    insertBold() {
+        this.insertAtCaret('****');
+    }
+
+    insertItalic() {
+        this.insertAtCaret('**');
+    }
+
+    insertUnorderedList() {
+        this.insertAtCaret('- ');
+    }
+
+    insertOrderedList() {
+        this.insertAtCaret('1. ');
+    }
+
+    insertLink() {
+        this.insertAtCaret(`[title](url)`);
+    }
+
+    insertImage(url, filename) {
+        const markdownImage = `![${filename}](${url})`;
+        this.insertAtCaret(markdownImage);
+    }
+
+    async uploadImage(event) {
+        const file = event.target.files[0];
+    
+        if (file) {
+          const formData = new FormData()
+          formData.append('image', file)
+          
+          const PAGE_ID = document.getElementById('markdown-file').dataset.id
+          const BOOK_ID = document.getElementById('markdown-file').dataset.bookId
+
+          try {
+            const response = await fetch(`/books/${BOOK_ID}/pages/${PAGE_ID}/upload_markdown_image`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+                body: formData
+            });
+    
+            if(response.ok){
+              const { url, filename } = await response.json()
+              this.insertImage(url, filename);
+            } else {
+              console.log('Image tag could not be generated.')
+            }
+    
+          } catch (error) {
+            console.log(`Error uploading image: ${error}`)
+          }
+    
+        } else {
+          return 
+        }
+    }
 
     saveCaretPosition(context){
         let selection = window.getSelection();
@@ -69,14 +156,44 @@ class Documenter extends HTMLElement {
         }
     }
 
+    insertAtCaret(text){
+        this.contentDiv.focus();
+
+        const selection = window.getSelection();
+        if (!selection.rangeCount) return;
+
+        const range = selection.getRangeAt(0);
+
+        if (!this.contentDiv.contains(range.commonAncestorContainer)) {
+            return;
+        }
+
+        range.deleteContents();
+
+        const textNode = document.createTextNode(text);
+        range.insertNode(textNode);    
+        
+    }
 
     #cleanEventListeners(){
-        this.contentDiv.removeEventListener('keydown', this.handleKeyDown);
-        this.contentDiv.removeEventListener('input', this.handleInput);
+        this.contentDiv.removeEventListener('keydown', this.handleKeyDown.bind(this));
+        this.contentDiv.removeEventListener('input', this.handleInput.bind(this));
+        this.contentDiv.removeEventListener('blur', this.handleBlur.bind(this));
+        this.contentDiv.removeEventListener('focus', this.handleFocus.bind(this));
+        document.getElementById('markdown-file').removeEventListener('change', this.uploadImage.bind(this))
+        document.querySelector('.image.editor-button').removeEventListener('click', this.handleClickOnFileField.bind(this));
+        document.querySelector('.bold.editor-button').removeEventListener('click', this.insertBold.bind(this));
+        document.querySelector('.italic.editor-button').removeEventListener('click', this.insertItalic.bind(this));
+        document.querySelector('.header.editor-button').removeEventListener('click', this.insertHeader.bind(this));
+        document.querySelector('.listul.editor-button').removeEventListener('click', this.insertUnorderedList.bind(this));
+        document.querySelector('.listol.editor-button').removeEventListener('click', this.insertOrderedList.bind(this));
+        document.querySelector('.link.editor-button').removeEventListener('click', this.insertLink.bind(this));
     }
 
 }
 
+
+// Helper of saveCaretPosition
 function getTextNodeAtPosition(root, index){
     const NODE_TYPE = NodeFilter.SHOW_TEXT;
     let treeWalker = document.createTreeWalker(root, NODE_TYPE, function next(elem) {
@@ -94,14 +211,6 @@ function getTextNodeAtPosition(root, index){
     };
 }
 
-// function moveCursorToEnd(contentEle) {
-//     const range = document.createRange();
-//     const selection = window.getSelection();
-//     range.setStart(contentEle, contentEle.childNodes.length);
-//     range.collapse(true);
-//     selection.removeAllRanges();
-//     selection.addRange(range);
-// }
 
 
 customElements.define('doc-menter', Documenter);

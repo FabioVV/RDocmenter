@@ -1,20 +1,20 @@
 
 <%= render "toolbar/toolbar_toggle_mode" %>
 
-<div class='toolbox-edit-markdown' data-controller='markdown'>
-    <div class='header editor-button' title='Insert header' data-action='click->markdown#insertHeader'>
+<div class='toolbox-edit-markdown'>
+    <div class='header editor-button' title='Insert header' data-action='insertHeader'>
         <i class="fa-solid fa-heading"></i>    
     </div>
     
-    <div class='bold editor-button' title='Insert bold text' data-action='click->markdown#insertBold'>
+    <div class='bold editor-button' title='Insert bold text' data-action='insertBold'>
         <i class="fa-solid fa-bold"></i>
     </div>
 
-    <div class='italic editor-button' title='Insert italic text' data-action='click->markdown#insertItalic'>
+    <div class='italic editor-button' title='Insert italic text' data-action='insertItalic'>
         <i class="fa-solid fa-italic"></i>        
     </div>
 
-    <div class='listul editor-button' title='Insert unordered list' data-action='click->markdown#insertUnorderedList'>
+    <div class='listul editor-button' title='Insert unordered list' data-action='insertUnorderedList'>
         <i class="fa-solid fa-list-ul"></i>        
     </div>
 
@@ -22,11 +22,11 @@
         <i class="fa-solid fa-list-ol"></i>        
     </div>
 
-    <div class='link editor-button' title='Insert link' data-action='click->markdown#insertLink'>
+    <div class='link editor-button' title='Insert link' data-action='insertLink'>
         <i class="fa-solid fa-link"></i>        
     </div>
 
-    <div id='image-editor-button' class='image editor-button' title='Insert image' data-action='click->markdown#insertImage'>
+    <div  class='image editor-button' title='Insert image' data-action='insertImage'>
         <i class="fa-solid fa-images"></i>    
     </div>
 </div>

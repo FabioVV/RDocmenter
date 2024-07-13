@@ -18,14 +18,14 @@ const Markup = [
 ]
 
 
-function sanitizeHTML(c) {
-    c = c.replaceAll(/&/g, "&amp;");
-    c = c.replaceAll(/</g, "&lt;");
-    c = c.replaceAll(/>/g, "&gt;");
-    c = c.replaceAll(/"/g, "&quot;");
-    c = c.replaceAll(/'/g, "&#039;");
-    return c;
-}
+// function sanitizeHTML(c) {
+//     c = c.replaceAll(/&/g, "&amp;");
+//     c = c.replaceAll(/</g, "&lt;");
+//     c = c.replaceAll(/>/g, "&gt;");
+//     c = c.replaceAll(/"/g, "&quot;");
+//     c = c.replaceAll(/'/g, "&#039;");
+//     return c;
+// }
 
 function parseMarkdown(content = ""){
     // content = sanitizeHTML(content)
