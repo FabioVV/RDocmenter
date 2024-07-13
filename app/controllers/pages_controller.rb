@@ -44,8 +44,9 @@ class PagesController < ApplicationController
 
     def upload_markdown_image
         image = params[:image]
-        if image && @page.images.attach(image)
-            render json: {url: url_for(@page.images.last), filename: image.original_filename}
+        if image 
+            @page.images.attach(image)
+            render json: {url: rails_blob_url(@page.images.last), filename: image.original_filename}
         else
             render json: {error: "Error uploading image (C)"}, status: :unprocessable_entity
         end
@@ -62,7 +63,7 @@ class PagesController < ApplicationController
     end
 
     def page_params
-        params.require(:page).permit(:page_type, :page_image, :content, :main_title, :image_caption, :section_header, :images)
+        params.require(:page).permit(:page_type, :page_image, :content, :main_title, :image_caption, :section_header, images: [])
     end
 
 end
