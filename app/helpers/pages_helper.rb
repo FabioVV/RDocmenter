@@ -16,7 +16,7 @@ module PagesHelper
   end
   
   def sanitize_content(content)
-    sanitize content #, scrubber: HtmlScrubber.new 
+    sanitize content , scrubber: HtmlScrubber.new 
   end
 
   def toolbar_options(edit: false, page_type: nil)

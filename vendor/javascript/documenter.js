@@ -5,13 +5,13 @@ class Documenter extends HTMLElement {
     constructor() {
         super()
         this.contentDiv = null
-        this.caretPos = null; // To store the caret position saver function
+        this.caretPos = null
         this.inputHidden =  this.querySelector('#content_hidden')
     }
 
     connectedCallback() {
         this.setAttribute('role', "textbox")
-        this.setAttribute('title', "main text editor")
+        this.setAttribute('title', "Main text editor")
 
         this.contentDiv = document.createElement('div')
         this.contentDiv.classList.add("doc-menter-content")
@@ -44,26 +44,61 @@ class Documenter extends HTMLElement {
         document.getElementById('markdown-file').click();
     }
 
-    handleInput(event) {
-        event.preventDefault()
+    handleMarkdown(){
 
         let contentElement = this.contentDiv
+
+        const scrollPosition = window.scrollY || window.pageYOffset;
+
         const content = contentElement.textContent;
         const restore = this.saveCaretPosition(contentElement)
         const parsedContent = parseMarkdown(content)
-        contentElement.innerHTML = parsedContent
 
+        contentElement.innerHTML = parsedContent
         this.inputHidden.value = contentElement.innerHTML
 
         restore()
+
+        window.scrollTo(0, scrollPosition);
+
+    }
+
+    handleInput(event) {
+        event.preventDefault()
+
+        this.handleMarkdown()
     }
 
     handleKeyDown(event) {
-        if (event.key == 'Enter') {
-            event.preventDefault();
-            document.execCommand('insertLineBreak');
-        }
+        this.handleEnter(event)
     }   
+
+    handleEnter(event) {
+        if (event.key == 'Enter') {
+            event.preventDefault()
+            document.execCommand('insertLineBreak')
+
+            // const selection = window.getSelection();
+            // const range = selection.getRangeAt(0);
+            // const currentNode = range.startContainer;
+            // const textBeforeCaret = currentNode.textContent.substring(0, range.startOffset);
+            // const linesBefore = textBeforeCaret.split('\n');
+            // const currentLine = linesBefore[linesBefore.length - 1];
+        
+            // let newLine = ''
+            // if (currentLine.match(/^\d+\. /)) {
+            //   newLine = `\n${parseInt(currentLine, 10) + 1}. `;
+            // } else if (currentLine.match(/^- /)) {
+            //   newLine = `\n- `;
+            // } else {
+            //     document.execCommand('insertLineBreak');
+            // }
+
+            // range.insertNode(document.createTextNode(newLine));
+            // window.getSelection().removeAllRanges()
+
+        }
+    }
 
     handleBlur(event) {
         this.saveCaret = this.saveCaretPosition(this.contentDiv);
@@ -172,7 +207,8 @@ class Documenter extends HTMLElement {
 
         const textNode = document.createTextNode(text);
         range.insertNode(textNode);    
-        
+
+        this.handleMarkdown()
     }
 
     #cleanEventListeners(){

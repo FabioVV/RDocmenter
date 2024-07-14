@@ -41,9 +41,18 @@ class Page < ApplicationRecord
       content.to_s.first(1024)
     end
 
+    def strip_html_tags_except_entities(text)
+      sanitized_text = ActionController::Base.helpers.strip_tags(text)
+      sanitized_text.gsub(/&amp;#13;/, "&#13;")
+    end
+
     def _sanitize_content
-      # self.content = Loofah.fragment(content).text 
-      self.content = Loofah.fragment(content).scrub!(CustomScrubber.new).text
+
+      self.content = strip_html_tags_except_entities(content)
+      # self.content = self.content.gsub("# ", "")
+      # # self.content = self.content.gsub("\n", "<br>")
+      # self.content = Loofah.fragment(content).scrub!(CustomScrubber.new).to_s
+
     end
 
     # validate
