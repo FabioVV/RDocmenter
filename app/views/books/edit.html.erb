@@ -2,6 +2,9 @@
     <%= navbar_book_options(should_return_to: books_path, page: false) %>
 <% end %>
 
+<% content_for :title, "#{@book.title}"  %>
+
+
 <section class='book-edit-section'>
 
     <div class='book-edit-aside' data-controller='openimage'>

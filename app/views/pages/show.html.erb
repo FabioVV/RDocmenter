@@ -2,6 +2,15 @@
     <%= navbar_book_options(book: @book, hide_input: true, page: true, page_id: @page.id) %>
 <% end %>
 
+<% content_for :title do %>
+    <% case @page.page_type %>
+    <% when "title" %>
+        <%= "#{truncate(@page.section_header, length: 35, omission: ' ...')} · #{@book.title}" %>
+    <% else %>
+        <%= "#{@page.main_title} · #{@book.title}" %>
+    <% end %>
+<% end %>
+
 <% content_for :body_page_class, "body-grid-change" %>
 
 <% content_for :toolbar do %>
