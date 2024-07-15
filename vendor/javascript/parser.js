@@ -7,7 +7,6 @@ const Markup = [
     { r: /^# (.*)$/gm, replace: "<h1 class='h1'># $1</h1>" },
     { r: /(?<!\*)\*\*([^*]+)\*\*(?!\*)/gm, replace: "<strong>**$1**</strong>" },
     { r: /(?<!_)__([^_]+)__(?!_)/gm, replace: "<strong>__$1__</strong>" },
-    { r: /(?<!\*)\*\*\*([^*]+)\*\*\*(?!\*)/gm, replace: "<strong><em>***$1***</em></strong>" },
     { r: /(?<!\*)\*([^*]+)\*(?!\*)/gm, replace: "<em>*$1*</em>" },
     { r: /(?<!_)_([^_]+)_(?!_)/gm, replace: "<em>_$1_</em>" },
     { r: /^```(.*?)```$/gms, replace: "<code>```$1```</code>" },
