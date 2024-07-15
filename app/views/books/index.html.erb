@@ -40,22 +40,22 @@
         <% @books.each do |b| %> 
             <div class='book' data-controller='editbook' data-action="click->editbook#openBookEdit" data-id='<%= b.id %>'>
                 <div class='book-title-section'>
-                    <h2 title='<%= b.title %>'><%= truncate(b.title, length: 26, omission: ' ...')  %></h2>
-                    <h3 title='<%= b.subtitle %>'><%= b.subtitle? ? truncate(b.subtitle, length: 21, omission: ' ...') : "-"  %></h3>
+                    <h2 title='<%= b.title %>'><%= truncate(b.title, length: 27, omission: ' ...')  %></h2>
+                    <h3 title='<%= b.subtitle %>'><%= b.subtitle? ? truncate(b.subtitle, length: 30, omission: ' ...') : "-"  %></h3>
                 </div>
+
                 <div class='book-img-section'>
 
                     <% if b.cover_image.attached? %>
-                        <%= image_tag b.cover_image, size: "180x230",  loading: "lazy"  %>
+                        <%= image_tag b.cover_image,  loading: "lazy"  %>
                     <% else %>
                         <%= image_tag 'placeholder_book_index.svg' %>
                     <% end %>
+                </div>
 
-                    <div class="book-timestamps">
-                        <span><span class='timestamp-created'>Created at:</span> <%= time_ago_in_words(b.created_at)%> ago</span>
-                        <span><span class='timestamp-updated'>Last edit:</span> <%= time_ago_in_words(b.updated_at)%> ago</span>
-                    </div>
-
+                <div class="book-timestamps">
+                    <span><span class='timestamp-created'>Created at:</span> <%= time_ago_in_words(b.created_at)%> ago</span>
+                    <span><span class='timestamp-updated'>Last edit:</span> <%= time_ago_in_words(b.updated_at)%> ago</span>
                 </div>
 
                 <div class='book-actions'>

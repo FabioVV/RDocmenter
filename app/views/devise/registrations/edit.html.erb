@@ -1,17 +1,13 @@
-<%
-=begin%>
- <h2>Edit <%= resource_name.to_s.humanize %></h2> 
-<%
-=end%>
 
-<section class='user-edit-section'>
+<section class='user-edit-section' data-controller="previewimage">
 
   <div>
     <div class='user-img-profile'>
       <% if current_user.profile_photo.attached? %>
-        <%= image_tag current_user.profile_photo  %>
+        <%= image_tag current_user.profile_photo,  data: { action: "click->previewimage#clickOnFileField",  previewimage_target: "preview" }  %>
       <% else %>
         <!-- default image in case the user does not have one here....... -->
+        <%= image_tag 'placeholder_book_edit_info.svg', data: { action: "click->previewimage#clickOnFileField",  previewimage_target: "preview" }  %>
       <% end %>
     </div>
 
@@ -64,11 +60,11 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
 
-      <div class="field">
+      <div class="field" style='display:none;'>
         <label class="user-profile-photo-label" for="user_profile_photo">
           <i class="fa-solid fa-cloud-arrow-up"></i> Change profile image
         </label>
-        <%= f.file_field :profile_photo %><br>
+        <%= f.file_field :profile_photo, data: { previewimage_target: "input", action: "change->previewimage#previewImage" } %><br>
       </div>
 
       <div class="field" id='current_password_one_row'>

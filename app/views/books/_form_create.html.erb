@@ -1,7 +1,7 @@
 <section data-controller="previewimage" class='edit-book_info-container'>
 
     <div class='edit-book_info-image'>
-        <%= image_tag 'placeholder_book_edit_info.svg', data: { action: "click->previewimage#clickOnFileField",  previewimage_target: "preview" } %>
+        <%= image_tag 'placeholder_book_edit_info.svg', size: "320x440" , data: { action: "click->previewimage#clickOnFileField",  previewimage_target: "preview" } %>
     </div>
 
     <div class='edit-book_info-form'>
@@ -13,7 +13,7 @@
             </div>
 
             <div class="field">
-                <%= f.text_area :subtitle, placeholder: "Subtitle", size: "22x2", class: "title-subtitle-book-textarea" %>
+                <%= f.text_area :subtitle, placeholder: "Subtitle", size: "40x2", class: "title-subtitle-book-textarea" %>
             </div>
 
             <div class="field">

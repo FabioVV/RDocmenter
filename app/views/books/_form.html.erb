@@ -2,9 +2,9 @@
 
     <div class='edit-book_info-image'>
         <% if @book.cover_image.attached? %>
-            <%= image_tag @book.cover_image, alt: "Image of the current book", data: { action: "click->previewimage#clickOnFileField",  previewimage_target: "preview" }, size: "210x290"  %>
+            <%= image_tag @book.cover_image, size: "320x440", alt: "Placeholder image for book cover", data: { action: "click->previewimage#clickOnFileField",  previewimage_target: "preview" }  %>
         <% else %>
-            <%= image_tag 'placeholder_book_edit_info.svg', data: { action: "click->previewimage#clickOnFileField",  previewimage_target: "preview" }  %>
+            <%= image_tag 'placeholder_book_edit_info.svg', size: "320x440", data: { action: "click->previewimage#clickOnFileField",  previewimage_target: "preview" }  %>
         <% end %>
     </div>
 
@@ -17,7 +17,7 @@
             </div>
 
             <div class="field">
-                <%= f.text_area :subtitle, placeholder: "Subtitle", size: "22x2", class: "title-subtitle-book-textarea" %>
+                <%= f.text_area :subtitle, placeholder: "Subtitle", size: "40x2", class: "title-subtitle-book-textarea" %>
             </div>
 
             <div class="field">

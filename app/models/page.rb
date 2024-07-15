@@ -48,7 +48,7 @@ class Page < ApplicationRecord
 
     def _sanitize_content
 
-      self.content = strip_html_tags_except_entities(content)
+      self.content = strip_html_tags_except_entities(content) if self.content?
       # self.content = self.content.gsub("# ", "")
       # # self.content = self.content.gsub("\n", "<br>")
       # self.content = Loofah.fragment(content).scrub!(CustomScrubber.new).to_s
