@@ -1,4 +1,3 @@
-
 module MarkdownHelper
     class CustomMarkdownRenderer < Redcarpet::Render::HTML
         def link(link, title, content)

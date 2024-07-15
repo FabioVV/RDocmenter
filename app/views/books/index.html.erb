@@ -4,33 +4,7 @@
         <% if !@any_books %>
             <%= button_to "Create my first book", new_book_path, method: :get, class: "first-book-button" %>
         <% else %>
-            <div class='book-index-buttons'>
-
-                <%= link_to "<i style='font-size:30px; color:var(--accent);' class='fa-solid fa-file-circle-plus'></i>".html_safe, new_book_path, method: :get, class: "reset_book_actions_css", title: "Create new book/document" %>
-                <%
-=begin%>
- <%= link_to "<i style='font-size:30px; color:red;' class='fa-solid fa-trash-can'></i>".html_safe, new_book_path, method: :get, class: "reset_book_actions_css", title: "Enter/Leave delete mode to delete in bulk"%> 
-<%
-=end%>
-                <a title='Open/Close filter options' onclick="toggle_book_filter()" id='book_filter_toggle' class='reset_book_actions_css' ><i style='color:grey !important; font-size:30px;' class="fa-solid fa-filter"></i></a>
-
-            </div>
-
-            <div class='book-filter-options'>
-
-                <div>
-                    <label>Search by Title/Subtitle</label>
-                    <input type='search' />
-                </div>
-                <div>
-                    <label>Active/Inactive</label>
-                    <select>
-                        <option>Active Books/Documents</option>
-                        <option>Inactive Books/Documents</option>
-                    </select>
-                </div>
-
-            </div>
+            <%= toolbar_book_index_options() %>
         <% end %>
     </div>
 

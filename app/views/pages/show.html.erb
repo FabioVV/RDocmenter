@@ -14,9 +14,9 @@
     <% case @page.page_type %>
     <% when "image" %>
 
-        <figure class='page-image-show'>
+        <figure class='page-image-show' data-controller='openimage'>
             <% if @page.page_image.attached? %>
-                <%= image_tag @page.page_image, alt: "Image of the current page" %>
+                <%= image_tag @page.page_image, alt: "Image of the current page", data: {action: 'click->openimage#open'} %>
             <% else %>
                 <%= image_tag "https://placehold.co/600x400?text=Image", alt: "No image uploaded" %>
             <% end %>

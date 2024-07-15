@@ -1,6 +1,5 @@
 module BooksHelper
-    def word_count(content)
-        return unless !content.blank?
-        pluralize number_with_delimiter(content.split.size), "word"
+    def toolbar_book_index_options()
+        render 'toolbar/book/toolbar'
     end
 end

@@ -11,8 +11,7 @@ class Documenter extends HTMLElement {
 
     connectedCallback() {
         this.setAttribute('role', "textbox")
-        this.setAttribute('title', "Main text editor")
-
+        
         this.contentDiv = document.createElement('div')
         this.contentDiv.classList.add("doc-menter-content")
         this.contentDiv.setAttribute('contenteditable', true)
@@ -45,7 +44,6 @@ class Documenter extends HTMLElement {
     }
 
     handleMarkdown(){
-
         let contentElement = this.contentDiv
 
         const scrollPosition = window.scrollY || window.pageYOffset;
@@ -60,12 +58,10 @@ class Documenter extends HTMLElement {
         restore()
 
         window.scrollTo(0, scrollPosition);
-
     }
 
     handleInput(event) {
         event.preventDefault()
-
         this.handleMarkdown()
     }
 

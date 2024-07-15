@@ -95,3 +95,7 @@ section:has(.page-image-show){
     max-inline-size: 100dvw;
     margin-inline: auto;
 }
+
+.page-image-show > img{
+    cursor: pointer;
+}

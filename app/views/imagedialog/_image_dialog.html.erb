@@ -1,0 +1,16 @@
+<%
+=begin%>
+ <dialog data-openimage-target="dialog" data-action="close->openimage#reset">
+  <img src="" data-openimage-target="image" />
+
+  <form method="dialog">
+    <button type='submit'>Close</button>
+  </form>
+</dialog> 
+<%
+=end%>
+
+<dialog data-controller="openimage" id='image-dialog'>
+  <span class="dialog-close" data-action="click->openimage#close">&times;</span>
+  <img alt="Image" id='image-dialog-show'>
+</dialog>

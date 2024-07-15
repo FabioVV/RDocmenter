@@ -479,6 +479,10 @@ main{
 
 }
 
+.book-edit-aside-img{
+    cursor: pointer;
+}
+
 @media (max-width:768px) {
     .book-config-dropdown > li > a{
         background-color: white;

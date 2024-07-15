@@ -9,3 +9,27 @@ dialog > h2 {
 dialog > h5 {
     margin: 0 0 1rem 0 !important;
 }
+
+#image-dialog{
+    display: none;
+    opacity: 1;
+    place-items: center;
+    block-size: 100dvh;
+    overflow: hidden;
+}
+
+#image-dialog[open] {
+    display: grid;
+}
+
+#image-dialog > span{
+    position: absolute;
+    top: -4%;
+    right: 3%;
+    font-size: 60px;
+    cursor: pointer;
+}
+
+#image-dialog-show{
+    grid-area: 1 / 1;
+}

@@ -1,15 +1,6 @@
 
 
 module PagesHelper
-  # class HtmlScrubber < Rails::Html::PermitScrubber
-  #   def initialize
-  #     super
-  #     self.tags = Rails::Html::WhiteListSanitizer.allowed_tags + %w[
-  #       audio details iframe options table tbody td th thead tr video
-  #     ]
-  #   end
-  # end
-
   def word_count(content)
     return unless !content.blank?
     pluralize number_with_delimiter(content.split.size), "word"
@@ -48,6 +39,8 @@ module PagesHelper
   end
   # Deactivated
 
+
+  
   def link_to_previous_page(page, for_edit: false)
       book_id = page.book_id
 
@@ -56,10 +49,6 @@ module PagesHelper
         link_to path, class: "txt-medium min-width btn" do
           "<i class='fa-solid fa-arrow-left-long'></i>".html_safe + tag.span("Previous: #{previous_page.main_title }", class: "overflow-ellipsis")
         end
-      else
-      #   link_to book_slug_path(leaf.book), data: hotkey_data_attributes("left", enabled: hotkey), class: "btn" do
-      #     image_tag("arrow-left.svg", aria: { hidden: true }, size: 24) + tag.span("Table of contents: #{ leaf.book.title }", class: "for-screen-reader")
-      #   end
       end
     end
   
@@ -71,10 +60,6 @@ module PagesHelper
         link_to path, class: "txt-medium min-width btn" do
           tag.span("Next: #{next_page.main_title }", class: "overflow-ellipsis") + " <i class='fa-solid fa-arrow-right-long'></i>".html_safe
         end
-      else
-      #   link_to book_slug_path(leaf.book), class: "btn txt-medium" do
-      #     tag.span("Table of contents: #{leaf.book.title }", class: "overflow-ellipsis") + image_tag("arrow-reverse.svg", aria: { hidden: true }, size: 24)
-      #   end
       end
     end
 end
