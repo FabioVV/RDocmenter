@@ -44,7 +44,7 @@
     max-inline-size: 100vw;
     overflow-wrap: break-word;
     text-wrap: pretty;
-    color: black;
+    color: var(--text);
 }
 
 .section_header_input{

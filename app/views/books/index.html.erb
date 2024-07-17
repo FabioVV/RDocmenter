@@ -18,7 +18,7 @@
             <div class='book' data-controller='editbook' data-action="click->editbook#openBookEdit" data-id='<%= b.id %>'>
                 <div class='book-title-section'>
                     <h2 title='<%= b.title %>'><%= truncate(b.title, length: 27, omission: ' ...')  %></h2>
-                    <h3 title='<%= b.subtitle %>'><%= b.subtitle? ? truncate(b.subtitle, length: 30, omission: ' ...') : "&#8205;".html_safe  %></h3>
+                    <h3 title='<%= b.subtitle %>'><%= b.subtitle? ? truncate(b.subtitle, length: 28, omission: ' ...') : "&#8205;".html_safe  %></h3>
                 </div>
 
                 <div class='book-img-section'>

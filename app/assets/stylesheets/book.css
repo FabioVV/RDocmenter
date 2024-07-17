@@ -11,7 +11,7 @@ main{
 
 .books-index > .books-container{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     gap: 4rem;
 }
 
@@ -165,12 +165,12 @@ main{
 }
 
 .book-return-button > i{
-    color: black;
+    /* color: black; */
     font-size: var(--font-large-responsive) !important;
 }
 
 .book-edit-button > i{
-    color: black;
+    /* color: black; */
     font-size: var(--font-large-responsive) !important;
 }
 
@@ -247,7 +247,7 @@ main{
     margin-top: 1.5rem;
 
     position: sticky;
-    background-color: white;
+    background-color: var(--bg);
     top: 0; 
     z-index: 1;
 }
@@ -413,7 +413,7 @@ main{
 .book-action-create-page{
     background: none;
     border: none;
-    color: black;
+    color: var(--text);
     transition: transform .3s ease;
     
 }
@@ -423,7 +423,7 @@ main{
 }
 
 .book-action-create-page > i {
-    font-size: 30px;
+    font-size: var(--font-large-responsive);
     
 }
 
