@@ -57,6 +57,17 @@ class BooksController < ApplicationController
         end
     end
 
+    def live_search
+        title_subtitle = params[:title_subtitle].to_s.downcase
+        is_active = ActiveModel::Type::Boolean.new.cast(params[:is_active])
+
+        books = Book.from_user(current_user.id) 
+        books = books.where("title LIKE ? OR subtitle LIKE ?", "%#{title_subtitle}%", "%#{title_subtitle}%") if title_subtitle.present?
+        books = books.where(is_active: is_active) unless is_active.nil?
+
+        render json: books.to_json(methods: [:created_at_ago, :updated_at_ago, :truncated_title, :truncated_subtitle])
+    end
+
     private
 
     def set_book

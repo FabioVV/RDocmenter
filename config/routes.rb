@@ -24,12 +24,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "wigwam#home"
 
+  get "live_search_books", to:"books#live_search"
 
   resources :books do 
-
     member do
-      get "edit_info", to: "books#edit_info"
-      patch "update_edit_info", to: "books#update_edit_info"
+      get "edit_info"
+      patch "update_edit_info"
     end
 
     resources :pages do
@@ -37,7 +37,6 @@ Rails.application.routes.draw do
         post :upload_markdown_image
       end
     end
-    
   end
 
 

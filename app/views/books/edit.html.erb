@@ -31,11 +31,6 @@
                 <%= button_to "<i class='fa-solid fa-heading'></i>".html_safe, book_pages_path(@book), data: { turbo_method: :post }, params: {page: {page_type: "title"}}, class: "book-action-create-page", title: "Create new title page" %>
             </div>
 
-            <div class='book-edit-actions-layout'>
-                <%= button_to "<i class='fa-solid fa-list'></i>".html_safe, '', data: { turbo_method: :get }, class: "book-action-create-page" %>
-                <%= button_to "<i class='fa-solid fa-table-cells'></i>".html_safe, '', data: { turbo_method: :get }, class: "book-action-create-page" %>
-            </div>
-
             <div class='PLACEHOLDER_DIV_FOR_LAYOUT'>
             </div>
         </div>

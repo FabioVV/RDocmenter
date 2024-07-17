@@ -12,10 +12,29 @@ class Book < ApplicationRecord
     validates :subtitle, length: {minimum:0, maximum: 100}
 
     scope :active, -> { where(is_active: true) }
+    scope :from_user, ->(user_id) { where(user_id: user_id) }
 
     def has_active_pages?
         pages.active.any?
     end
+
+    def created_at_ago
+        ActionController::Base.helpers.time_ago_in_words(created_at)
+    end
+    
+    def updated_at_ago
+        ActionController::Base.helpers.time_ago_in_words(updated_at)
+    end
+
+    def truncated_title
+        ActionController::Base.helpers.truncate(title, length: 27, omission: ' ...')
+    end
+
+    def truncated_subtitle
+        subtitle ? ActionController::Base.helpers.truncate(subtitle, length: 28, omission: ' ...') : "&#8205;".html_safe
+    end
+
+
 
     private 
 

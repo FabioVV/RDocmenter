@@ -3,16 +3,16 @@
     <a title='Open/Close filter options' onclick="toggle_book_filter()" id='book_filter_toggle' class='reset_book_actions_css' ><i style='color:grey !important; font-size:30px;' class="fa-solid fa-filter"></i></a>
 </div>
 
-<div class='book-filter-options'>
+<div data-controller='indexsearch' class='book-filter-options'>
     <div>
         <label>Search by Title/Subtitle</label>
-        <input type='search' />
+        <input type='search' data-indexsearch-target="titlesubtitle" data-action='input->indexsearch#searchThrottle'/>
     </div>
     <div>
         <label>Active/Inactive</label>
-        <select>
-            <option>Active Books/Documents</option>
-            <option>Inactive Books/Documents</option>
+        <select data-indexsearch-target="situation" data-action='change->indexsearch#searchThrottle'>
+            <option value='Y'>Active Books/Documents</option>
+            <option value='N'>Inactive Books/Documents</option>
         </select>
     </div>
 </div>
