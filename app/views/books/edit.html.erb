@@ -36,7 +36,7 @@
                 <%= button_to "<i class='fa-solid fa-table-cells'></i>".html_safe, '', data: { turbo_method: :get }, class: "book-action-create-page" %>
             </div>
 
-            <div class=''>
+            <div class='PLACEHOLDER_DIV_FOR_LAYOUT'>
             </div>
         </div>
         <% if @book.has_active_pages? %>
@@ -56,7 +56,7 @@
 
                                 <% elsif p.page_type == 'text' %>
                                     <%= sanitize_content p.html_preview %>
-
+                                    
                                 <% end %>
 
                             </div>
@@ -72,7 +72,7 @@
 
                     <% end %>            
         <% else %>
-            <h5 align="center" style='margin-top:8rem;'>No pages yet. Create one using the buttons above</h5>
+            <h5 style='text-align:left;'><i class="fa-solid fa-arrow-up"></i> No pages yet. Create one using the buttons above</h5>
         <% end %>            
         </div>
     </div>

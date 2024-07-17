@@ -31,11 +31,15 @@
             <figure data-controller="previewimage" class='page-image-edit'>
                 <%= image_tag @page.page_image.attached? ? @page.page_image : "https://placehold.co/600x400?text=Image", data: { action: "click->previewimage#clickOnFileField",  previewimage_target: "preview" }, class: "image-page-upload" %>
                 <%= f.file_field :page_image, class: "image-page-upload-input", data: { previewimage_target: "input", action: "change->previewimage#previewImage" } %>
-
                 <figcaption>
                     <%= simple_format @page.image_caption %>
                 </figcaption>
             </figure>
+
+            <div class='book-caption-form'>
+                <%= f.label :image_caption %>
+                <%= f.text_field :image_caption %>
+            </div>
 
         <% when "title" %>
     
@@ -44,7 +48,6 @@
             </div>
 
         <% when "text" %>
-        
             <!--Custom tag-->
             <%= f.markdown_area :content, class: "main-editor" %>
             <!--Custom tag-->

@@ -31,11 +31,11 @@
             <br />
             <div class="actions">
                 <%= f.submit action_name %>
-                <%= button_to "Delete book/document", book_path(@book), data: { confirm: "Are you sure?", turbo_confirm: "This is not a destructive action | You will be able to reactivate the book later, just use the filter in your library"}, method: :delete , class: "delete-book-button" %>
             </div>
             <br />
 
         <% end %>
+        <%= button_to "Delete book/document", book_path(@book), data: { confirm: "Are you sure?", turbo_confirm: "This is not a destructive action | You will be able to reactivate the book later, just use the filter in your library"}, method: :delete , class: "delete-book-button" %>
 
     </div>
     <div></div>

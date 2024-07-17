@@ -93,3 +93,7 @@ li > a:hover{
         white-space: nowrap;
     }
 }
+
+.user-nav{
+    border: none;
+}
