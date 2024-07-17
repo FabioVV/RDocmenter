@@ -41,36 +41,40 @@
         </div>
         <% if @book.has_active_pages? %>
             <div class='book-pages'>
-                    <% @pages.each do |p| %> 
-                        <div class='book-page-container'>
-                            <div class='book-page <%= 'remove-padding' if p.is_page_image? %>' data-controller='editpage' data-action="click->editpage#openPageEdit" data-id='<%= p.id %>' data-book-id='<%= p.book_id %>'>
-                              
-                                <% if p.page_image.attached? && p.is_page_image?  %>
-                                    <%= image_tag p.page_image,  loading: "lazy", class: "img"  %>
-                                    
-                                <% elsif !p.page_image.attached? && p.is_page_image? %>
-                                    <%= image_tag 'placeholder_book_index.svg',  loading: "lazy"  %>
+                <% @pages.each do |p| %> 
+                    <div class='book-page-container'>
+                        <div class='book-page <%= 'remove-padding' if p.is_page_image? %>' data-controller='editpage' data-action="click->editpage#openPageEdit" data-id='<%= p.id %>' data-book-id='<%= p.book_id %>'>
+                            <% if p.page_image.attached? && p.is_page_image?  %>
+                                <%= image_tag p.page_image,  loading: "lazy", class: "img"  %>
+                                
+                            <% elsif !p.page_image.attached? && p.is_page_image? %>
+                                <%= image_tag 'placeholder_book_index.svg',  loading: "lazy"  %>
 
-                                <% elsif p.page_type == 'title' %>
-                                    <%= tag.span(simple_format(p.section_header), class: "center-text bold section-header text-medium-responsive") if p.section_header? %> 
+                            <% elsif p.page_type == 'title' %>
+                                <%= tag.span(simple_format(p.section_header), class: "center-text bold section-header text-medium-responsive") if p.section_header? %> 
 
-                                <% elsif p.page_type == 'text' %>
-                                    <%= sanitize_content p.html_preview %>
-                                    
-                                <% end %>
-
-                            </div>
-
-                            <div class='page-title-section'>
-                                <% if p.page_type == 'title' %>
-                                    <h3 class='overflow-ellipsis text-medium-responsive' title='<%= p.section_header %>'><%= p.section_header %></h3>
-                                <% else %>
-                                    <h3 class='overflow-ellipsis text-medium-responsive' title='<%= p.main_title %>'><%= p.main_title %></h3>
-                                <% end %>  
-                            </div>
+                            <% elsif p.page_type == 'text' %>
+                                <%= sanitize_content p.html_preview %>
+                                
+                            <% end %>
                         </div>
 
-                    <% end %>            
+                        <div class='page-title-section'>
+                            <% if p.page_type == 'title' %>
+                                <h3 class='overflow-ellipsis text-medium-responsive' title='<%= p.section_header %>'><%= p.section_header %></h3>
+                            <% else %>
+                                <h3 class='overflow-ellipsis text-medium-responsive' title='<%= p.main_title %>'><%= p.main_title %></h3>
+                            <% end %>  
+                        </div>
+
+                        <div class='page-word-count'>
+                            <% if p.page_type == 'text' %>
+                                <%= word_count(p.content) %>
+                            <% end %>  
+                        </div>
+                    </div>
+                <% end %>   
+            </div>         
         <% else %>
             <h5 style='text-align:left;'><i class="fa-solid fa-arrow-up"></i> No pages yet. Create one using the buttons above</h5>
         <% end %>            

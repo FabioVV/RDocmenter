@@ -269,7 +269,7 @@ main{
 }
 
 .book-edit-actions-crud > a > i{
-    color: var(--accent);
+    /* color: var(--accent); */
     font-size: 26px;
     transition: transform .3s ease;
 }
@@ -328,7 +328,7 @@ main{
     justify-content: center;
     align-items: center;
     height: 100%;
-    color: black;
+    color: var(--text);
 }
 
 .book-page:hover{
@@ -361,6 +361,7 @@ main{
 .page-title-section > h3{
     font-size: var(--font-medium-responsive);
     text-align: center;
+    margin-bottom: 1px !important;
 }
 
 .reset_book_actions_css{

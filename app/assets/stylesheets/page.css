@@ -99,3 +99,8 @@ section:has(.page-image-show){
 .page-image-show > img{
     cursor: pointer;
 }
+
+.page-word-count {
+    text-align: center;
+    font-size: var(--font-small-responsive);
+}

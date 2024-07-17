@@ -1,12 +1,10 @@
 <nav class='book-navbar'>
-
     <!-- This if will stay here just in case the other if fails somehow. -->
     <% if request.original_url == url_for(should_return_to) %>
         <% should_return_to = books_path %>
     <% end %>
 
     <%= link_to '<i class="fa-solid fa-circle-arrow-left"></i>'.html_safe, page ? edit_book_path(book) : should_return_to, method: "get", class: "book-return-button" %>
-    
     
     <% if page %>
         <div class='nav_route_tool'>
@@ -32,6 +30,7 @@
         </div>
     <% end %>
 
+    <%= link_to "<i class='fa-solid fa-circle-half-stroke'></i>".html_safe,'', title: "Change color theme", data: {action: 'click->webtheme#changeTheme'} %>
 
     <% if request.original_url.split('/')[-1].strip != "edit_info" && !page %>
         <%= link_to '<i class="fa-solid fa-gear"></i>'.html_safe, edit_info_book_path, method: "get", class: "book-edit-button" %>
