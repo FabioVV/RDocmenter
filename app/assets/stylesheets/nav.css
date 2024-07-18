@@ -31,7 +31,6 @@ li > a:hover{
 .fullscreen-toggle{
     display: flex;
     justify-content: center;
-    align-items: center;
     border-radius: 50%;
     padding: 10px;
     cursor: pointer;
