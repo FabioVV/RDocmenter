@@ -71,11 +71,11 @@ class BooksController < ApplicationController
     private
 
     def set_book
-        @book = Book.active.find(params[:id])
+        @book = Book.active.find_by!(slug: params[:slug])
     end
 
     def set_pages
-        @pages = Book.active.find(params[:id]).pages.active
+        @pages = Book.active.find_by!(slug: params[:slug]).pages.active
     end
 
     def book_params

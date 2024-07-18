@@ -1,6 +1,7 @@
 class Book < ApplicationRecord
     belongs_to :user
     has_many :pages, dependent: :destroy
+    before_validation :generate_unique_slug, on: :create
 
     has_one_attached :cover_image, dependent: :purge_later
 
@@ -13,6 +14,10 @@ class Book < ApplicationRecord
 
     scope :active, -> { where(is_active: true) }
     scope :from_user, ->(user_id) { where(user_id: user_id) }
+
+    def to_param
+        slug
+    end
 
     def has_active_pages?
         pages.active.any?
@@ -34,9 +39,18 @@ class Book < ApplicationRecord
         subtitle ? ActionController::Base.helpers.truncate(subtitle, length: 28, omission: ' ...') : "&#8205;".html_safe
     end
 
-
-
     private 
+
+    def generate_unique_slug
+        base_slug = title.parameterize
+        unique_slug = "#{base_slug}-#{SecureRandom.hex(4)}"
+  
+        while Page.exists?(slug: unique_slug)
+          unique_slug = "#{base_slug}-#{SecureRandom.hex(4)}"
+        end
+  
+        self.slug = unique_slug
+      end
 
     def file_format
         return unless cover_image.attached? && !image?

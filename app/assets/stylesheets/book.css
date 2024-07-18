@@ -61,8 +61,7 @@ main{
 }
 
 .book-img-section{
-    container-type: inline-size;
-    aspect-ratio: 6 / 9;
+
 }
 
 .book-img-section > img{
@@ -176,7 +175,7 @@ main{
 
 .book-edit-section{
     display: grid;
-    grid-template-columns: 25% 3fr;
+    grid-template-columns: minmax(200px, 1fr) 5fr;
     gap: 2.5rem;
 }
 

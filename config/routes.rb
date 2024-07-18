@@ -26,13 +26,13 @@ Rails.application.routes.draw do
 
   get "live_search_books", to:"books#live_search"
 
-  resources :books do 
+  resources :books, param: :slug do 
     member do
       get "edit_info"
       patch "update_edit_info"
     end
 
-    resources :pages do
+    resources :pages, param: :slug do
       member do 
         post :upload_markdown_image
       end

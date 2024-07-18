@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_08_022625) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_18_161112) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_08_022625) do
     t.string "subtitle"
     t.boolean "is_active", default: true
     t.string "author"
+    t.string "slug"
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
@@ -61,6 +62,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_08_022625) do
     t.string "image_caption"
     t.text "section_header"
     t.boolean "is_active", default: true
+    t.string "slug"
     t.index ["book_id"], name: "index_pages_on_book_id"
   end
 

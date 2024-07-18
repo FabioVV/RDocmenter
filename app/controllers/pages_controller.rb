@@ -55,11 +55,11 @@ class PagesController < ApplicationController
     private 
 
     def set_page
-        @page = Page.active.find(params[:id])
+        @page = Page.active.find_by!(slug: params[:slug])
     end
 
     def set_book
-        @book = Book.active.find(params[:book_id])
+        @book = Book.active.find_by!(slug: params[:book_slug])
     end
 
     def page_params

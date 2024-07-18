@@ -1,6 +1,9 @@
+include SecureRandom
+
 class Page < ApplicationRecord
   belongs_to :book
   before_save :_sanitize_content
+  before_validation :generate_unique_slug, on: :create
 
   has_many_attached :images
   has_one_attached :page_image, dependent: :purge_later
@@ -17,6 +20,9 @@ class Page < ApplicationRecord
     preview_renderer.render(body_preview)
   end
 
+  def to_param
+    slug
+  end
 
   # scope :sorted, -> { order(created_at: :desc) }
   scope :active, -> { where(is_active: true) }
@@ -37,6 +43,23 @@ class Page < ApplicationRecord
   end
 
   private
+
+    def generate_unique_slug
+      base_slug = if page_type == 'title'
+        section_header.parameterize
+      else
+        main_title.parameterize
+      end
+
+      unique_slug = "#{base_slug}-#{SecureRandom.hex(4)}"
+
+      while Page.exists?(slug: unique_slug)
+        unique_slug = "#{base_slug}-#{SecureRandom.hex(4)}"
+      end
+
+      self.slug = unique_slug
+    end
+
     def body_preview
       content.to_s.first(1024)
     end
