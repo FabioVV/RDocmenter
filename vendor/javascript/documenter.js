@@ -143,11 +143,11 @@ class Documenter extends HTMLElement {
           const formData = new FormData()
           formData.append('image', file)
           
-          const PAGE_ID = document.getElementById('markdown-file').dataset.id
-          const BOOK_ID = document.getElementById('markdown-file').dataset.bookId
+          const PAGE_SLUG = document.getElementById('markdown-file').dataset.id
+          const BOOK_SLUG = document.getElementById('markdown-file').dataset.bookId
 
           try {
-            const response = await fetch(`/books/${BOOK_ID}/pages/${PAGE_ID}/upload_markdown_image`, {
+            const response = await fetch(`/books/${BOOK_SLUG}/pages/${PAGE_SLUG}/upload_markdown_image`, {
                 method: 'POST',
                 headers: {
                     'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')

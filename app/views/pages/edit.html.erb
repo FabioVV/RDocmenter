@@ -51,7 +51,7 @@
             <!--Custom tag-->
             <%= f.markdown_area :content, class: "main-editor" %>
             <!--Custom tag-->
-            <%= f.file_field :images, id: 'markdown-file', style: 'display:none;',  data: { id: @page.id, book_id: @page.book_id } %>
+            <%= f.file_field :images, id: 'markdown-file', style: 'display:none;',  data: { id: @page.slug, book_id: @book.slug } %>
 
         <% else %>
             <span>Type of page not recognized.</span>
