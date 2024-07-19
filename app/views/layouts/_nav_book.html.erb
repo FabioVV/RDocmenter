@@ -4,8 +4,10 @@
         <% should_return_to = books_path %>
     <% end %>
 
-    <%= link_to '<i class="fa-solid fa-circle-arrow-left"></i>'.html_safe, page ? edit_book_path(book) : should_return_to, method: "get", class: "book-return-button" %>
-    
+    <% if current_user && @book.user_id == current_user.id %>
+        <%= link_to '<i class="fa-solid fa-circle-arrow-left"></i>'.html_safe, page ? edit_book_path(book) : should_return_to, method: "get", class: "book-return-button" %>
+    <% end %>
+
     <% if page %>
         <div class='nav_route_tool'>
             <%= link_to '<i class="fa-solid fa-house flex-item-no-shrink"></i>'.html_safe, books_path, method: "get", class: "book-home-button" %>
@@ -32,13 +34,23 @@
 
     <%= link_to "<i class='fa-solid fa-circle-half-stroke'></i>".html_safe,'', title: "Change color theme", data: {action: 'click->webtheme#changeTheme'} %>
 
-    <% if request.original_url.split('/')[-1].strip != "edit_info" && !page %>
-        <%= link_to '<i class="fa-solid fa-gear"></i>'.html_safe, edit_info_book_path, method: "get", class: "book-edit-button" %>
-    <% else %>
-        <div class='fullscreen-toggle'>
-            <i data-controller='fullscreen' data-action="click->fullscreen#openFullscreen" class="fa-solid fa-expand"></i>
-        </div>
+    <div class='fullscreen-toggle'>
+        <i data-controller='fullscreen' data-action="click->fullscreen#openFullscreen" class="fa-solid fa-expand"></i>
+    </div>
+
+    <% if !current_user && !page %>
+        <ul>
+            <li><%= link_to "Login", new_user_session_path %></li>
+            <li><%= link_to "Sign up", new_user_registration_path %></li>
+        </ul>
     <% end %>
+
+    <% if request.original_url.split('/')[-1].strip != "edit_info" && !page %>
+        <% if current_user && @book.user_id == current_user.id %>
+            <%= link_to '<i class="fa-solid fa-gear"></i>'.html_safe, edit_info_book_path, method: "get", class: "book-edit-button" %>
+        <% end %>
+    <% end %>
+
 </nav>
 
 

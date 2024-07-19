@@ -24,11 +24,13 @@
             <span class='author text-medium-responsive'><%= @book.author %><span>
         </div>
 
-        <div class='book-edit-actions  '>
+        <div class='book-edit-actions'>
             <div class='book-edit-actions-crud'>
-                <%= button_to "<i class='fa-solid fa-file-lines'></i>".html_safe, book_pages_path(@book), data: { turbo_method: :post }, params: {page: {page_type: "text"}}, class: "book-action-create-page", title: "Create new content page" %>
-                <%= button_to "<i class='fa-solid fa-file-image'></i>".html_safe, book_pages_path(@book), data: { turbo_method: :post }, params: {page: {page_type: "image"}}, class: "book-action-create-page", title: "Create new image page" %>
-                <%= button_to "<i class='fa-solid fa-heading'></i>".html_safe, book_pages_path(@book), data: { turbo_method: :post }, params: {page: {page_type: "title"}}, class: "book-action-create-page", title: "Create new title page" %>
+                <% if current_user && @book.user_id == current_user.id %>
+                    <%= button_to "<i class='fa-solid fa-file-lines'></i>".html_safe, book_pages_path(@book), data: { turbo_method: :post }, params: {page: {page_type: "text"}}, class: "book-action-create-page", title: "Create new content page" %>
+                    <%= button_to "<i class='fa-solid fa-file-image'></i>".html_safe, book_pages_path(@book), data: { turbo_method: :post }, params: {page: {page_type: "image"}}, class: "book-action-create-page", title: "Create new image page" %>
+                    <%= button_to "<i class='fa-solid fa-heading'></i>".html_safe, book_pages_path(@book), data: { turbo_method: :post }, params: {page: {page_type: "title"}}, class: "book-action-create-page", title: "Create new title page" %>
+                <% end %>
             </div>
 
             <div class='PLACEHOLDER_DIV_FOR_LAYOUT'>
@@ -38,7 +40,7 @@
             <div class='book-pages'>
                 <% @pages.each do |p| %> 
                     <div class='book-page-container'>
-                        <div class='book-page <%= 'remove-padding' if p.is_page_image? %>' data-controller='editpage' data-action="click->editpage#openPageEdit" data-id='<%= p.slug %>' data-book-id='<%= @book.slug %>'>
+                        <div class='book-page <%= 'remove-padding' if p.is_page_image? %>' data-controller='editpage' data-action="click->editpage#openPageEdit" data-id='<%= p.slug %>' data-book-id='<%= @book.slug %>' data-user-id='<%= current_user.id if current_user %>'>
                             <% if p.page_image.attached? && p.is_page_image?  %>
                                 <%= image_tag p.page_image,  loading: "lazy", class: "img"  %>
                                 

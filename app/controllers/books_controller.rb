@@ -2,7 +2,7 @@ class BooksController < ApplicationController
     before_action :set_book, only: [:show, :edit, :update, :destroy, :edit_info, :update_edit_info]
     before_action :require_same_author_or_admin, only: [:edit, :update, :destroy, :edit_info, :update_edit_info]
     before_action :set_pages, only: [:edit]
-    before_action :require_user
+    before_action :require_user, except: [:edit]
 
 
     def index 
