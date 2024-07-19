@@ -41,7 +41,11 @@ class Book < ApplicationRecord
 
     def cover_image_url
         Rails.application.routes.url_helpers.rails_blob_url(cover_image, only_path: true) if cover_image.attached?
-      end
+    end
+
+    def get_slug
+        slug
+    end
 
     private 
 

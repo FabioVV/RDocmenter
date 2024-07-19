@@ -400,6 +400,18 @@ main{
     display: flex !important;
 }
 
+.reactivate-book-button{
+    background-color: #0d47a1;
+    color: #fff;
+    border: none;
+}
+
+.reactivate-book-button:hover{
+    background-color: #1266e2 !important;
+}
+
+
+
 .delete-book-button{
     background-color: red !important;
     border: none;

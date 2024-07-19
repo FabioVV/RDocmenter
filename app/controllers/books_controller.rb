@@ -38,7 +38,7 @@ class BooksController < ApplicationController
     end
 
     def destroy
-        if @book.update(is_active:false)  
+        if @book.update(is_active:!@book.is_active)  
             redirect_to books_path
         else    
             render 'edit_info', status: :unprocessable_entity
@@ -65,17 +65,17 @@ class BooksController < ApplicationController
         books = books.where("title LIKE ? OR subtitle LIKE ?", "%#{title_subtitle}%", "%#{title_subtitle}%") if title_subtitle.present?
         books = books.where(is_active: is_active) unless is_active.nil?
 
-        render json: books.to_json(methods: [:created_at_ago, :updated_at_ago, :truncated_title, :truncated_subtitle, :cover_image_url])
+        render json: books.to_json(methods: [:created_at_ago, :updated_at_ago, :truncated_title, :truncated_subtitle, :cover_image_url, :get_slug])
     end
 
     private
 
     def set_book
-        @book = Book.active.find_by!(slug: params[:slug])
+        @book = Book.find_by!(slug: params[:slug])
     end
 
     def set_pages
-        @pages = Book.active.find_by!(slug: params[:slug]).pages.active
+        @pages = Book.find_by!(slug: params[:slug]).pages.active
     end
 
     def book_params

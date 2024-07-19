@@ -9,7 +9,7 @@
     </div>
 
     <div class='edit-book_info-form'>
-        <%= form_with(model: @book, local: true, url:update_edit_info_book_path(@book), method: :patch,  class: "book-initial-form") do |f| %>
+        <%= form_with(model: @book, local: true, url: update_edit_info_book_path(@book), method: :patch,  class: "book-initial-form") do |f| %>
             <%= render "devise/shared/error_messages", resource: @book %>
 
             <div class="field">
@@ -35,7 +35,12 @@
             <br />
 
         <% end %>
-        <%= button_to "Delete book/document", book_path(@book), data: { confirm: "Are you sure?", turbo_confirm: "This is not a destructive action | You will be able to reactivate the book later, just use the filter in your library"}, method: :delete , class: "delete-book-button" %>
+
+        <% if !@book.is_active%>
+            <%= button_to "Reactivate Book/Document", book_path(@book), data: { confirm: "Are you sure?", turbo_confirm: "This is not a destructive action | You will be reactivating your book/document, and it can be found in your library again"}, method: :delete , class: "reactivate-book-button" %>
+        <% else %>
+            <%= button_to "Deactivate Book/Document", book_path(@book), data: { confirm: "Are you sure?", turbo_confirm: "This is not a destructive action | You will be able to reactivate the book later, just use the filter in your library"}, method: :delete , class: "delete-book-button" %>
+        <% end %>
 
     </div>
     <div></div>

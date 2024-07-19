@@ -49,7 +49,7 @@ export default class extends Controller {
                     }
 
                     HTML += `
-                        <div class='book' data-controller='editbook' data-action="click->editbook#openBookEdit" data-id='<%= b.slug %>'>
+                        <div class='book' data-controller='editbook' data-action="click->editbook#openBookEdit" data-id='${book.get_slug}'>
                             <div class='book-title-section'>
                                 <h2 title='${book.title}'>${book.truncated_title}</h2>
                                 <h3 title='${book.subtitle}'>${book.truncated_subtitle}</h3>
