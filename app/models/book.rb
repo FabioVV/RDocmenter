@@ -39,6 +39,10 @@ class Book < ApplicationRecord
         subtitle ? ActionController::Base.helpers.truncate(subtitle, length: 28, omission: ' ...') : "&#8205;".html_safe
     end
 
+    def cover_image_url
+        Rails.application.routes.url_helpers.rails_blob_url(cover_image, only_path: true) if cover_image.attached?
+      end
+
     private 
 
     def generate_unique_slug

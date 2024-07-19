@@ -65,7 +65,7 @@ class BooksController < ApplicationController
         books = books.where("title LIKE ? OR subtitle LIKE ?", "%#{title_subtitle}%", "%#{title_subtitle}%") if title_subtitle.present?
         books = books.where(is_active: is_active) unless is_active.nil?
 
-        render json: books.to_json(methods: [:created_at_ago, :updated_at_ago, :truncated_title, :truncated_subtitle])
+        render json: books.to_json(methods: [:created_at_ago, :updated_at_ago, :truncated_title, :truncated_subtitle, :cover_image_url])
     end
 
     private
