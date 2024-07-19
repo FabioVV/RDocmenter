@@ -60,10 +60,6 @@ main{
 
 }
 
-.book-img-section{
-
-}
-
 .book-img-section > img{
     border: 1px solid black;
     object-fit: cover;
@@ -154,15 +150,6 @@ main{
     text-decoration: none;
 }
 
-.book-return-button:hover{
-
-}
-
-
-.book-edit-button:hover{
-
-}
-
 .book-return-button > i{
     /* color: black; */
     font-size: var(--font-large-responsive) !important;
@@ -177,6 +164,7 @@ main{
     display: grid;
     grid-template-columns: minmax(200px, 1fr) 5fr;
     gap: 2.5rem;
+    margin-left: 8rem;
 }
 
 .book-edit-side{
@@ -184,8 +172,6 @@ main{
     flex-direction: column;
     position: relative;
 }
-
-.book-edit-header{}
 
 .book-edit-header > h1{
     font-size: 2em;
@@ -278,12 +264,6 @@ main{
     font-size: var(--font-medium-responsive);
     transition: transform .3s ease;
 
-}
-
-.book-edit-actions-layout > a > i:hover{
-}
-
-.book-edit-actions-crud > a > i:hover{
 }
 
 .book-pages{
