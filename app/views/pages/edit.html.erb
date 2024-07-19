@@ -14,7 +14,7 @@
 <% content_for :body_page_class, "body-grid-change" %>
 
 <% content_for :toolbar do %>
-    <%= toolbar_options(edit: true, page_type: @page.page_type) %>
+    <%= toolbar_options(edit: true, page_type: @page.page_type, book: @book) %>
 <% end %>
 
 <%= form_with(model: @page, local: true, url:book_page_path(@page.book_id, @page), method: :patch) do |f| %>
@@ -60,7 +60,7 @@
 <% end %>
 
 <% content_for :footer do %>
-    <%= render 'pages/navigation', page: @page, for_edit: true %>
+    <%= render 'pages/navigation', page: @page, book: @book, for_edit: false %>
 <% end %>
 
 <script> 

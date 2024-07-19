@@ -10,7 +10,7 @@ module PagesHelper
     sanitize content , scrubber: HtmlScrubber.new 
   end
 
-  def toolbar_options(edit: false, page_type: nil)
+  def toolbar_options(edit: false, page_type: nil, book: nil)
     if current_user
       if edit
         if page_type == 'text'
@@ -19,7 +19,7 @@ module PagesHelper
           render 'toolbar/toolbar_edit'
         end
       else
-        render 'toolbar/toolbar_show'
+        render 'toolbar/toolbar_toggle_mode', book: book
       end
     end
   end
@@ -41,22 +41,22 @@ module PagesHelper
 
 
   
-  def link_to_previous_page(page, for_edit: false)
-      book_id = page.book_id
+  def link_to_previous_page(page, book, for_edit: false)
+      book_slug = book.slug
 
       if previous_page = page.previous
-        path = for_edit ? edit_book_page_path(book_id, previous_page) : book_page_path(book_id, previous_page)
+        path = for_edit ? edit_book_page_path(book_slug, previous_page) : book_page_path(book_slug, previous_page)
         link_to path, class: "txt-medium min-width btn" do
           "<i class='fa-solid fa-arrow-left-long'></i>".html_safe + tag.span("Previous: #{previous_page.main_title }", class: "overflow-ellipsis")
         end
       end
-    end
+    end 
   
-    def link_to_next_page(page, for_edit: false)
-      book_id = page.book_id
+    def link_to_next_page(page, book, for_edit: false)
+      book_slug = book.slug
 
       if next_page = page.next
-        path = for_edit ? edit_book_page_path(book_id, next_page) : book_page_path(book_id, next_page)
+        path = for_edit ? edit_book_page_path(book_slug, next_page) : book_page_path(book_slug, next_page)
         link_to path, class: "txt-medium min-width btn" do
           tag.span("Next: #{next_page.main_title }", class: "overflow-ellipsis") + " <i class='fa-solid fa-arrow-right-long'></i>".html_safe
         end

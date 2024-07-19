@@ -3,7 +3,7 @@
         <i class="fa-solid fa-eye"></i>
     </span>
 
-    <span data-controller='toggle' data-toggle-show-path='<%= book_page_path(@page.book_id, @page) %>' data-toggle-edit-path='<%= edit_book_page_path(@page.book_id, @page) %>'>
+    <span data-controller='toggle' data-toggle-show-path='<%= book_page_path(@book.slug, @page) %>' data-toggle-edit-path='<%= edit_book_page_path(@book.slug, @page) %>'>
         <label for='editor-mode-toggle' class='switch'>
             <input data-action='change->toggle#toggle' data-toggle-target='checkbox' type='checkbox' id='editor-mode-toggle'>
             <span class='slider round'></span>

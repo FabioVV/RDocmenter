@@ -10,7 +10,7 @@
         <div class='nav_route_tool'>
             <%= link_to '<i class="fa-solid fa-house flex-item-no-shrink"></i>'.html_safe, books_path, method: "get", class: "book-home-button" %>
             <i id='arrow_right' class="fa-solid fa-arrow-right flex-item-no-shrink"></i>
-            <%= link_to @book.title, edit_book_path(book.id) , method: "get", class: "book-home-name" %>
+            <%= link_to @book.title, edit_book_path(book) , method: "get", class: "book-home-name" %>
             <i id='arrow_right' class="fa-solid fa-arrow-right flex-item-no-shrink"></i>
 
             <% if hide_input %>
@@ -19,7 +19,7 @@
                 </strong>
             <% else %>
                 <label class='input-sizer'>
-                <%= form_with(model: @page, local: true, url:book_page_path(@page.book_id, @page), method: :patch) do |f| %>
+                <%= form_with(model: @page, local: true, url:book_page_path(book, @page), method: :patch) do |f| %>
 
                     <%= f.text_field :main_title, placeholder: "Page title here", id: "page_main_title_nav" %>
                 <% end %>
