@@ -35,10 +35,16 @@ li > a:hover{
     padding: 10px;
     cursor: pointer;
     transition: transform .3s ease;
+    align-items: center;
+    gap: 1rem;
 }
 
 .fullscreen-toggle > i{
-    font-size: 20px;
+    font-size: var(--font-medium-responsive) !important;
+}
+
+.fullscreen-toggle > a{
+    font-size: var(--font-medium-responsive) !important;
 }
 
 #page_main_title_nav{

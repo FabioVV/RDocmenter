@@ -1,5 +1,4 @@
-class WigwamController < ApplicationController
-
+class DocumenterController < ApplicationController
     def home 
         if current_user
             @any_books = current_user.books.any?
