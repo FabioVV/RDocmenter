@@ -17,7 +17,7 @@
     <%= toolbar_options(edit: true, page_type: @page.page_type, book: @book) %>
 <% end %>
 
-<%= form_with(model: @page, local: true, url:book_page_path(@page.book_id, @page), method: :patch) do |f| %>
+<%= form_with(model: @page, local: true, url:book_page_path(@book.slug, @page), method: :patch) do |f| %>
     <%= render "shared/errors", resource: @page %>
     <%= f.hidden_field :main_title %>
 

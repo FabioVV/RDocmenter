@@ -14,7 +14,7 @@ module PagesHelper
     if current_user
       if edit
         if page_type == 'text'
-          render 'toolbar/toolbar_edit_markdown'
+          render 'toolbar/toolbar_edit_markdown', book: book
         else
           render 'toolbar/toolbar_edit'
         end

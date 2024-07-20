@@ -33,7 +33,7 @@
 
 <div class='toolbox-edit-container'>
     <div class='delete-page-button'>
-        <%= link_to "<i title='Delete page' id='del__' class='fa-solid fa-delete-left'></i>".html_safe, book_page_path(@page.book_id, @page.id), data: { turbo_method: :delete, confirm: "Are you sure?", turbo_confirm: "This is a destructive action! | You will not be able to recover this page." } %>
+        <%= link_to "<i title='Delete page' id='del__' class='fa-solid fa-delete-left'></i>".html_safe, book_page_path(@book.slug, @page), data: { turbo_method: :delete, confirm: "Are you sure?", turbo_confirm: "This is a destructive action! | You will not be able to recover this page." } %>
     </div>
 
     <div class='save-page-button'>
