@@ -73,26 +73,40 @@ class Documenter extends HTMLElement {
     handleEnter(event) {
         if (event.key == 'Enter') {
             event.preventDefault()
-            document.execCommand('insertLineBreak')
 
-            // const selection = window.getSelection()
-            // const range = selection.getRangeAt(0)
-            // const currentNode = range.startContainer
-            // const textBeforeCaret = currentNode.textContent.substring(0, range.startOffset)
-            // const linesBefore = textBeforeCaret.split('\n')
-            // const currentLine = linesBefore[linesBefore.length - 1]
+            const selection = window.getSelection()
+            const range = selection.getRangeAt(0)
+            const currentNode = range.startContainer
+            const textBeforeCaret = currentNode.textContent.substring(0, range.startOffset)
+            const linesBefore = textBeforeCaret.split('\n')
+            const currentLine = linesBefore[linesBefore.length - 1]
         
-            // let newLine = ''
-            // if (currentLine.match(/^\d+\. /)) {
-            //   newLine = `\n${parseInt(currentLine, 10) + 1}. `
-            // } else if (currentLine.match(/^- /)) {
-            //   newLine = `\n- `
-            // } else {
-            //     document.execCommand('insertLineBreak')
-            // }
+            let newLine = ''
 
-            // range.insertNode(document.createTextNode(newLine))
-            // window.getSelection().removeAllRanges()
+            if (currentLine.match(/^\d+\. /)) {
+              newLine = `\n${parseInt(currentLine, 10) + 1}. `
+              range.insertNode(document.createTextNode(newLine))
+
+              range.collapse(false)
+              selection.removeAllRanges();
+              selection.addRange(range)
+
+            } else if (currentLine.match(/^- /)) {
+              newLine = `\n- `
+              range.insertNode(document.createTextNode(newLine))
+
+              range.collapse(false)
+              selection.removeAllRanges();
+              selection.addRange(range)
+
+            } else {                
+              newLine = `\n`
+              range.insertNode(document.createTextNode(newLine))
+
+              range.collapse(false)
+              selection.removeAllRanges();
+              selection.addRange(range)
+            }
 
         }
     }
