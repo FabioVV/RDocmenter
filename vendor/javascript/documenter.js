@@ -81,32 +81,20 @@ class Documenter extends HTMLElement {
             const linesBefore = textBeforeCaret.split('\n')
             const currentLine = linesBefore[linesBefore.length - 1]
         
-            let newLine = ''
+            let newLine = '\n'
 
             if (currentLine.match(/^\d+\. /)) {
               newLine = `\n${parseInt(currentLine, 10) + 1}. `
-              range.insertNode(document.createTextNode(newLine))
-
-              range.collapse(false)
-              selection.removeAllRanges();
-              selection.addRange(range)
 
             } else if (currentLine.match(/^- /)) {
               newLine = `\n- `
-              range.insertNode(document.createTextNode(newLine))
+              
+            } 
 
-              range.collapse(false)
-              selection.removeAllRanges();
-              selection.addRange(range)
-
-            } else {                
-              newLine = `\n`
-              range.insertNode(document.createTextNode(newLine))
-
-              range.collapse(false)
-              selection.removeAllRanges();
-              selection.addRange(range)
-            }
+            range.insertNode(document.createTextNode(newLine))
+            range.collapse(false)
+            selection.removeAllRanges();
+            selection.addRange(range)
 
         }
     }
