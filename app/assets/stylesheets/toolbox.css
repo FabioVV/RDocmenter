@@ -100,4 +100,5 @@
 .editor-button:hover{
     background-color: var(--accent-hover);
     color: var(--bg);
+    border-radius: 25%;
 }

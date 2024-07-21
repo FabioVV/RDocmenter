@@ -101,3 +101,14 @@ li > a:hover{
 .user-nav{
     border: none;
 }
+
+.main-nav{
+    /*
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background-color: var(--bg);
+    */
+}

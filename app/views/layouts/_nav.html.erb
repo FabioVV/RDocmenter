@@ -1,8 +1,17 @@
-<nav>
+<nav class='main-nav'>
     <ul>
         <% if request.original_url.split('/')[-1].strip == "edit" %>
             <%= link_to '<i class="fa-solid fa-circle-arrow-left"></i>'.html_safe, books_path, method: "get", class: "book-return-button" %>
+        <% else %>
+            <div class='user-img-profile-nav'>
+                <% if current_user.profile_photo.attached? %>
+                    <%= image_tag current_user.profile_photo  %>
+                <% else %>
+                    <%= image_tag 'placeholder_book_edit_info.svg'  %>
+                <% end %>
+            </div>
         <% end %>
+
     </ul>
 
     <% if !current_user %>
