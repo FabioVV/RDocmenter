@@ -32,10 +32,8 @@
         </div>
     <% end %>
 
-    <%= link_to "<i class='fa-solid fa-circle-half-stroke'></i>".html_safe,'', title: "Change color theme", data: {action: 'click->webtheme#changeTheme'} %>
-
-
-
+    <%= link_to "<i class='fa-solid fa-circle-half-stroke'></i>".html_safe, '', title: "Change color theme", data: {action: 'click->webtheme#changeTheme'} %>
+  
     <% if !current_user && !page %>
         <ul>
             <li><%= link_to "Login", new_user_session_path %></li>
@@ -45,11 +43,12 @@
 
     <% if request.original_url.split('/')[-1].strip != "edit_info" && !page %>
         <% if current_user && @book.user_id == current_user.id %>
-            <div class='fullscreen-toggle'>
-                <i data-controller='fullscreen' data-action="click->fullscreen#openFullscreen" class="fa-solid fa-expand"></i>
-                <%= link_to '<i class="fa-solid fa-gear"></i>'.html_safe, edit_info_book_path, method: "get", class: "book-edit-button" %>
-            </div>
+            <%= link_to '<i class="fa-solid fa-gear"></i>'.html_safe, edit_info_book_path, method: "get", class: "book-edit-button" %>
         <% end %>
+    <% elsif request.original_url.split('/')[-1].strip != "edit_info" && page %>
+        <div class='fullscreen-toggle'>
+            <i data-controller='fullscreen' data-action="click->fullscreen#openFullscreen" class="fa-solid fa-expand"></i>
+        </div>
     <% end %>
 
 </nav>
