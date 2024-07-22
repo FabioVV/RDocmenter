@@ -6,6 +6,7 @@ class Documenter extends HTMLElement {
         super()
         this.contentDiv = null
         this.caretPos = null
+        this.textHistoryManager = null
         this.inputHidden =  this.querySelector('#content_hidden')
     }
 
@@ -17,9 +18,12 @@ class Documenter extends HTMLElement {
         this.contentDiv.setAttribute('contenteditable', true)
         this.contentDiv.setAttribute('autofocus', true)
         this.appendChild(this.contentDiv)
-        this.contentDiv.innerHTML = parseMarkdown(this.inputHidden.value)
 
-        this.contentDiv.addEventListener('keydown', this.handleKeyDown.bind(this))
+        this.contentDiv.innerHTML = parseMarkdown(this.inputHidden.value)
+        this.textHistoryManager = new History(this.contentDiv)
+
+        this.contentDiv.addEventListener('keydown', this.handleEnterKeyDown.bind(this))
+        this.contentDiv.addEventListener('keydown', this.handleTextHistory.bind(this))
         this.contentDiv.addEventListener('input', this.handleInput.bind(this))
         this.contentDiv.addEventListener('blur', this.handleBlur.bind(this))
         this.contentDiv.addEventListener('focus', this.handleFocus.bind(this))
@@ -50,7 +54,7 @@ class Documenter extends HTMLElement {
         const scrollPosition = window.scrollY || window.pageYOffset
 
         const content = contentElement.textContent
-        const restore = this.saveCaretPosition(contentElement)
+        const restore = this.textHistoryManager.saveCaretPosition(contentElement)
         const parsedContent = parseMarkdown(content)
 
         contentElement.innerHTML = parsedContent
@@ -66,9 +70,22 @@ class Documenter extends HTMLElement {
         this.handleMarkdown()
     }
 
-    handleKeyDown(event) {
+    handleEnterKeyDown(event) {
         this.handleEnter(event)
     }   
+
+    handleTextHistory(event){
+        if (event.ctrlKey && event.key === 'z') {
+            event.preventDefault()
+            this.textHistoryManager.undo()
+
+        } else if (event.ctrlKey && event.key === 'y') {
+            event.preventDefault()
+            this.textHistoryManager.redo()
+        }
+        this.handleMarkdown()
+
+    }
 
     handleEnter(event) {
         if (event.key == 'Enter') {
@@ -88,7 +105,7 @@ class Documenter extends HTMLElement {
 
             } else if (currentLine.match(/^- /)) {
               newLine = `\n- `
-              
+
             } 
 
             range.insertNode(document.createTextNode(newLine))
@@ -100,7 +117,7 @@ class Documenter extends HTMLElement {
     }
 
     handleBlur(event) {
-        this.saveCaret = this.saveCaretPosition(this.contentDiv)
+        this.saveCaret = this.textHistoryManager.saveCaretPosition(this.contentDiv)
         window.getSelection().removeAllRanges()
     }
 
@@ -111,37 +128,52 @@ class Documenter extends HTMLElement {
     }
 
     insertHeader() {
-        this.insertAtCaret('# ')
+        this.textHistoryManager.insertAtCaret('# ')
+        this.handleMarkdown()
     }
 
     insertBold() {
-        this.insertAtCaret('****')
+        this.textHistoryManager.insertAtCaret('****')
+        this.handleMarkdown()
+
     }
 
     insertItalic() {
-        this.insertAtCaret('**')
+        this.textHistoryManager.insertAtCaret('**')
+        this.handleMarkdown()
+
     }
 
     insertUnorderedList() {
-        this.insertAtCaret('- ')
+        this.textHistoryManager.insertAtCaret('- ')
+        this.handleMarkdown()
+
     }
 
     insertOrderedList() {
-        this.insertAtCaret('1. ')
+        this.textHistoryManager.insertAtCaret('1. ')
+        this.handleMarkdown()
+
     }
 
     insertLink() {
-        this.insertAtCaret(`[title](url)`)
+        this.textHistoryManager.insertAtCaret(`[title](url)`)
+        this.handleMarkdown()
+
     }
 
     insertCode(){
         const CODE = "\n``"
-        this.insertAtCaret(`${CODE}`)
+        this.textHistoryManager.insertAtCaret(`${CODE}`)
+        this.handleMarkdown()
+
     }
 
     insertImage(url, filename) {
         const markdownImage = `![${filename}](${url})`
-        this.insertAtCaret(markdownImage)
+        this.textHistoryManager.insertAtCaret(markdownImage)
+        this.handleMarkdown()
+
     }
 
     async uploadImage(event) {
@@ -166,6 +198,7 @@ class Documenter extends HTMLElement {
             if(response.ok){
               const { url, filename } = await response.json()
               this.insertImage(url, filename)
+
             } else {
               console.log('Image tag could not be generated.')
             }
@@ -177,42 +210,6 @@ class Documenter extends HTMLElement {
         } else {
           return 
         }
-    }
-
-    saveCaretPosition(context){
-        let selection = window.getSelection()
-        let range = selection.getRangeAt(0)
-        range.setStart(  context, 0 )
-        let len = range.toString().length
-    
-        return function restore(){
-            let pos = getTextNodeAtPosition(context, len)
-            selection.removeAllRanges()
-            let range = new Range()
-            range.setStart(pos.node ,pos.position)
-            selection.addRange(range)
-    
-        }
-    }
-
-    insertAtCaret(text){
-        this.contentDiv.focus()
-
-        const selection = window.getSelection()
-        if (!selection.rangeCount) return
-
-        const range = selection.getRangeAt(0)
-
-        if (!this.contentDiv.contains(range.commonAncestorContainer)) {
-            return
-        }
-
-        range.deleteContents()
-
-        const textNode = document.createTextNode(text)
-        range.insertNode(textNode)    
-
-        this.handleMarkdown()
     }
 
     #cleanEventListeners(){
@@ -233,6 +230,84 @@ class Documenter extends HTMLElement {
 
 }
 
+class History {
+
+    constructor(element) {
+        this.element = element
+        this.undoStack = []
+        this.redoStack = []
+
+        // this.saveState()
+
+        this.element.addEventListener('input', () => {
+            this.saveState()
+        })
+    }
+
+    saveState(){
+        this.undoStack.push({content: this.element.innerHTML, caretPosRestore: this.saveCaretPosition(this.element)})
+        this.redoStack = []
+    }
+
+    undo(){
+        if(this.undoStack.length > 1){
+            const { content, caretPosRestore } = this.undoStack.pop();
+
+            this.redoStack.push({content: this.element.innerHTML, caretPosRestore: this.saveCaretPosition(this.element)})
+            this.element.innerHTML = content
+
+            caretPosRestore()
+        }
+    }
+
+    redo(){
+        if(this.redoStack.length > 1){
+            const { content, caretPosRestore } = this.redoStack.pop();
+
+            this.undoStack.push({content: this.element.innerHTML, caretPosRestore: this.saveCaretPosition(this.element)})
+            this.element.innerHTML = content
+            
+            caretPosRestore()
+        }
+    }
+
+    saveCaretPosition(context){
+        let selection = window.getSelection()
+
+        let range = selection.getRangeAt(0)
+        range.setStart(  context, 0 )
+        let len = range.toString().length
+    
+        return function restore(){
+            let pos = getTextNodeAtPosition(context, len)
+            selection.removeAllRanges()
+            let range = new Range()
+            range.setStart(pos.node ,pos.position)
+            selection.addRange(range)
+    
+        }
+    }
+
+    insertAtCaret(text){
+        this.element.focus()
+
+        const selection = window.getSelection()
+        if (!selection.rangeCount) return
+
+        const range = selection.getRangeAt(0)
+
+        if (!this.element.contains(range.commonAncestorContainer)) {
+            return
+        }
+
+        range.deleteContents()
+
+        const textNode = document.createTextNode(text)
+        range.insertNode(textNode)    
+
+    }
+
+}
 
 // Helper of saveCaretPosition
 function getTextNodeAtPosition(root, index){
