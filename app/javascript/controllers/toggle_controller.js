@@ -25,7 +25,11 @@ export default class extends Controller {
     }
 
     isEditPage(){
-        return window.location.pathname.includes('edit')
+        let pathname = window.location.pathname.split('/')
+        if(pathname[pathname.length - 1] == 'edit'){
+            return true
+        } 
+        return false
     }
 
     showPath(){
