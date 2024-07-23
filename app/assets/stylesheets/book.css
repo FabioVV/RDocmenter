@@ -164,6 +164,7 @@ main{
     display: grid;
     grid-template-columns: minmax(200px, 1fr) 5fr;
     gap: 2.5rem;
+    padding: 2rem 7rem !important;
 }
 
 .book-edit-side{

@@ -1,3 +1,5 @@
+<%= render "devise/shared/error_messages", resource: @book %>
+
 <section data-controller="previewimage" class='edit-book_info-container'>
 
     <div class='edit-book_info-image'>
@@ -6,8 +8,6 @@
 
     <div class='edit-book_info-form'>
         <%= form_with(model: @book, local:true, html: { multipart: true }, class: "book-initial-form") do |f| %>
-            <%= render "devise/shared/error_messages", resource: @book %>
-
             <div class="field">
                 <%= f.text_field :title, placeholder: "Title",  class: "" %>
             </div>
