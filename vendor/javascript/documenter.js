@@ -1,4 +1,5 @@
 import parseMarkdown from "./parser"
+import insertToolbox from "./generate_toolbar"
 
 class Documenter extends HTMLElement {
 
@@ -21,6 +22,9 @@ class Documenter extends HTMLElement {
 
         this.contentDiv.innerHTML = parseMarkdown(this.inputHidden.value)
         this.textHistoryManager = new History(this.contentDiv)
+
+        // Specify the div ID to load the toolbox into
+        insertToolbox('markdown-load-toolbox')
 
         this.contentDiv.addEventListener('keydown', this.handleEnterKeyDown.bind(this))
         this.contentDiv.addEventListener('keydown', this.handleTextHistory.bind(this))
