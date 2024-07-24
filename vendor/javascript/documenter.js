@@ -65,7 +65,7 @@ class Documenter extends HTMLElement {
         this.inputHidden.value = contentElement.innerHTML
 
         restore()
-
+        
         window.scrollTo(0, scrollPosition)
     }
 
@@ -86,9 +86,32 @@ class Documenter extends HTMLElement {
         } else if (event.ctrlKey && event.key === 'y') {
             event.preventDefault()
             this.textHistoryManager.redo()
-        }
-        this.handleMarkdown()
 
+        } else if (event.key === 'Backspace' || event.key === "Delete"){
+            event.preventDefault()
+
+            let selection = window.getSelection()
+
+            if(!selection.rangeCount){
+                selection.deleteFromDocument()
+
+            } else {        
+                const range = selection.getRangeAt(0)
+        
+                if (!this.contentDiv.contains(range.commonAncestorContainer)) {
+                    return
+                }
+        
+                const currentNode = range.startContainer
+                range.setStart(currentNode, range.startOffset - 1);
+
+                range.deleteContents()
+            }
+
+            this.textHistoryManager.saveState()
+        }
+
+        this.handleMarkdown()
     }
 
     handleEnter(event) {
@@ -254,7 +277,7 @@ class History {
     }
 
     undo(){
-        if(this.undoStack.length > 1){
+        if(this.undoStack.length > 0){
             const { content, caretPosRestore } = this.undoStack.pop();
 
             this.redoStack.push({content: this.element.innerHTML, caretPosRestore: this.saveCaretPosition(this.element)})
@@ -265,7 +288,7 @@ class History {
     }
 
     redo(){
-        if(this.redoStack.length > 1){
+        if(this.redoStack.length > 0){
             const { content, caretPosRestore } = this.redoStack.pop();
 
             this.undoStack.push({content: this.element.innerHTML, caretPosRestore: this.saveCaretPosition(this.element)})
