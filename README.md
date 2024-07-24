@@ -1,12 +1,1 @@
-## Documenter
-
-
-
-
-
-
-
-
-
-
 # God Bless.
